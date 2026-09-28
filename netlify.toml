@@ -1,0 +1,5 @@
+[build]
+  publish = "."
+  command = "python3 build.py"
+
+# Netlify serves 404.html automatically for unmatched paths — no redirect rule needed.

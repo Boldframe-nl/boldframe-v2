@@ -1,0 +1,6 @@
+User-agent: *
+Disallow: /
+
+# Dit is de stage-omgeving. Verwijder dit bestand (of vervang door een
+# echte robots.txt) zodra de site op het definitieve domein live gaat,
+# anders vindt Google 'm nooit.
