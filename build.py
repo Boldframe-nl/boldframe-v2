@@ -131,6 +131,32 @@ INSIGHTS = {
 }
 INSIGHT_ORDER = ["ai-verkeer-meten-in-ga4", "ai-scan-landingspagina", "meertalige-ecommerce"]
 
+DIENSTEN_STEPS = [
+    ("Audit", "We brengen de customer journey van je webshop in kaart en sporen de knelpunten op met heatmaps, sessieopnames en je eigen data — geen aannames."),
+    ("Hypothese", "Per knelpunt formuleren we een onderbouwde hypothese: welke aanpassing, waarom die het gedrag zou moeten veranderen, en wat we verwachten dat het oplevert."),
+    ("A/B-test", "We testen de aanpassing tegen de huidige versie, met tools als Nelio A/B Testing, tot het resultaat statistisch betrouwbaar is."),
+    ("Implementatie", "Een bewezen winnaar voeren we definitief door. Een verliezer laten we vallen, ongeacht hoe logisch hij vooraf klonk — zoals je in onze testtijdlijnen kunt teruglezen."),
+]
+DIENSTEN_CHALLENGES = [
+    ("Verkeer genoeg, omzet te weinig", "Je steekt maandelijks budget in Google Ads, Meta of SEO. Er komen bezoekers binnen, maar onderaan de streep blijft er te weinig omzet over."),
+    ("Afhakers vlak voor het afrekenen", "Bezoekers vullen hun winkelmand, en verlaten je site alsnog in de checkout. Vaak door twijfel die met een paar gerichte aanpassingen weg te nemen is."),
+    ("Landingspagina's die de belofte van je advertentie niet waarmaken", "Een advertentie trekt de juiste bezoeker, maar de pagina erachter beantwoordt niet de vraag waarmee hij kwam."),
+    ("Beslissingen op onderbuikgevoel", "Wijzigingen worden doorgevoerd omdat ze logisch klinken, niet omdat ze getest zijn — met als risico dat je omzet juist inlevert."),
+]
+DIENSTEN_FAQ = [
+    ("Moet ik mijn webbouwer ontslaan?", "Zeker niet. We kunnen de volledige development van je webshop op ons nemen, maar werken minstens zo graag samen met je huidige webbouwer om een bewezen winnaar structureel door te voeren."),
+    ("Vertraagt dit mijn site?", "Nee. Een test draait via lichte A/B-testtools naast je bestaande webshop; pas een bewezen winnaar verwerken we structureel in de code."),
+    ("Wat als ik niet tevreden ben?", "Dan betaal je niets. Het Webshop Groei-Traject werkt op no-cure-no-pay-basis, met 100% geld-terug-garantie."),
+    ("Moet ik direct duizenden euro's investeren in aanpassingen?", "Nee. We beginnen met de tests die het meeste opleveren tegen de minste ontwikkeltijd, en breiden pas uit zodra die hun waarde hebben bewezen."),
+    ("Ik heb al andere marketingpartijen, werk jij hen niet tegen?", "Nee. Jouw advertentie- of SEO-partij zorgt voor het verkeer; wij zorgen dat een groter deel daarvan ook daadwerkelijk klant wordt."),
+    ("Heb ik wel tijd om al die analyses door te nemen?", "Nauwelijks. Wij doen de analyse en het testen; jij krijgt korte, concrete updates — zoals de testtijdlijn die je bij elke case terugziet."),
+]
+
+OVER_ONS_STATS = [
+    ("20+", "Webshops geholpen met data-gedreven conversie-optimalisatie"),
+    ("5", "Nieuwe shops per maand, bewust — voor diepgang in plaats van volume"),
+]
+
 
 def fmt_date(d):
     months = ["januari", "februari", "maart", "april", "mei", "juni", "juli", "augustus", "september", "oktober", "november", "december"]
@@ -279,6 +305,46 @@ def build_stub(title, path):
     return page(title, f"{title} — Boldframe", path, body)
 
 
+def build_diensten():
+    steps_html = "".join(
+        f'<li><span class="num">{i+1}</span><div><h3>{t}</h3><p>{d}</p></div></li>'
+        for i, (t, d) in enumerate(DIENSTEN_STEPS)
+    )
+    challenges_html = "".join(f"<div><h3>{t}</h3><p>{d}</p></div>" for t, d in DIENSTEN_CHALLENGES)
+    faq_html = "".join(f"<details><summary>{q}</summary><p>{a}</p></details>" for q, a in DIENSTEN_FAQ)
+    body = f'''<header class="hero"><h1 class="case">Conversie-optimalisatie, geen giswerk.</h1><p>Je advertenties trekken bezoekers, maar als je landingspagina's en checkout ze niet vasthouden, betaal je voor verkeer dat nooit klant wordt. Wij herstellen die correlatie tussen advertentie en landingspagina met data-gedreven A/B-tests.</p></header>
+<section><h2>Het No-cure-no-pay Webshop Groei-Traject</h2><p class="lead">Meer rendement uit de bezoekers die je al hebt. Een hoge klikfrequentie is waardeloos als je checkout de verkoop blokkeert. Wij nemen het risico: geen extra omzet, geen kosten. Jij krijgt de data en de extra verkopen.</p>
+<div class="facts"><div><h3>Risico</h3><p>No-cure-no-pay, met 100% geld-terug-garantie.</p></div><div><h3>Start</h3><p>Gratis conversie-audit binnen 48 uur.</p></div><div><h3>Capaciteit</h3><p>Maximaal 5 nieuwe shops per maand, voor diepgang per klant.</p></div></div>
+<p><a class="btn" href="#afspraak">Claim mijn gratis Conversie Audit</a></p></section>
+<section><h2>Waar we conversie-lekken vinden</h2><p class="lead">Herkenbaar? Dit zijn de signalen waarmee webshopondernemers meestal bij ons aankloppen.</p>
+<div class="facts">{challenges_html}</div></section>
+<section><h2>Onze werkwijze</h2><p class="lead">Van vermoeden naar bewijs, in vier stappen — dezelfde stappen die je terugziet in elke testtijdlijn bij onze <a href="/cases/">cases</a>.</p>
+<ul class="steps">{steps_html}</ul></section>
+<section><h2>Veelgestelde vragen</h2><div class="faq">{faq_html}</div></section>'''
+    return page(
+        "Diensten",
+        "Data-gedreven conversie-optimalisatie voor MKB-webshops: het No-cure-no-pay Webshop Groei-Traject van Boldframe.",
+        "/diensten/",
+        body,
+    )
+
+
+def build_over_ons():
+    stats_html = "".join(f"<div><b>{v}</b><span>{l}</span></div>" for v, l in OVER_ONS_STATS)
+    body = f'''<header class="hero"><h1 class="case">50% techniek, 50% gedrag.</h1><p>Conversie-optimalisatie zit precies tussen die twee in. Bij Boldframe combineren we ontwikkelaars die een test technisch correct bouwen met een strateeg die weet waaróm een bezoeker afhaakt.</p></header>
+<section><h2>Onze visie</h2><p class="lead" style="max-width:66ch">We geloven niet in giswerk of onderbuikgevoel. Elke aanpassing die we voorstellen is eerst een hypothese, dan een A/B-test tegen de huidige situatie, en pas daarna een implementatie — met een concreet omzet-effect als uitkomst. Precies zoals je in onze <a href="/cases/">testtijdlijnen</a> kunt teruglezen: ook de tests die niet werkten laten we zien, want ook dat is bewijs.</p>
+<div class="stats">{stats_html}</div></section>
+<section><h2>Roy van Hees</h2><p class="lead" style="max-width:66ch">E-commerce strateeg en oprichter van Boldframe. Roy combineert een achtergrond in sales consultancy met hands-on CRO-werk: hij weet waar bezoekers in de klantreis afhaken, en bouwt vandaaruit de hypothese die we vervolgens testen. <a href="mailto:roy@boldframe.nl">roy@boldframe.nl</a></p></section>
+<section><h2>Hoe we werken</h2><p class="lead" style="max-width:66ch">Audit, hypothese, A/B-test, implementatie — dezelfde vier stappen bij elke shop. Lees meer over onze <a href="/diensten/">werkwijze</a> of bekijk direct wat het heeft opgeleverd in onze <a href="/cases/">cases</a>.</p>
+<p><a class="btn" href="#afspraak">Plan een kennismaking</a></p></section>'''
+    return page(
+        "Over ons",
+        "Boldframe: conversie-optimalisatie op basis van data, niet onderbuikgevoel. 50% techniek, 50% gedrag.",
+        "/over-ons/",
+        body,
+    )
+
+
 def write(path, content):
     full = os.path.join(ROOT, path.lstrip("/"), "index.html") if path.endswith("/") else os.path.join(ROOT, path.lstrip("/"))
     os.makedirs(os.path.dirname(full), exist_ok=True)
@@ -295,8 +361,8 @@ def main():
     write("/insights/", build_insights_index())
     for slug in INSIGHT_ORDER:
         write(f"/insights/{slug}/", build_insight(slug, INSIGHTS[slug]))
-    write("/diensten/", build_stub("Diensten", "/diensten/"))
-    write("/over-ons/", build_stub("Over ons", "/over-ons/"))
+    write("/diensten/", build_diensten())
+    write("/over-ons/", build_over_ons())
 
     # 404
     body = '<header class="hero"><h1 class="case">Pagina niet gevonden</h1><p>Deze pagina bestaat niet (meer). <a href="/">Terug naar de homepage</a>.</p></header>'
