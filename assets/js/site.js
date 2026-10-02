@@ -1,5 +1,61 @@
 // Boldframe site — kleine interactieve onderdelen, geen framework nodig.
 
+// 0a) Scroll-reveal: alles met [data-reveal] faded/schuift in zodra het in beeld komt.
+// Dit is de standaard voor nieuwe pagina's/onderdelen — voeg data-reveal toe
+// (en optioneel style="--d:0..n" voor een staggered volgorde binnen een groep).
+const reduceMotion = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+const revealEls = document.querySelectorAll("[data-reveal]");
+if (revealEls.length) {
+  if (reduceMotion || !("IntersectionObserver" in window)) {
+    revealEls.forEach((el) => el.classList.add("is-visible"));
+  } else {
+    const io = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("is-visible");
+            animateCount(entry.target);
+            io.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.15, rootMargin: "0px 0px -40px 0px" }
+    );
+    revealEls.forEach((el) => io.observe(el));
+  }
+}
+
+// 0b) Count-up voor statistieken: <b data-count="20" data-suffix="+">0+</b>
+function animateCount(container) {
+  const el = container.matches && container.matches("[data-count]") ? container : container.querySelector("[data-count]");
+  if (!el || el.dataset.counted) return;
+  el.dataset.counted = "1";
+  const target = parseFloat(el.getAttribute("data-count"));
+  const suffix = el.getAttribute("data-suffix") || "";
+  if (!isFinite(target)) return;
+  if (reduceMotion) {
+    el.textContent = target + suffix;
+    return;
+  }
+  const dur = 900;
+  const start = performance.now();
+  function step(now) {
+    const p = Math.min(1, (now - start) / dur);
+    const eased = 1 - Math.pow(1 - p, 3);
+    el.textContent = Math.round(target * eased) + suffix;
+    if (p < 1) requestAnimationFrame(step);
+  }
+  requestAnimationFrame(step);
+}
+
+// 0c) Lichte schaduw onder de nav zodra er gescrold is.
+const siteNav = document.querySelector("nav");
+if (siteNav) {
+  const onScroll = () => siteNav.classList.toggle("nav-scrolled", window.scrollY > 8);
+  onScroll();
+  window.addEventListener("scroll", onScroll, { passive: true });
+}
+
 // 1) Vastpinnen van tests binnen een case (client-side, per bezoek).
 document.addEventListener("click", (e) => {
   const p = e.target.closest(".pin");
