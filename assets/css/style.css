@@ -172,3 +172,14 @@ footer .btn{background:var(--onblue);color:var(--blue)}
 .stats div{width:220px;max-width:220px}
 .stats b{display:block;font-stretch:125%;font-weight:900;font-size:44px;line-height:1}
 .stats span{color:var(--muted);font-weight:600}
+
+.steps-detail{list-style:none;margin:0;padding:0;border-top:2px solid var(--blue)}
+.step-detail{padding:28px 0;border-bottom:2px solid var(--line);transition:background-color .2s ease}
+.step-detail:hover{background:color-mix(in srgb,var(--blue) 4%,transparent)}
+.step-detail-head{display:flex;align-items:center;gap:12px;margin-bottom:10px}
+.step-detail-head .num{font-stretch:125%;font-weight:900;font-size:24px;color:var(--blue);min-width:32px}
+.step-detail-head .icon{color:var(--blue)}
+.step-detail-head h3{margin:0;font-size:22px;font-weight:800}
+.step-detail p{margin:0 0 8px;color:var(--muted);max-width:62ch}
+.step-detail .step-out{color:var(--ink);font-weight:600}
+.step-detail .step-out strong{font-weight:700}

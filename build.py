@@ -17,6 +17,7 @@ HERO_BG = '<div class="hero-bg" aria-hidden="true"></div>'
 NAV_ITEMS = [
     ("Cases", "/cases/"),
     ("Diensten", "/diensten/"),
+    ("Werkwijze", "/werkwijze/"),
     ("Over ons", "/over-ons/"),
     ("Insights", "/insights/"),
 ]
@@ -203,6 +204,19 @@ OVER_ONS_STATS = [
     (5, "", "Nieuwe shops per maand, bewust — voor diepgang in plaats van volume"),
 ]
 
+# Uitgebreide versie van de 4 stappen, voor de aparte Werkwijze-pagina.
+WERKWIJZE_STEPS = [
+    ("Audit", "search", "We starten met een technische en gedragsmatige audit van je webshop: heatmaps en sessieopnames laten zien wáár bezoekers vastlopen, GA4 laat zien wáár ze afhaken in de funnel, en een handmatige UX-review legt frictie bloot die data alleen niet altijd laat zien.", "Output: een lijst knelpunten, elk onderbouwd met data — geen onderbuikgevoel."),
+    ("Hypothese & prioriteit", "bulb", "Elk knelpunt wordt een hypothese: welke aanpassing, welk mechanisme verklaart waarom die het gedrag zou veranderen, en wat verwachten we dat het oplevert. Hypotheses worden gewogen op verwachte impact, de zekerheid dat de aanpassing werkt, en de inspanning om 'm te bouwen — zodat we eerst testen wat het meeste oplevert tegen de minste moeite.", "Output: een geprioriteerde testbacklog, met de volgende test al vastgelegd voordat de huidige is afgerond."),
+    ("A/B-test", "flask", "De aanpassing wordt tegen de huidige versie getest bij een representatief deel van je bezoekers, met tools als Nelio A/B Testing. We laten een test doorlopen tot het resultaat statistisch betrouwbaar is — niet tot het toevallig de goede kant op wijst.", "Output: een winnaar, verliezer, of 'geen significant verschil' — alle drie zijn een geldige uitkomst."),
+    ("Implementatie & learning", "check", "Een bewezen winnaar voeren we structureel door, zelf of samen met je huidige webbouwer. Een verliezer laten we vallen, ongeacht hoe logisch hij vooraf klonk. Wat we leerden voeden we terug in de volgende hypothese — zo wordt elke test waardevol, ook de tests die niet 'wonnen'.", "Output: een doorgevoerde verandering en een testtijdlijn die groeit, zoals je die terugziet bij elke case."),
+]
+WERKWIJZE_PRIORITY = [
+    ("Impact", "target", "Hoeveel omzet-effect verwachten we als de hypothese klopt? Een test op je productpagina's weegt zwaarder dan een test op een pagina die bijna niemand bezoekt."),
+    ("Zekerheid", "shield", "Hoe onderbouwd is de hypothese? Data uit heatmaps, sessieopnames of eerdere tests geeft meer zekerheid dan een losse aanname."),
+    ("Inspanning", "clock", "Hoeveel ontwikkeltijd kost de test? Een kleine aanpassing die veel oplevert gaat voor op een grote herbouw met een onzekere uitkomst."),
+]
+
 
 def fmt_date(d):
     months = ["januari", "februari", "maart", "april", "mei", "juni", "juli", "augustus", "september", "oktober", "november", "december"]
@@ -376,13 +390,39 @@ def build_diensten():
 {build_branches_section(id_attr="")}
 <section><h2 data-reveal>Waar we conversie-lekken vinden</h2><p class="lead" data-reveal>Herkenbaar? Dit zijn de signalen waarmee webshopondernemers meestal bij ons aankloppen.</p>
 <div class="facts">{challenges_html}</div></section>
-<section><h2 data-reveal>Onze werkwijze</h2><p class="lead" data-reveal>Van vermoeden naar bewijs, in vier stappen — dezelfde stappen die je terugziet in elke testtijdlijn bij onze <a href="/cases/">cases</a>.</p>
+<section><h2 data-reveal>Onze werkwijze</h2><p class="lead" data-reveal>Van vermoeden naar bewijs, in vier stappen — dezelfde stappen die je terugziet in elke testtijdlijn bij onze <a href="/cases/">cases</a>. <a href="/werkwijze/">Lees de volledige werkwijze →</a></p>
 <ul class="steps">{steps_html}</ul></section>
 <section><h2 data-reveal>Veelgestelde vragen</h2><div class="faq">{faq_html}</div></section>'''
     return page(
         "Diensten",
         "Data-gedreven conversie-optimalisatie voor MKB-webshops: het No-cure-no-pay Webshop Groei-Traject van Boldframe.",
         "/diensten/",
+        body,
+    )
+
+
+def build_werkwijze():
+    steps_html = "".join(
+        f'''<li class="step-detail" data-reveal style="--d:{i}">
+<div class="step-detail-head"><span class="num">{i+1}</span>{icon(k)}<h3>{t}</h3></div>
+<p>{body}</p><p class="step-out"><strong>{out}</strong></p></li>'''
+        for i, (t, k, body, out) in enumerate(WERKWIJZE_STEPS)
+    )
+    priority_html = "".join(
+        f'<div data-reveal style="--d:{i}">{icon(k)}<h3>{t}</h3><p>{d}</p></div>'
+        for i, (t, k, d) in enumerate(WERKWIJZE_PRIORITY)
+    )
+    body = f'''<header class="hero">{HERO_BG}<h1 class="case">Van vermoeden naar bewijs.</h1><p>Dit is hoe een traject bij Boldframe er in de praktijk uitziet — dezelfde vier fases bij elke webshop, van de eerste audit tot de doorgevoerde winnaar.</p></header>
+<section><h2 data-reveal>De vier fases</h2><p class="lead" data-reveal>Elke fase levert een concreet resultaat op voordat de volgende begint.</p>
+<ul class="steps-detail">{steps_html}</ul></section>
+<section><h2 data-reveal>Hoe we prioriteren</h2><p class="lead" data-reveal>Met meerdere knelpunten tegelijk is de vraag niet wát we testen, maar in welke volgorde. We wegen elke hypothese op drie punten.</p>
+<div class="facts">{priority_html}</div></section>
+<section><h2 data-reveal>Wat je kunt verwachten</h2><p class="lead" data-reveal>Korte lijnen, geen dikke rapporten. Na elke afgeronde test krijg je een update met de uitkomst, de learning, en wat we daarna gaan testen — terug te zien in de testtijdlijn van je eigen <a href="/cases/">case</a>. Geen interesse? Dan betaal je niets: het traject werkt op <a href="/diensten/">no-cure-no-pay-basis</a>.</p>
+<p><a class="btn" href="#afspraak">Claim mijn gratis Conversie Audit</a></p></section>'''
+    return page(
+        "Werkwijze",
+        "Hoe een CRO-traject bij Boldframe werkt: audit, hypothese, A/B-test en implementatie, met prioritering op impact, zekerheid en inspanning.",
+        "/werkwijze/",
         body,
     )
 
@@ -423,6 +463,7 @@ def main():
     for slug in INSIGHT_ORDER:
         write(f"/insights/{slug}/", build_insight(slug, INSIGHTS[slug]))
     write("/diensten/", build_diensten())
+    write("/werkwijze/", build_werkwijze())
     write("/over-ons/", build_over_ons())
 
     # 404
