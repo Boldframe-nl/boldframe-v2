@@ -207,27 +207,58 @@ CASES = {
     },
     "schuurman": {
         "name": "Schuurman Dier & Hengelsport",
-        "sub": "Webshop voor dierenvoeding en hengelsport",
-        "intro": "Voor Schuurman lopen op dit moment twee tests. De resultaten komen hier zodra ze zijn afgerond.",
+        "sub": "Lopend testtraject voor een webshop in dierenvoeding en hengelsport",
+        "headline": "Testen waar de omzet echt vandaan komt.",
+        "eyebrow": "Lopend testtraject",
+        "intro": "Schuurman Dier & Hengelsport heeft een enorm assortiment, en het grootste deel van de omzet komt uit dierenvoeding. Samen bouwen we een testprogramma op dat daarop is afgestemd. De eerste test loopt op dit moment, de resultaten verschijnen hier zodra ze er zijn.",
         "hero": "/assets/img/cases/schuurman-hero.jpg",
-        "facts": [],
+        "stats": [
+            {"count": 1, "label": "test loopt op dit moment"},
+            {"count": 3, "label": "niveaus in het nieuwe menu"},
+            {"count": 50, "suffix": "%", "label": "van de productpagina-bezoekers scrolt langs de add-to-cart-knop"},
+            {"count": 70, "suffix": "%", "label": "van de productpagina-bezoekers voegt uiteindelijk niets toe aan de winkelwagen"},
+        ],
+        "blocks": [
+            {"type": "text", "h2": "Het uitgangspunt", "paras": [
+                "Bij de start van het traject zagen we dat een groot deel van de omzet van Schuurman uit dierenvoeding komt. De website presenteerde zich echter vooral als hengelsportwinkel. Daarbij is het assortiment zo groot dat bezoekers snel moeten kunnen vinden wat ze zoeken.",
+                "Daarom begonnen we met een fundament: een webshop die laat zien wat er daadwerkelijk wordt verkocht, en waarin klanten sneller en makkelijker bij het juiste product komen. Daarop bouwen we het testprogramma.",
+            ]},
+            {"type": "media", "h2": "Fundament: een nieuw menu",
+             "lead": "De menustructuur is opnieuw opgezet, zodat de dierenwinkel en de hengelsport allebei hun eigen plek hebben, met meer diepgang.",
+             "items": [
+                 ("/assets/img/cases/schuurman-menu-voor.jpg", "Schuurman desktopmenu vóór de wijziging: alleen hengelsportcategorieën zichtbaar", "Voor: een menu dat vooral hengelsport laat zien", 1600, 923),
+                 ("/assets/img/cases/schuurman-menu-na.jpg", "Schuurman desktopmenu na de wijziging: dierenwinkel met drie niveaus", "Na: dierenwinkel en hengelsport gescheiden, met drie niveaus", 1600, 830),
+                 ("/assets/img/cases/schuurman-menu-mobiel.jpg", "Schuurman mobiel menu na de wijziging met tabs Hengelsport en Dier", "Na, op mobiel: kies direct tussen Hengelsport en Dier", 800, 855),
+             ]},
+            {"type": "cards", "h2": "Wat het nieuwe menu oplost", "lead": "Vijf punten waarop het menu verbetert.",
+             "items": [
+                 ("Diepgang", "arrow-right", "Bezoekers klikken direct door naar de categorie die voor hen relevant is, met drie niveaus in het menu."),
+                 ("Duidelijke scheiding", "check", "Er is nu een heldere scheiding tussen hengelsport en dierenwinkel."),
+                 ("Totaaloverzicht", "target", "Klanten zien veel beter wat Schuurman allemaal te bieden heeft."),
+                 ("Focus op dieren", "paw", "De meeste omzet komt uit dierenwinkelproducten, dus die krijgen nu voorrang."),
+                 ("Ruimte voor de zoekfunctie", "search", "Zoeken werd op mobiel veel gebruikt, maar op desktop bleef het achter omdat het een klein icoontje was. Het is nu een groot veld. Zoekverkeer converteert doorgaans 2 tot 3 keer zo goed, mits de zoekfunctie goed werkt."),
+             ]},
+            {"type": "tests", "h2": "Testtijdlijn", "lead": "Elke test met observatie, hypothese en uitkomst. Zodra een test is afgerond, voegen we het resultaat hier toe."},
+            {"type": "text", "h2": "Waar Schuurman nu staat", "paras": [
+                "Schuurman staat aan het begin van een testtraject. We tonen daarom geen omzetcijfers of groei: die kunnen we pas eerlijk benoemen na meerdere afgeronde winnende tests. Deze pagina wordt aangevuld zodra de resultaten binnen zijn.",
+            ]},
+            {"type": "cta", "h2": "Benieuwd wat een testtraject voor jouw webshop kan betekenen?", "lead": "Plan een gesprek van 30 minuten, dan laten we zien waar jouw conversie-lekken zitten.", "other": ("/cases/ecodor/", "Bekijk ook de case van Ecodor →")},
+        ],
         "tests": [
             {
-                "id": "s1", "date": "2026-09-01", "status": "l", "duration": "",
-                "title": "Homepage: nieuwe hero", "hyp": "Hypothese volgt.", "metrics": [],
-                "learn": "Test loopt nog.", "img": "/assets/img/tests/s1.jpg", "alt": "Schuurman homepage voor en na",
-                "pinned": False,
-            },
-            {
-                "id": "s2", "date": "2026-08-15", "status": "l", "duration": "",
-                "title": "Productpagina: broodkruimelpad opschonen", "hyp": "Hypothese volgt.", "metrics": [],
-                "learn": "Test loopt nog.", "img": "/assets/img/tests/s2.jpg", "alt": "Schuurman productpagina voor en na",
+                "id": "s3", "started": "2026-09-29", "status": "l", "duration": "",
+                "title": "Sticky add-to-cart op de productpagina (mobiel)",
+                "observation": "Ongeveer 50% van de productpagina-bezoekers scrolt langs de add-to-cart-knop, waardoor de knop uit beeld verdwijnt. Dat kan betekenen dat klanten zich verder verdiepen in de productinformatie. Daarnaast voegt 70% van de bezoekers uiteindelijk geen product toe aan de winkelwagen.",
+                "hyp": "Als we een ‘In winkelwagen’-balk onderaan het mobiele scherm fixeren zodra de originele knop uit beeld verdwijnt, nemen we de frictie weg op het moment dat de bezoeker overtuigd is. Dat leidt tot een hogere add-to-cart rate en een hogere algehele conversie.",
+                "metrics": [],
+                "learn": "Nog geen learning: de test loopt.",
+                "img": "/assets/img/tests/s3.jpg", "alt": "Schuurman productpagina op mobiel voor en na: sticky add-to-cart-balk onderaan",
                 "pinned": False,
             },
         ],
     },
 }
-CASES_COMING_SOON = ["Fikalights", "Joffs Administraties", "Rezoomy", "Orange Ant", "Jagtveld", "Cleanservice4you", "Luzcap", "Capo"]
+CASES_COMING_SOON = []
 
 STATUS_LABEL = {"w": "Winnaar", "v": "Verliezer", "l": "Loopt nog"}
 
@@ -378,7 +409,7 @@ def metrics_html(m):
 
 def test_card(t, i=0, order=0):
     dur = f'<span>{t["duration"]}</span>' if t.get("duration") else ""
-    date = f'<span>{fmt_date(t["date"])}</span>' if t.get("date") else ""
+    date = f'<span>Gestart {fmt_date(t["date"])}</span>' if t.get("date") else ""
     if t.get("started"):
         date = f'<span>Gestart {fmt_date(t["started"])}</span>'
     pinned = t["pinned"]
@@ -485,6 +516,12 @@ def render_block(b, c):
         return f'<section><h2 data-reveal>{b["h2"]}</h2><p class="lead" data-reveal>{b["lead"]}</p><ul class="steps-detail">{phases_html(b["items"])}</ul></section>'
     if t == "table":
         return f'<section><h2 data-reveal>{b["h2"]}</h2><p class="lead" data-reveal>{b["lead"]}</p>{table_html(b["head"], b["rows"])}</section>'
+    if t == "media":
+        figs = "".join(
+            f'<figure data-reveal style="--d:{i}"><img src="{src}" alt="{alt}" width="{w}" height="{h}" loading="lazy"><figcaption>{cap}</figcaption></figure>'
+            for i, (src, alt, cap, w, h) in enumerate(b["items"])
+        )
+        return f'<section><h2 data-reveal>{b["h2"]}</h2><p class="lead" data-reveal>{b["lead"]}</p><div class="media">{figs}</div></section>'
     if t == "tests":
         return tests_section(c, b["h2"], b["lead"])
     if t == "cta":
@@ -603,6 +640,7 @@ def build_diensten():
 <div class="facts"><div data-reveal style="--d:0"><h3>Risico</h3><p>No-cure-no-pay, met 100% geld-terug-garantie.</p></div><div data-reveal style="--d:1"><h3>Start</h3><p>Gratis conversie-audit binnen 48 uur.</p></div><div data-reveal style="--d:2"><h3>Capaciteit</h3><p>Maximaal 5 nieuwe shops per maand, voor diepgang per klant.</p></div></div>
 <p><a class="btn" href="#afspraak">Claim mijn gratis Conversie Audit</a></p></section>
 {build_branches_section(id_attr="")}
+<section><h2 data-reveal>Voor wie dit werkt</h2><p class="lead" data-reveal style="max-width:66ch">Wij werken met een doorlopend testprogramma: geen losse optimalisaties, maar een reeks onderbouwde experimenten die samen een strategie vormen. Dat werkt voor webshops met genoeg verkeer om betrouwbaar te testen, en die bereid zijn te leren van elke uitkomst, ook als een test verliest.</p></section>
 <section><h2 data-reveal>Waar we conversie-lekken vinden</h2><p class="lead" data-reveal>Herkenbaar? Dit zijn de signalen waarmee webshopondernemers meestal bij ons aankloppen.</p>
 <div class="facts">{challenges_html}</div></section>
 <section><h2 data-reveal>Onze werkwijze</h2><p class="lead" data-reveal>Van vermoeden naar bewijs, in vier stappen — dezelfde stappen die je terugziet in elke testtijdlijn bij onze <a href="/cases/">cases</a>. <a href="/werkwijze/">Lees de volledige werkwijze →</a></p>
