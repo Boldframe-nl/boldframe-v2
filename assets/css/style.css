@@ -183,3 +183,51 @@ footer .btn{background:var(--onblue);color:var(--blue)}
 .step-detail p{margin:0 0 8px;color:var(--muted);max-width:62ch}
 .step-detail .step-out{color:var(--ink);font-weight:600}
 .step-detail .step-out strong{font-weight:700}
+
+/* ---- Case-verhaal: kerncijfers, omzetgrafiek, vergelijkingstabel, testkaart-details ---- */
+.eyebrow,.hero .meta{display:block;margin-bottom:14px}
+.kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:24px 28px}
+.kpis>div{border-top:2px solid var(--blue);padding-top:12px}
+.kpis b{display:block;font-stretch:125%;font-weight:900;font-size:clamp(28px,4.2vw,40px);line-height:1.05;letter-spacing:-.02em}
+.kpis span{display:block;margin-top:6px;color:var(--muted);font-weight:600;font-size:15px}
+
+.bars{list-style:none;margin:20px 0 0;padding:0}
+.bar-row{display:grid;grid-template-columns:190px 1fr 120px;align-items:center;gap:6px 16px;padding:10px 0}
+.bar-label{font-weight:700}
+.bar-track{display:block;border-left:2px solid var(--blue);height:30px}
+.bar-fill{display:block;height:100%;width:var(--w);background:var(--blue);border-radius:0 4px 4px 0;transform-origin:left center;transform:scaleX(0);transition:transform 1s cubic-bezier(.2,.7,.2,1);transition-delay:calc(var(--d,0) * 120ms + 200ms)}
+.bar-row.is-visible .bar-fill{transform:scaleX(1)}
+.bar-row.est .bar-fill{background:repeating-linear-gradient(135deg,var(--blue) 0 3px,color-mix(in srgb,var(--blue) 30%,var(--bg)) 3px 7px);box-shadow:inset 0 0 0 2px var(--blue)}
+.bar-val{font-stretch:115%;font-weight:900;font-size:18px;white-space:nowrap}
+.bar-note{margin:14px 0 0;max-width:70ch;color:var(--muted);font-size:14px}
+@media (prefers-reduced-motion: reduce){.bar-fill{transform:none;transition:none}}
+@media (max-width:640px){
+  .bar-row{grid-template-columns:1fr auto}
+  .bar-track{grid-column:1 / -1;grid-row:2}
+}
+
+.cmp{width:100%;border-collapse:collapse;border-top:2px solid var(--blue);margin-top:8px}
+.cmp th{text-align:left;font-size:13px;text-transform:uppercase;letter-spacing:.04em;padding:12px 12px 12px 4px;color:var(--muted)}
+.cmp td{padding:18px 12px 18px 4px;border-bottom:2px solid var(--line);vertical-align:top;max-width:60ch}
+.cmp td:last-child{font-weight:800;width:32%}
+@media (max-width:640px){
+  .cmp thead{display:none}
+  .cmp tr,.cmp td{display:block;width:auto!important;max-width:none}
+  .cmp tr{border-bottom:2px solid var(--line);padding:14px 0}
+  .cmp td{border:0;padding:4px 0}
+  .cmp td::before{content:attr(data-label);display:block;font-size:12px;text-transform:uppercase;letter-spacing:.04em;color:var(--muted);font-weight:700}
+}
+
+.item{height:auto}
+.item img{height:auto}
+.why{margin:0 0 12px;display:grid;gap:10px}
+.why p,.item p .lbl{margin:0}
+.lbl{display:block;font-size:12px;text-transform:uppercase;letter-spacing:.05em;font-weight:800;opacity:.75;margin-bottom:2px}
+.t-note{font-size:14px;opacity:.9}
+.item.pinned .lbl{opacity:.8}
+
+.facts>div>.icon{margin-bottom:8px;color:var(--blue)}
+
+.cta-band{border:2px solid var(--blue);border-radius:10px;padding:clamp(24px,4vw,40px);background:color-mix(in srgb,var(--blue) 6%,var(--bg))}
+.cta-band .lead{margin-bottom:20px}
+.cta-other{margin-left:18px;font-weight:700;display:inline-block;margin-top:10px}

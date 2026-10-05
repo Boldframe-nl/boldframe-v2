@@ -66,42 +66,139 @@ def build_branches_section(id_attr=' id="branches"'):
     return f'''<section{id_attr}><h2 data-reveal>Voor welke webshops?</h2><p class="lead" data-reveal>Boldframe werkt uitsluitend voor webwinkels — in uiteenlopende branches, met dezelfde data-gedreven aanpak.</p>
 <div class="branches">{cards}</div></section>'''
 
+# Case-model
+# ----------
+# Een case is een dict. Zonder "blocks" krijgt hij de eenvoudige indeling (intro,
+# optionele facts, testtijdlijn). Met "blocks" wordt het een uitgebreide
+# verhaal-case (zie Ecodor): hero met headline + kerncijfers, daarna de blokken in
+# de volgorde waarin ze hier staan. Beschikbare blokken (type):
+#   text    h2, paras[]
+#   bars    h2, lead, rows[(label, waarde, weergave, "act"|"est")], note
+#   cards   h2, lead, items[(titel, icoon, tekst)]
+#   phases  h2, lead, items[(titel, icoon, tekst, uitkomst)]
+#   table   h2, lead, head[], rows[[...]]
+#   tests   h2, lead            (de testtijdlijn met vastpinnen)
+#   cta     h2, lead, other=(url, label)
+# Test-velden: id, status (w/v/l), title, hyp, metrics[(waarde, label, sub)], learn, img, alt,
+#   pinned; optioneel: date, duration, observation, principle, note, next.
 CASES = {
     "ecodor": {
         "name": "Ecodor",
-        "sub": "Webshop voor geurbestrijders, met dealerfunctionaliteit voor B2B",
-        "intro": "Ecodor verkoopt geurbestrijders aan consumenten met huisdieren, via de eigen webshop, Bol.com en dealers. Boldframe bouwde de nieuwe webshop en optimaliseert die nu met A/B-tests.",
+        "sub": "Van circa €40k naar een verwachte €325k omzet per jaar",
+        "eyebrow": "Case · Huisdieren · WooCommerce",
+        "headline": "Van circa €40k naar €325k omzet per jaar.",
+        "intro": "Ecodor verkoopt enzymatische geurverwijderaars voor huisdieren. In juli 2024 bouwden we de webshop opnieuw, van OpenCart naar WooCommerce, en sindsdien optimaliseren we hem doorlopend met onderzoek en A/B-tests. De omzet van de eigen webshop groeide van circa €40k op jaarbasis (2024) naar een verwachte €325k in 2026.",
         "hero": "/assets/img/cases/ecodor-hero.jpg",
-        "facts": [
-            ("Vraag", "Van OpenCart naar WooCommerce, met een beter overzicht voor dealers, efficiëntere betalingen en klaar voor internationale groei."),
-            ("Aanpak", "Migratie inclusief producten en vertalingen, dealerrollen met eigen prijzen, Mollie-betalingen en een lancering in 19 talen."),
-            ("Resultaat", "Een snellere, toekomstbestendige webshop met Zoho CRM-koppeling, extra beveiliging en een eenvoudiger checkout."),
+        "facts": [],
+        "stats": [
+            {"count": 224157, "prefix": "€", "label": "omzet in 2026, t/m 5 oktober"},
+            {"count": 325, "prefix": "≈ €", "suffix": "k", "label": "prognose voor heel 2026"},
+            {"text": "79–82%", "label": "van de omzet komt via mobiel"},
+            {"count": 45, "suffix": "%", "label": "winrate van onze tests; de rest was negatief of onbeslist"},
+        ],
+        "blocks": [
+            {"type": "text", "h2": "Het uitgangspunt", "paras": [
+                "Ecodor maakt een enzymatische urinegeurverwijderaar, bijvoorbeeld voor kattenpis. Dat betekent dat het product de geurdeeltjes afbreekt in plaats van de geur met parfum te maskeren. Klanten zijn er enthousiast over, en het product ligt bij dierenzaken als Pet’s Place, Ranzijn en Boerenbond en wordt verkocht via Bol.com en deels Amazon.",
+                "Via het eigen kanaal ging het moeizaam. De oude OpenCart-webshop voldeed niet meer aan de normen voor gebruiksgemak en koppelingen met andere software, en werkte slecht op mobiel, terwijl 79 tot 82% van de omzet juist via mobiel binnenkomt. Daarbij was er weinig inzicht in data en weinig marketing.",
+            ]},
+            {"type": "bars", "h2": "Omzetgroei van de webshop",
+             "lead": "Door de nieuwe site te bouwen en consequent nieuwe ontwikkelingen te testen werd marketing rendabeler, en kon die worden opgeschaald. Die combinatie zit achter de groei, en op dit moment zien we hem nog niet vertragen.",
+             "rows": [
+                 ("2024 (jun–dec)", 21420.56, "€21.421", "act"),
+                 ("2024 op jaarbasis", 40000, "≈ €40.000", "est"),
+                 ("2026 t/m 5 oktober", 224157.26, "€224.157", "act"),
+                 ("2026 prognose", 325543.01, "≈ €325.543", "est"),
+             ],
+             "note": "Volle balk: gerealiseerde omzet. Gearceerde balk: omrekening of prognose. 2024 op jaarbasis is een omrekening van de omzet van juni tot en met december; de prognose voor 2026 is gebaseerd op de omzet tot en met 5 oktober 2026."},
+            {"type": "cards", "h2": "Vier uitdagingen", "lead": "Dit moest de webshop oplossen om bezoekers zeker te laten kopen.",
+             "items": [
+                 ("Laten zien dat het écht werkt", "shield", "Er zijn aanbieders die de geur alleen maskeren, waarna die terugkomt. De site moest vroeg in de klantreis duidelijk maken dat dit product de geur wél verwijdert."),
+                 ("Geen schade aan de ondergrond", "check", "Een grote angst in de branche is dat een reiniger nieuwe vlekken maakt of de vloer beschadigt. We moesten tonen dat het een natuurlijk product is, en expliciet voor welke ondergronden het geschikt is."),
+                 ("Snel bestellen op mobiel", "target", "Het merendeel van de omzet komt via mobiel. De shop moest daar zo soepel werken dat bestellen snel en zonder gedoe gaat."),
+                 ("Beginnen met weinig data", "search", "Bij de start was er weinig inzicht in data. Eerst moest alle analytics goed worden ingericht, zodat zowel wij als Ecodor konden zien hoe de shop presteerde en wat er te verbeteren viel."),
+             ]},
+            {"type": "phases", "h2": "Onze aanpak", "lead": "Van fundament tot doorlopend testprogramma.",
+             "items": [
+                 ("Fundament", "target", "Een nieuwe WooCommerce-webshop (juli 2024), met mobiel als uitgangspunt: migratie van producten en vertalingen, dealerrollen met eigen prijzen, Mollie-betalingen, een Zoho CRM-koppeling en een lancering in 19 talen. Tegelijk zetten we alle analytics op die er nog niet waren.", "Uitkomst: een nieuw fundament om op door te ontwikkelen, en data om beslissingen op te baseren."),
+                 ("Onderzoek", "search", "We keken niet alleen naar Google Analytics. We onderzochten ook de concurrentie, deden beoordelingsonderzoek naar wat klanten waarderen, en bekeken met heatmaps en sessieopnames hoe bezoekers door de shop klikken. Op de juiste momenten vragen we bezoekers of ze informatie missen, en na de checkout hoe de ervaring was.", "Uitkomst: onderbouwde knelpunten en kansen."),
+                 ("Prioriteren", "bulb", "Uit het onderzoek volgden twee lijsten: een optimalisatiebacklog met ‘just do it’-aanpassingen, waarvan een test waarschijnlijk geen significant verschil zou tonen, en een testbacklog voor wijzigingen met hoog risico en grote impact. De volgorde bepaalden we samen met Ecodor, op basis van hoeveel een test raakt, de geschatte omzet en het gemak van implementatie.", "Uitkomst: een geprioriteerde backlog, afgestemd op de strategie van Ecodor."),
+                 ("Testen", "flask", "We starten altijd meerdere tests met hoge impact tegelijk. In de beginjaren was er niet genoeg verkeer om kleine aanpassingen te testen; die voerden we deels direct door op basis van het onderzoek. Wat riskant en impactvol was, testten we altijd eerst.", "Uitkomst: een doorlopend programma, met de testtijdlijn hieronder."),
+             ]},
+            {"type": "table", "h2": "Van bevinding naar test", "lead": "Elke test begon met een observatie uit het onderzoek.",
+             "head": ["Bevinding", "Test"],
+             "rows": [
+                 ["40% van de bezoekers haakte op de productpagina af voordat er iets in de winkelwagen ging, en onderweg was niet duidelijk onder welke voorwaarden er werd gekocht.", "Micro-garanties onder de winkelwagenknop"],
+                 ["In heatmaps werden tekstlinks in blogs vaak gebruikt, maar bezoekers die op een blogbericht landen brachten verhoudingsgewijs weinig omzet op.", "Opvallendere tekstlinks, in twee rondes"],
+                 ["Klanten zijn vooral Nederlands en Belgisch, en willen vooral zeker weten dat het product werkt.", "Land van herkomst bij het product"],
+                 ["Interne zoekopdrachten, Google Ads en Search Console lieten zien dat ‘enzymatische reiniger’ een sleutelterm is, en AI-chatbots noemen dit type product vaak als oplossing voor kattengeur. Ook bleek er een breed scala aan toepassingen.", "Toepassingsgebied bij de productomschrijving"],
+             ]},
+            {"type": "tests", "h2": "Wat we testten", "lead": "Een selectie van de tests, met hypothese, uitkomst en learning. Nieuwste bovenaan, vastgepinde tests eerst."},
+            {"type": "cards", "h2": "Hoe we testen, en wat dat betekent", "lead": "Cijfers zijn pas bruikbaar als je weet hoe ze tot stand kwamen.",
+             "items": [
+                 ("Indicatief, niet absoluut", "flask", "Onze uitslagen komen vaak uit op een chance to beat van ongeveer 90 tot 95%. Dat is sterk genoeg om op te sturen, maar geen wetenschappelijk bewijs. Bij Ecodor kiezen we daar bewust voor: een hoge testsnelheid en snel winsten boeken weegt zwaarder dan 100% zekerheid."),
+                 ("Niet elke test wint", "cross", "De winrate is op dit moment 45%; de rest was negatief of onbeslist. Dat is precies waarom we testen: een verliezer gaat niet live, dus de shop wordt niet slechter. Een negatieve uitslag stuurt bovendien de volgende hypothese."),
+                 ("Dit is een selectie", "search", "Hier staan vooral de tests met aanzienlijke winst, plus een verliezer als voorbeeld. Het zijn niet alle tests die we hebben gedraaid."),
+             ]},
+            {"type": "text", "h2": "Wat het heeft opgeleverd", "paras": [
+                "In een kleine twee jaar staat er een sterke webshop met veel learnings. Ecodor heeft in Nederland online een sterke marktpositie opgebouwd, bedient inkomend verkeer goed en overtuigt bezoekers dat dit het product is dat hen helpt.",
+                "De rode draad in alle tests: gebruiksgemak, en het vertrouwen en de zelfverzekerdheid van de koper vergroten, zodat bestellen sneller en met meer zekerheid gaat. We zijn nooit gestopt met optimaliseren, en ook van tests die geen winnaar waren hebben we geleerd welke richting we op moesten.",
+            ]},
+            {"type": "cta", "h2": "Benieuwd wat dit voor jouw webshop kan betekenen?", "lead": "Plan een gesprek van 30 minuten, dan laten we zien waar jouw conversie-lekken zitten.", "other": ("/cases/schuurman/", "Bekijk ook de case van Schuurman →")},
         ],
         "tests": [
             {
+                "id": "e5", "status": "w", "duration": "",
+                "title": "Toepassingsgebied bij de productomschrijving",
+                "observation": "Interne zoekopdrachten, Google Ads en Search Console lieten zien dat ‘enzymatische reiniger’ een sleutelterm is, en AI-chatbots adviseren dit type product vaak als oplossing voor kattengeur. Ook kregen we inzicht in de uiteenlopende toepassingen van de producten.",
+                "principle": "Zekerheid bij het bestellen: wie ziet dat het product op zijn ondergrond werkt, bestelt zekerder.",
+                "hyp": "Als we alle toepassingen expliciet noemen op de productpagina’s en andere plekken, kan de klant zekerder bestellen.",
+                "metrics": [("+9,98%", "Omzet per bezoeker, totaal", ""), ("+22,9%", "Omzet per bezoeker, mobiel", "793 tegen 800 gebruikers"), ("-7,1%", "Omzet per bezoeker, desktop", "162 tegen 156 gebruikers")],
+                "note": "Op mobiel is de kans dat de variant de controleversie verslaat 91,7%. Op desktop bleef de conversieratio vrijwel gelijk (+0,6%), maar daalde de gemiddelde orderwaarde met 7,7%, op basis van 63 conversies in dat segment.",
+                "learn": "Op mobiel, waar het merendeel van de bezoekers zit, werkt het expliciet benoemen van de toepassingen duidelijk. Op desktop daalde de orderwaarde; met 63 conversies in dat segment is dat nog geen harde conclusie.",
+                "img": "/assets/img/tests/e5.jpg", "alt": "Ecodor productpagina voor en na: blok met toepassingsgebied bij de productomschrijving",
+                "pinned": False,
+            },
+            {
                 "id": "e1", "date": "2026-07-15", "status": "w", "duration": "21 dagen",
-                "title": "Een vlaggetje op de productfoto",
-                "hyp": "Door lokale productie direct te claimen, stijgt de gepercipieerde kwaliteit en verdwijnt twijfel over productveiligheid.",
-                "metrics": [("+10,43%", "Omzet per bezoeker", "€5,60 → €6,18"), ("+6,42%", "Orderwaarde", "€42,25 → €44,97"), ("-5,17%", "Conversieratio", "")],
-                "learn": "Het label 'Gemaakt in Nederland' werkte als kwaliteitsfilter: iets minder kopers, maar met een hogere orderwaarde.",
+                "title": "Land van herkomst bij het product",
+                "observation": "We verkopen vooral aan Nederlandse en Belgische klanten, en die willen vooral zeker weten dat het product werkt. We wilden bezoekers dichter bij het product brengen en hen een groter gevoel van vertrouwen geven.",
+                "principle": "Vertrouwen, een duurzamere benadering, lokale trots en een hogere waargenomen waarde.",
+                "hyp": "Door te vermelden dat het product in Nederland is gemaakt, en de Nederlandse vlag te tonen, stijgen het vertrouwen en de waargenomen waarde, zodat bezoekers sneller overtuigd zijn.",
+                "metrics": [("+10,43%", "Omzet per bezoeker", "€5,60 → €6,18"), ("+6,42%", "Orderwaarde", "€42,25 → €44,97")],
+                "learn": "Er is een duidelijke correlatie tussen lokale trots en vertrouwen in Nederland. Of dat ook in België en andere landen geldt, valt te betwisten; het is dus de vraag of we de ‘Gemaakt in Nederland’-badge ook voor die landen moeten tonen.",
                 "img": "/assets/img/tests/e1.jpg", "alt": "Ecodor productpagina voor en na: label Gemaakt in Nederland",
                 "pinned": True,
             },
             {
+                "id": "e4", "status": "w", "duration": "",
+                "title": "Opvallendere tekstlinks, ronde 2: dikgedrukt",
+                "observation": "In heatmaps werden tekstlinks in blogberichten regelmatig gebruikt, maar bezoekers die op een blogbericht landen brachten verhoudingsgewijs weinig omzet op.",
+                "principle": "Links moeten meer opvallen, zodat tekst makkelijk te scannen is naar een vervolgactie.",
+                "hyp": "Door de links een zwaarder gewicht te geven maken we de tekst beter scanbaar en de vervolgactie duidelijker, zodat bezoekers meer pagina’s bekijken en sneller naar een productpagina gaan.",
+                "metrics": [("+12,08%", "Omzet per bezoeker", "€3,04 → €3,41"), ("-1,61%", "Orderwaarde", "€45,81 → €45,07")],
+                "learn": "Bezoekers herkennen de groene links nu niet alleen als gemarkeerde tekst, maar ook als doorklikbare links. Doordat ze dikgedrukt zijn vallen ze extra op, ook op mobiel. Mogelijk speelt mee dat dikgedrukte tekst de gedachte oproept dat het belangrijk is.",
+                "next": "Had ook deze ronde niet gewerkt, dan was de volgende stap een volledig conventionele linkkleur (#0645AD) geweest: lelijker, maar ‘ugly converts better’. Dat hadden we eerst met Ecodor overlegd.",
+                "img": "/assets/img/tests/e4.jpg", "alt": "Ecodor blogtekst voor en na: dikgedrukte groene tekstlinks",
+                "pinned": False,
+            },
+            {
                 "id": "e2", "date": "2026-06-26", "status": "v", "duration": "",
-                "title": "Opvallendere tekstlinks in blogs",
+                "title": "Opvallendere tekstlinks, ronde 1: groen",
                 "hyp": "Met merkgroene links in plaats van blauwe vallen ze meer op, dus navigeren bezoekers sneller naar productpagina's.",
                 "metrics": [("-12,55%", "Omzet per bezoeker", "€3,23 → €2,82"), ("-8,02%", "Orderwaarde", "€52,00 → €47,83")],
-                "learn": "Groen wijkt af van de webconventie dat links blauw zijn, en was op mobiel bij fel licht slecht leesbaar.",
+                "learn": "Groen wijkt af van de webconventie dat links blauw zijn, en was op mobiel bij fel licht slecht leesbaar. Dit was de aanleiding voor ronde 2.",
                 "img": "/assets/img/tests/e2.jpg", "alt": "Ecodor blogtekst voor en na: groene tekstlinks",
                 "pinned": False,
             },
             {
                 "id": "e3", "date": "2026-06-02", "status": "w", "duration": "",
-                "title": "Vertrouwensblok onder de winkelwagenknop",
-                "hyp": "Levertijd, retour en beoordelingen direct onder de knop nemen twijfel op het beslismoment weg.",
+                "title": "Micro-garanties onder de winkelwagenknop",
+                "observation": "Vanaf de productpagina zagen we 40% drop-off naar het toevoegen van producten aan de winkelwagen. Ook was tijdens het aankoopproces niet duidelijk onder welke voorwaarden er werd gekocht.",
+                "principle": "Bezoekers moeten zelfverzekerd een aankoop kunnen doen.",
+                "hyp": "Door de USP’s direct onder de winkelwagenknop te plaatsen, verhogen we het vertrouwen op het beslismoment, wat leidt tot een hogere conversie.",
                 "metrics": [("+2,63%", "Omzet per bezoeker", "€7,12 → €7,31"), ("+7,39%", "Orderwaarde", "€52,13 → €55,98")],
-                "learn": "Aanleiding: 40% van de bezoekers verliet de productpagina zonder iets in de winkelmand te leggen.",
+                "note": "Op basis van 109 conversies uit 839 sessies.",
+                "learn": "Op mobiel was de winst veel groter, maar die data is helaas verloren gegaan. We hebben de aanpassing doorgevoerd en kunnen met redelijk vertrouwen zeggen dat het een verbetering is.",
                 "img": "/assets/img/tests/e3.jpg", "alt": "Ecodor productpagina voor en na: vertrouwensblok onder de knop",
                 "pinned": False,
             },
@@ -278,30 +375,145 @@ def metrics_html(m):
     return f'<div class="metrics">{cells}</div>'
 
 
-def test_card(t, i=0):
-    dur = f'<span>{t["duration"]}</span>' if t["duration"] else ""
-    return f'''<li class="item{' pinned' if t['pinned'] else ''}" data-date="{t['date']}" data-reveal style="--d:{i}"><div class="meta"><span class="tag {t['status']}">{STATUS_LABEL[t['status']]}</span><span>{fmt_date(t['date'])}</span>{dur}<button class="pin" type="button" aria-pressed="{'true' if t['pinned'] else 'false'}">{PIN_SVG}<span class="pin-label">{'Losmaken' if t['pinned'] else 'Vastpinnen'}</span></button></div>
-<h3>{t['title']}</h3><p class="hyp">Hypothese: {t['hyp']}</p>{metrics_html(t['metrics'])}<p>{t['learn']}</p><img src="{t['img']}" alt="{t['alt']}" loading="lazy" width="1000" height="600"></li>'''
+def test_card(t, i=0, order=0):
+    dur = f'<span>{t["duration"]}</span>' if t.get("duration") else ""
+    date = f'<span>{fmt_date(t["date"])}</span>' if t.get("date") else ""
+    pinned = t["pinned"]
+    cls = "item pinned" if pinned else "item"
+    pressed = "true" if pinned else "false"
+    label = "Losmaken" if pinned else "Vastpinnen"
+    head = f'<div class="meta"><span class="tag {t["status"]}">{STATUS_LABEL[t["status"]]}</span>{date}{dur}<button class="pin" type="button" aria-pressed="{pressed}">{PIN_SVG}<span class="pin-label">{label}</span></button></div>'
+    if t.get("observation"):
+        why = f'<div class="why"><p><span class="lbl">Observatie</span>{t["observation"]}</p>'
+        if t.get("principle"):
+            why += f'<p><span class="lbl">Psychologisch principe</span>{t["principle"]}</p>'
+        why += "</div>"
+        hyp = f'<p class="hyp"><span class="lbl">Hypothese</span>{t["hyp"]}</p>'
+        learn = f'<p><span class="lbl">Learning</span>{t["learn"]}</p>'
+    else:
+        why = ""
+        hyp = f'<p class="hyp">Hypothese: {t["hyp"]}</p>'
+        learn = f'<p>{t["learn"]}</p>'
+    note = f'<p class="t-note">{t["note"]}</p>' if t.get("note") else ""
+    nxt = f'<p><span class="lbl">Vervolgstap</span>{t["next"]}</p>' if t.get("next") else ""
+    img = f'<img src="{t["img"]}" alt="{t["alt"]}" loading="lazy" width="1000" height="1000">'
+    return f'<li class="{cls}" data-order="{order}" data-reveal style="--d:{i}">{head}<h3>{t["title"]}</h3>{why}{hyp}{metrics_html(t["metrics"])}{note}{learn}{nxt}{img}</li>'
+
+
+def format_nl(n):
+    return f"{int(n):,}".replace(",", ".")
+
+
+def kpis_html(stats):
+    cells = []
+    for i, s in enumerate(stats):
+        if s.get("count") is not None:
+            attrs = f'data-count="{s["count"]}"'
+            if s.get("prefix"):
+                attrs += f' data-prefix="{s["prefix"]}"'
+            if s.get("suffix"):
+                attrs += f' data-suffix="{s["suffix"]}"'
+            shown = s.get("prefix", "") + format_nl(s["count"]) + s.get("suffix", "")
+            val = f'<b {attrs}>{shown}</b>'
+        else:
+            val = f'<b>{s["text"]}</b>'
+        cells.append(f'<div data-reveal style="--d:{i}">{val}<span>{s["label"]}</span></div>')
+    return '<section><div class="kpis">' + "".join(cells) + "</div></section>"
+
+
+def phases_html(items):
+    return "".join(
+        f'''<li class="step-detail" data-reveal style="--d:{i}">
+<div class="step-detail-head"><span class="num">{i+1}</span>{icon(k)}<h3>{t}</h3></div>
+<p>{body}</p><p class="step-out"><strong>{out}</strong></p></li>'''
+        for i, (t, k, body, out) in enumerate(items)
+    )
+
+
+def cards_html(items):
+    return "".join(
+        f'<div data-reveal style="--d:{i}">{icon(k)}<h3>{t}</h3><p>{d}</p></div>'
+        for i, (t, k, d) in enumerate(items)
+    )
+
+
+def bars_html(rows):
+    top = max(r[1] for r in rows)
+    out = []
+    for i, (label, val, shown, kind) in enumerate(rows):
+        w = round(val / top * 100, 1)
+        cls = "bar-row est" if kind == "est" else "bar-row"
+        out.append(f'<li class="{cls}" data-reveal style="--d:{i};--w:{w}%"><span class="bar-label">{label}</span><span class="bar-track"><span class="bar-fill"></span></span><b class="bar-val">{shown}</b></li>')
+    return "".join(out)
+
+
+def table_html(head, rows):
+    th = "".join(f"<th>{h}</th>" for h in head)
+    trs = []
+    for i, r in enumerate(rows):
+        tds = "".join(f'<td data-label="{head[j]}">{cell}</td>' for j, cell in enumerate(r))
+        trs.append(f'<tr data-reveal style="--d:{i}">{tds}</tr>')
+    return f'<table class="cmp"><thead><tr>{th}</tr></thead><tbody>{"".join(trs)}</tbody></table>'
+
+
+def tests_section(c, h2, lead):
+    ordered = list(c["tests"])
+    pinned = [(i, t) for i, t in enumerate(ordered) if t["pinned"]]
+    rest = [(i, t) for i, t in enumerate(ordered) if not t["pinned"]]
+    grp = f'<li class="grp">{PIN_SVG}Vastgepind</li>'
+    if pinned:
+        pinned_html = f'<div class="tl-pinned"><ul class="tl" style="margin-bottom:10px">{grp}{"".join(test_card(t, n, i) for n, (i, t) in enumerate(pinned))}</ul></div>'
+    else:
+        pinned_html = f'<div class="tl-pinned" hidden><ul class="tl" style="margin-bottom:10px">{grp}</ul></div>'
+    rest_html = "".join(test_card(t, n, i) for n, (i, t) in enumerate(rest))
+    return f'<section><h2 data-reveal>{h2}</h2><p class="lead" data-reveal>{lead}</p>{pinned_html}<div class="tl-rest"><ul class="tl">{rest_html}</ul></div></section>'
+
+
+def render_block(b, c):
+    t = b["type"]
+    if t == "text":
+        paras = "".join(f'<p class="lead" data-reveal style="max-width:66ch">{p}</p>' for p in b["paras"])
+        return f'<section><h2 data-reveal>{b["h2"]}</h2>{paras}</section>'
+    if t == "bars":
+        return f'<section><h2 data-reveal>{b["h2"]}</h2><p class="lead" data-reveal>{b["lead"]}</p><ul class="bars">{bars_html(b["rows"])}</ul><p class="bar-note" data-reveal>{b["note"]}</p></section>'
+    if t == "cards":
+        return f'<section><h2 data-reveal>{b["h2"]}</h2><p class="lead" data-reveal>{b["lead"]}</p><div class="facts">{cards_html(b["items"])}</div></section>'
+    if t == "phases":
+        return f'<section><h2 data-reveal>{b["h2"]}</h2><p class="lead" data-reveal>{b["lead"]}</p><ul class="steps-detail">{phases_html(b["items"])}</ul></section>'
+    if t == "table":
+        return f'<section><h2 data-reveal>{b["h2"]}</h2><p class="lead" data-reveal>{b["lead"]}</p>{table_html(b["head"], b["rows"])}</section>'
+    if t == "tests":
+        return tests_section(c, b["h2"], b["lead"])
+    if t == "cta":
+        other = ""
+        if b.get("other"):
+            other = f' <a class="cta-other" href="{b["other"][0]}">{b["other"][1]}</a>'
+        return f'<section><div class="cta-band" data-reveal><h2>{b["h2"]}</h2><p class="lead">{b["lead"]}</p><a class="btn" href="#afspraak">Claim mijn gratis Conversie Audit</a>{other}</div></section>'
+    raise ValueError("onbekend blok: " + t)
 
 
 def build_case(slug, c):
-    pinned = [t for t in c["tests"] if t["pinned"]]
-    rest = sorted([t for t in c["tests"] if not t["pinned"]], key=lambda t: t["date"], reverse=True)
+    if c.get("blocks"):
+        eyebrow = f'<span class="meta">{c["eyebrow"]}</span>' if c.get("eyebrow") else ""
+        headline = c.get("headline") or c["name"]
+        kpis = kpis_html(c["stats"]) if c.get("stats") else ""
+        blocks = "\n".join(render_block(b, c) for b in c["blocks"])
+        body = f'''<a class="back" href="/cases/">← Alle cases</a>
+<header class="hero" style="padding-top:32px">{HERO_BG}{eyebrow}<h1 class="case">{headline}</h1><p>{c['intro']}</p><img class="chero" src="{c['hero']}" alt="{c['name']} homepage" loading="lazy"></header>
+{kpis}
+{blocks}'''
+        return page(c["name"], c["sub"], f"/cases/{slug}/", body)
+    # eenvoudige indeling (nog geen uitgewerkte verhaal-case)
+    c = dict(c)
+    c["tests"] = sorted(c["tests"], key=lambda t: t["date"], reverse=True)
     facts = ""
     if c["facts"]:
         fact_cells = "".join(f'<div data-reveal style="--d:{i}"><h3>{k}</h3><p>{v}</p></div>' for i, (k, v) in enumerate(c["facts"]))
         facts = f'<section><div class="facts">{fact_cells}</div></section>'
-    pinned_html = ""
-    if pinned:
-        pinned_html = f'<div class="tl-pinned"><ul class="tl" style="margin-bottom:10px"><li class="grp">{PIN_SVG}Vastgepind</li>{"".join(test_card(t, i) for i, t in enumerate(pinned))}</ul></div>'
-    else:
-        pinned_html = '<div class="tl-pinned" hidden><ul class="tl" style="margin-bottom:10px"><li class="grp">' + PIN_SVG + 'Vastgepind</li></ul></div>'
     body = f'''<a class="back" href="/cases/">← Alle cases</a>
 <header class="hero" style="padding-top:32px">{HERO_BG}<h1 class="case">{c['name']}</h1><p>{c['intro']}</p><img class="chero" src="{c['hero']}" alt="{c['name']} homepage" loading="lazy"></header>
 {facts}
-<section><h2 data-reveal>Testtijdlijn</h2><p class="lead" data-reveal>Elke test met hypothese, uitkomst en learning. Nieuwste bovenaan, vastgepinde tests eerst.</p>
-{pinned_html}
-<div class="tl-rest"><ul class="tl">{"".join(test_card(t, i) for i, t in enumerate(rest))}</ul></div></section>'''
+{tests_section(c, "Testtijdlijn", "Elke test met hypothese, uitkomst en learning. Nieuwste bovenaan, vastgepinde tests eerst.")}'''
     return page(c["name"], c["sub"], f"/cases/{slug}/", body)
 
 
@@ -429,7 +641,7 @@ def build_werkwijze():
 
 def build_over_ons():
     stats_html = "".join(
-        f'<div data-reveal style="--d:{i}"><b data-count="{v}" data-suffix="{s}">0{s}</b><span>{l}</span></div>'
+        f'<div data-reveal style="--d:{i}"><b data-count="{v}" data-suffix="{s}">{v}{s}</b><span>{l}</span></div>'
         for i, (v, s, l) in enumerate(OVER_ONS_STATS)
     )
     body = f'''<header class="hero">{HERO_BG}<h1 class="case">50% techniek, 50% gedrag.</h1><p>Conversie-optimalisatie zit precies tussen die twee in. Bij Boldframe combineren we ontwikkelaars die een test technisch correct bouwen met een strateeg die weet waaróm een bezoeker afhaakt.</p></header>

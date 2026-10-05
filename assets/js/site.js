@@ -21,6 +21,10 @@ if (revealEls.length) {
       },
       { threshold: 0.15, rootMargin: "0px 0px -40px 0px" }
     );
+    // Tellers starten op 0 (HTML bevat de eindwaarde voor no-JS en zoekmachines).
+    document.querySelectorAll("[data-count]").forEach((el) => {
+      el.textContent = (el.getAttribute("data-prefix") || "") + "0" + (el.getAttribute("data-suffix") || "");
+    });
     revealEls.forEach((el) => io.observe(el));
   }
 }
@@ -32,9 +36,11 @@ function animateCount(container) {
   el.dataset.counted = "1";
   const target = parseFloat(el.getAttribute("data-count"));
   const suffix = el.getAttribute("data-suffix") || "";
+  const prefix = el.getAttribute("data-prefix") || "";
   if (!isFinite(target)) return;
+  const fmt = (n) => prefix + Math.round(n).toLocaleString("nl-NL") + suffix;
   if (reduceMotion) {
-    el.textContent = target + suffix;
+    el.textContent = fmt(target);
     return;
   }
   const dur = 900;
@@ -42,7 +48,7 @@ function animateCount(container) {
   function step(now) {
     const p = Math.min(1, (now - start) / dur);
     const eased = 1 - Math.pow(1 - p, 3);
-    el.textContent = Math.round(target * eased) + suffix;
+    el.textContent = fmt(target * eased);
     if (p < 1) requestAnimationFrame(step);
   }
   requestAnimationFrame(step);
@@ -73,10 +79,10 @@ document.addEventListener("click", (e) => {
   } else if (!willPin) {
     const rest = document.querySelector(".tl-rest ul");
     if (rest) {
-      // herplaats op datum (data-date, aflopend)
-      const d = item.dataset.date;
+      // herplaats op volgorde (data-order, oplopend = nieuwste eerst)
+      const o = parseInt(item.dataset.order || "0", 10);
       const items = Array.from(rest.children);
-      const next = items.find((li) => li.dataset.date < d);
+      const next = items.find((li) => parseInt(li.dataset.order || "0", 10) > o);
       rest.insertBefore(item, next || null);
     }
     if (pinnedGroup && !pinnedGroup.querySelector(".item")) pinnedGroup.hidden = true;
