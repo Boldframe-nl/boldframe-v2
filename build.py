@@ -160,12 +160,13 @@ CASES = {
                 "pinned": False,
             },
             {
-                "id": "e1", "date": "2026-07-15", "status": "w", "duration": "21 dagen",
+                "id": "e1", "date": "2026-06-09", "status": "w", "duration": "21 dagen",
                 "title": "Land van herkomst bij het product",
                 "observation": "We verkopen vooral aan Nederlandse en Belgische klanten, en die willen vooral zeker weten dat het product werkt. We wilden bezoekers dichter bij het product brengen en hen een groter gevoel van vertrouwen geven.",
                 "principle": "Vertrouwen, een duurzamere benadering, lokale trots en een hogere waargenomen waarde.",
                 "hyp": "Door te vermelden dat het product in Nederland is gemaakt, en de Nederlandse vlag te tonen, stijgen het vertrouwen en de waargenomen waarde, zodat bezoekers sneller overtuigd zijn.",
-                "metrics": [("+10,43%", "Omzet per bezoeker", "€5,60 → €6,18"), ("+6,42%", "Orderwaarde", "€42,25 → €44,97")],
+                "metrics": [("+10,43%", "Omzet per bezoeker", "€5,60 → €6,18"), ("+6,42%", "Orderwaarde", "€42,25 → €44,97"), ("-5,17%", "Conversie", "13,10% → 12,43%")],
+                "note": "Testgroepen: 1.366 bezoekers (origineel, 179 kopers) tegen 1.360 bezoekers (variant, 169 kopers). Op conversie is geen significant verschil: de kans dat de variant de originele versie verslaat is 29,81%. Wat opvalt is dat de kopers gemiddeld meer besteedden. Volgens de testtool is het geschatte effect circa +€1.135 omzet per maand.",
                 "learn": "Er is een duidelijke correlatie tussen lokale trots en vertrouwen in Nederland. Of dat ook in België en andere landen geldt, valt te betwisten; het is dus de vraag of we de ‘Gemaakt in Nederland’-badge ook voor die landen moeten tonen.",
                 "img": "/assets/img/tests/e1.jpg", "alt": "Ecodor productpagina voor en na: label Gemaakt in Nederland",
                 "pinned": True,
@@ -270,6 +271,7 @@ CLIENT_LOGOS = [
     ("Drempelhulp", "drempelhulp.png", 150, 22, None),
     ("Home Care Innovation", "home-care-innovation.png", 98, 35, None),
     ("Pro-Darts.be", "pro-darts.png", 129, 26, None),
+    ("Camping Jagtveld", "jagtveld.png", 98, 35, None),
 ]
 
 
