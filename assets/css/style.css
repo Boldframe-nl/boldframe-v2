@@ -113,7 +113,7 @@ a.row:hover h3{text-decoration:underline}
 .tool h4{margin:0 0 4px;font-size:15px;text-transform:uppercase;letter-spacing:.04em;font-weight:800}
 .tool p.tdesc{margin:0 0 14px;color:var(--muted)}
 .tool label{display:block;font-weight:700;font-size:14px;margin-bottom:6px}
-.tool input,.tool textarea{width:100%;font:inherit;font-size:16px;padding:11px 13px;border:2px solid var(--line);border-radius:4px;background:var(--bg);color:var(--ink);margin-bottom:12px}
+.tool input,.tool textarea,.tool select{width:100%;font:inherit;font-size:16px;padding:11px 13px;border:2px solid var(--line);border-radius:4px;background:var(--bg);color:var(--ink);margin-bottom:12px}
 .tool textarea{resize:vertical;font-family:inherit}
 .tool pre{white-space:pre-wrap;word-break:break-word;background:var(--bg);border:1px dashed var(--line);border-radius:4px;padding:12px;font-size:14px;margin:0 0 12px}
 .btn.small{padding:9px 16px;font-size:14px;border:none;cursor:pointer}

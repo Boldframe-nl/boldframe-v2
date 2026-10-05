@@ -315,6 +315,28 @@ def build_testimonials():
 STATUS_LABEL = {"w": "Winnaar", "v": "Verliezer", "l": "Loopt nog", "n": "Inconclusief"}
 
 INSIGHTS = {
+    "hoeveel-verkeer-om-te-testen": {
+        "title": "Hoeveel verkeer heb je nodig om te testen?",
+        "date": "2026-10-05",
+        "dek": "Als vuistregel heb je minimaal zo\u2019n 500 meetbare conversies per maand nodig om snel te kunnen testen. Heb je minder, dan zijn er slimme alternatieven. Reken het hieronder uit voor jouw shop.",
+        "body": [
+            "## De vuistregel: 500 conversies per maand",
+            "Wij gaan uit van minimaal zo\u2019n 500 conversies per maand die je kunt meten. Dan kun je redelijk snelle testtrajecten starten, waarbij een test maar twee tot drie weken hoeft te duren om iets aan te tonen. Let wel: hoe kleiner het effect dat je wilt aantonen, hoe meer verkeer of tijd je nodig hebt. Met 500 conversies per maand toon je in twee tot drie weken vooral grotere effecten aan.",
+            "## Hoe zeker wil je zijn?",
+            "Je kiest zelf hoe hoog de significantie moet zijn. Wil je een probability van 99%, dan kost je dat heel veel tijd en data. Voor een webshop is een probability van 90 tot 95% vaak voldoende: dan kun je ervan uitgaan dat de test een winnaar is.",
+            "Het risico is bekend. Ga je voor 95%, dan voer je statistisch gezien eens in de 20 keer alsnog een wijziging door die geen wezenlijk effect had op je resultaten. Dat is een aannemelijk risico dat je als ondernemer moet kunnen en durven nemen. Het is vele malen beter dan je website op gevoel optimaliseren.",
+            "## Te weinig verkeer? Kies een andere meetwaarde",
+            "Heb je te weinig verkeer om te testen op bestellingen, dan kun je een test ook starten op basis van het aantal add-to-carts. Introduceer je een nieuwe, relevantere landingspagina voor de advertenties die je draait, dan kan de bounce rate een goede meetwaarde zijn. Daalt je bounce rate, dan is dat een sterke aanwijzing dat de landingspagina beter presteert.",
+            "## Hoeveel tests kun je draaien?",
+            "De hoeveelheid verkeer en conversies bepaalt ook hoeveel tests je ongeveer kunt draaien. Heb je weinig bezoekers en conversies, draai dan altijd brede tests die zoveel mogelijk impact maken op de bezoekers die je hebt: websitebrede tests, productpaginatests of optimalisaties in de winkelmand en checkout. Die raken alle bezoekers en dus alle conversies en bestellingen.",
+            "Heb je heel veel bezoekers en data, dan kun je tests segmenteren. Je optimaliseert bijvoorbeeld \u00e9\u00e9n productlijstpagina (PLP) en draait in een fashionwinkel alleen een test voor klanten die op zoek zijn naar een broek. Door die segmentering overlappen tests niet met elkaar.",
+            "## Pas op voor tests die elkaar beïnvloeden",
+            "Draai je meerdere websitebrede tests tegelijk, dan kunnen die elkaar beïnvloeden. Presteert \u00e9\u00e9n test gigantisch goed en de andere twee matig of slecht, dan kan die grote winnaar de resultaten van de andere twee alsnog beïnvloeden. De uitkomsten kloppen dan niet helemaal.",
+            "## Reken het uit voor jouw shop",
+        ],
+        "steps": [],
+        "tool": "duration",
+    },
     "ai-verkeer-meten-in-ga4": {
         "title": "AI-verkeer meten in GA4",
         "date": "2026-08-01",
@@ -357,7 +379,7 @@ INSIGHTS = {
         "tool": "reach",
     },
 }
-INSIGHT_ORDER = ["ai-verkeer-meten-in-ga4", "ai-scan-landingspagina", "meertalige-ecommerce"]
+INSIGHT_ORDER = ["hoeveel-verkeer-om-te-testen", "ai-verkeer-meten-in-ga4", "ai-scan-landingspagina", "meertalige-ecommerce"]
 
 DIENSTEN_STEPS = [
     ("Audit", "search", "We brengen de customer journey van je webshop in kaart en sporen de knelpunten op met heatmaps, sessieopnames en je eigen data — geen aannames."),
@@ -659,13 +681,21 @@ def build_insight(slug, x):
     elif tool == "prompt":
         default_prompt = "Handel nu als een Senior Conversie Optimalisatie (CRO) en SEO Expert. Analyseer de volgende pagina: {jouw pagina}.\n\nGeef een kritische beoordeling op de volgende 5 punten:\n\n1. De 3-seconden test: Is direct duidelijk wat ze doen, voor wie, en wat de volgende stap is?\n2. Conversie-killers: Zie je afleidingen, onduidelijke knoppen of ontbrekende 'social proof' (reviews/logo's)?\n3. SEO & Inhoud: Is de H1 logisch? Mist de pagina belangrijke onderwerpen die een bezoeker zou verwachten?\n4. User Experience (UX): Hoe schat je de leesbaarheid en mobiele bruikbaarheid in op basis van de tekststructuur.\n5. Het 'Gouden Advies': Wat is de #1 aanpassing die direct voor meer aanvragen/verkopen zou zorgen?\n\nPresenteer dit in een kort overzicht dat ik direct als advies naar mijn klant kan sturen."
         tool_html = f'''<div class="tool"><h4>Tool: genereer jouw Gouden Prompt</h4><p class="tdesc">Vul de URL van je pagina in en kopieer de volledige prompt naar Gemini, ChatGPT of Claude.</p><label for="prompt-url">URL van je pagina</label><input type="url" id="prompt-url" placeholder="https://jouwsite.nl/landingspagina"><textarea id="prompt-out" rows="9" readonly>{default_prompt}</textarea><button type="button" class="btn small" data-copy="#prompt-out">Kopieer prompt</button></div>'''
+    elif tool == "duration":
+        tool_html = '''<div class="tool"><h4>Tool: hoe lang moet jouw test duren?</h4><p class="tdesc">Indicatieve rekenhulp voor een A/B-test (tweezijdig, 80% power). Neem als meetwaarde bestellingen, add-to-carts of een bounce rate.</p>
+<label for="dur-visitors">Bezoekers per maand (op de pagina\u2019s die je test)</label><input type="number" id="dur-visitors" min="0" value="30000">
+<label for="dur-rate">Huidige waarde van je meetwaarde (%)</label><input type="number" id="dur-rate" min="0.1" max="99" step="0.1" value="2.5">
+<label for="dur-mde">Minimaal effect dat je wilt aantonen (relatief, %)</label><input type="number" id="dur-mde" min="1" max="200" value="20">
+<label for="dur-sig">Gewenste zekerheid</label><select id="dur-sig"><option value="1.645">90%</option><option value="1.96" selected>95%</option><option value="2.576">99%</option></select>
+<label for="dur-var">Aantal versies (inclusief origineel)</label><select id="dur-var"><option value="2" selected>2</option><option value="3">3</option><option value="4">4</option></select>
+<div class="tool-out" id="dur-out" aria-live="polite"></div></div>'''
     elif tool == "reach":
         tool_html = '''<div class="tool"><h4>Tool: schat je potentieel met meertaligheid</h4><p class="tdesc">Ruwe, indicatieve schatting op basis van sectorgemiddelden. Geen belofte, wel een startpunt voor het gesprek.</p><label for="rev-input">Huidige omzet per maand (€)</label><input type="number" id="rev-input" min="0" placeholder="10000"><div class="tool-out" id="rev-out">Vul je huidige omzet per maand in voor een indicatie.</div></div>'''
     else:
         tool_html = ""
     body = f'''<a class="back" href="/insights/">← Alle insights</a>
 <header class="hero" style="padding-top:32px;padding-bottom:24px">{HERO_BG}<span class="meta">{fmt_date(x['date'])}</span><h1 class="case">{x['title']}</h1><p>{x['dek']}</p></header>
-<section class="art">{"".join(f"<p>{p}</p>" for p in x['body'])}{steps_html}{tool_html}</section>'''
+<section class="art">{"".join((f"<h2>{p[3:]}</h2>" if p.startswith("## ") else f"<p>{p}</p>") for p in x['body'])}{steps_html}{tool_html}</section>'''
     return page(x["title"], x["dek"], f"/insights/{slug}/", body)
 
 

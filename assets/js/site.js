@@ -216,3 +216,38 @@ if (revInput) {
   menu.addEventListener("click", (e) => { if (e.target.closest("a")) set(false); });
   document.addEventListener("keydown", (e) => { if (e.key === "Escape") set(false); });
 })();
+
+// 8) Tool: testduur (insights/hoeveel-verkeer-om-te-testen)
+function testDuration(visitors, ratePct, mdePct, z, variants) {
+  const p = ratePct / 100;
+  const delta = p * (mdePct / 100);
+  if (!(visitors > 0) || !(p > 0 && p < 1) || !(delta > 0)) return null;
+  const zb = 0.8416; // 80% power
+  const nPer = (2 * Math.pow(z + zb, 2) * p * (1 - p)) / (delta * delta);
+  const total = nPer * variants;
+  const perDay = visitors / 30;
+  const days = Math.ceil(total / perDay);
+  return { nPer: Math.ceil(nPer), total: Math.ceil(total), days, conv: Math.round(visitors * p) };
+}
+(function () {
+  const out = document.getElementById("dur-out");
+  if (!out) return;
+  const ids = ["dur-visitors", "dur-rate", "dur-mde", "dur-sig", "dur-var"];
+  const el = (i) => document.getElementById(i);
+  const fmt = (n) => n.toLocaleString("nl-NL");
+  function update() {
+    const sigPct = { "1.645": 90, "1.96": 95, "2.576": 99 }[el("dur-sig").value];
+    const r = testDuration(parseFloat(el("dur-visitors").value), parseFloat(el("dur-rate").value), parseFloat(el("dur-mde").value), parseFloat(el("dur-sig").value), parseInt(el("dur-var").value, 10));
+    if (!r) { out.textContent = "Vul alle velden in voor een indicatie."; return; }
+    const weeks = (r.days / 7).toFixed(1).replace(".", ",");
+    let verdict;
+    if (r.days <= 21) verdict = "Past in een test van twee tot drie weken.";
+    else if (r.days <= 42) verdict = "Haalbaar, maar langzaam. Een breder effect of een meetwaarde die vaker voorkomt (zoals add-to-carts) maakt de test sneller.";
+    else verdict = "Te lang voor een gewone test. Kies een bredere test, een groter minimaal effect of een meetwaarde die vaker voorkomt, zoals add-to-carts.";
+    const low = r.conv < 500 ? " Je meetwaarde komt per maand minder dan 500 keer voor: weinig voor een snel testprogramma." : "";
+    const risk = 1 / (1 - sigPct / 100);
+    out.innerHTML = "Je meet ongeveer " + fmt(r.conv) + " keer per maand. Je hebt " + fmt(r.nPer) + " bezoekers per versie nodig (" + fmt(r.total) + " in totaal): ongeveer <strong>" + fmt(r.days) + " dagen (" + weeks + " weken)</strong>. " + verdict + low + "<br><small>Bij " + sigPct + "% zekerheid voer je gemiddeld eens in de " + fmt(Math.round(risk)) + " keer een wijziging door zonder wezenlijk effect.</small>";
+  }
+  ids.forEach((i) => el(i).addEventListener("input", update));
+  update();
+})();
