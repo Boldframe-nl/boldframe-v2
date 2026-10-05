@@ -260,3 +260,12 @@ function testDuration(visitors, ratePct, mdePct, z, variants) {
   const upd = () => { hero.style.setProperty("--py", Math.min(window.scrollY, 900)); ticking = false; };
   window.addEventListener("scroll", () => { if (!ticking) { ticking = true; requestAnimationFrame(upd); } }, { passive: true });
 })();
+
+// 10) Lichteffect op knoppen: spotlight volgt de muis.
+document.addEventListener("pointermove", (e) => {
+  const b = e.target.closest && e.target.closest(".btn");
+  if (!b) return;
+  const r = b.getBoundingClientRect();
+  b.style.setProperty("--mx", e.clientX - r.left + "px");
+  b.style.setProperty("--my", e.clientY - r.top + "px");
+});
