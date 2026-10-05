@@ -207,7 +207,7 @@ CASES = {
     },
     "schuurman": {
         "name": "Schuurman Dier & Hengelsport",
-        "sub": "Lopend testtraject voor een webshop in dierenvoeding en hengelsport",
+        "sub": "Lopend testtraject in dierenvoeding & hengelsport",
         "headline": "Testen waar de omzet echt vandaan komt.",
         "eyebrow": "Lopend testtraject",
         "intro": "Schuurman Dier & Hengelsport heeft een enorm assortiment, en het grootste deel van de omzet komt uit dierenvoeding. Samen bouwen we een testprogramma op dat daarop is afgestemd. De eerste test loopt op dit moment, de resultaten verschijnen hier zodra ze er zijn.",
@@ -259,6 +259,28 @@ CASES = {
     },
 }
 CASES_COMING_SOON = []
+
+# Logo-muur: alle logo's zijn vooraf eenkleurig (merkblauw) en op gelijke visuele grootte gebracht.
+# Nieuw logo toevoegen: afbeelding in assets/img/logos/ en een regel hieronder (naam, bestand, breedte, hoogte, optionele link).
+CLIENT_LOGOS = [
+    ("Schuurman Dier & Hengelsport", "schuurman.png", 120, 28, "/cases/schuurman/"),
+    ("Ecodor", "ecodor.png", 68, 50, "/cases/ecodor/"),
+    ("Hulpmiddelenspecialist.nl", "hulpmiddelenspecialist.png", 91, 37, None),
+    ("Bidet.nl", "bidet.png", 111, 30, None),
+    ("Drempelhulp", "drempelhulp.png", 150, 22, None),
+    ("Home Care Innovation", "home-care-innovation.png", 98, 35, None),
+    ("Pro-Darts.be", "pro-darts.png", 129, 26, None),
+]
+
+
+def build_logo_wall(h2="Webshops waarvoor we werken"):
+    cells = []
+    for i, (name, f, w, h, href) in enumerate(CLIENT_LOGOS):
+        img = f'<img src="/assets/img/logos/{f}" alt="{name}" width="{w}" height="{h}" loading="lazy">'
+        inner = f'<a href="{href}" aria-label="{name}: bekijk de case">{img}</a>' if href else img
+        cells.append(f'<li data-reveal style="--d:{i}">{inner}</li>')
+    return f'<section><h2 data-reveal>{h2}</h2><p class="lead" data-reveal>Webshops in onder meer huisdieren, hobby\u2019s en care. Bij een deel daarvan lees je hier de volledige case.</p><ul class="logos">{"".join(cells)}</ul></section>'
+
 
 STATUS_LABEL = {"w": "Winnaar", "v": "Verliezer", "l": "Loopt nog"}
 
@@ -566,7 +588,8 @@ def build_cases_index():
         for i, n in enumerate(CASES_COMING_SOON)
     )
     body = f'''<header class="hero">{HERO_BG}<h1>Cases.</h1><p>Open een case om te zien wat we testten, waarom, en wat het opleverde.</p></header>
-<section><ul class="list">{rows}</ul></section>'''
+<section><ul class="list">{rows}</ul></section>
+{build_logo_wall()}'''
     return page("Cases", "Cases van Boldframe: wat we testten, waarom, en wat het opleverde.", "/cases/", body)
 
 
@@ -614,6 +637,7 @@ def build_home():
         for i, slug in enumerate(INSIGHT_ORDER)
     )
     body = f'''<header class="hero">{HERO_BG}<h1>Van kliks naar klanten.</h1><p>Data-gedreven conversie-optimalisatie met A/B-tests voor webshops die meer omzet willen halen uit bezoekers die ze al hebben.</p><a class="btn" href="#afspraak">Claim mijn gratis Conversie Audit</a></header>
+{build_logo_wall()}
 <section><h2 data-reveal>Cases</h2><p class="lead" data-reveal>Open een case om te zien wat we testten, waarom, en wat het opleverde. <a href="/cases/">Alle cases →</a></p><ul class="list">{case_rows}</ul></section>
 {build_branches_section()}
 <section><h2 data-reveal>Insights</h2><p class="lead" data-reveal>Wat we zien gebeuren in de markt, met een tool om direct mee aan de slag te gaan. <a href="/insights/">Alle insights →</a></p><ul class="insight-list">{insight_rows}</ul></section>'''
