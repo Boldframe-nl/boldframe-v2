@@ -273,3 +273,28 @@ footer .btn{background:var(--onblue);color:var(--blue)}
 .cookie button{font:inherit;font-weight:700;cursor:pointer;border-radius:6px;padding:9px 16px;border:2px solid var(--blue);background:var(--bg);color:var(--blue)}
 .cookie button.yes{background:var(--blue);color:var(--onblue)}
 .fine a{color:inherit}
+
+/* ---- Contactgegevens bij #afspraak ---- */
+.contact-direct{display:flex;flex-wrap:wrap;gap:12px;margin:8px 0 28px}
+.contact-direct a{display:inline-flex;align-items:center;gap:10px;padding:14px 20px;border:2px solid var(--blue);border-radius:6px;font-size:22px;font-weight:800;text-decoration:none;transition:background .2s ease,color .2s ease}
+.contact-direct a:hover{background:var(--blue);color:var(--onblue)}
+.contact-direct .icon{width:24px;height:24px}
+.cal-h{margin:0 0 8px;font-size:20px}
+
+/* ---- Hamburgermenu (mobiel) ---- */
+.nav-toggle{display:none}
+@media(max-width:760px){
+  nav{flex-wrap:nowrap}
+  .nav-toggle{display:flex;flex-direction:column;justify-content:center;gap:6px;width:48px;height:48px;padding:0 10px;margin-left:auto;margin-right:-10px;background:none;border:0;cursor:pointer;color:var(--blue)}
+  .nav-toggle span{display:block;height:3px;background:currentColor;border-radius:2px;transition:transform .25s ease,opacity .2s ease}
+  .nav-toggle[aria-expanded="true"] span:nth-child(1){transform:translateY(9px) rotate(45deg)}
+  .nav-toggle[aria-expanded="true"] span:nth-child(2){opacity:0}
+  .nav-toggle[aria-expanded="true"] span:nth-child(3){transform:translateY(-9px) rotate(-45deg)}
+  nav ul{display:none;position:absolute;top:100%;left:0;right:0;flex-direction:column;gap:0;background:var(--bg);border-top:2px solid var(--blue);box-shadow:0 14px 24px color-mix(in srgb,var(--blue) 16%,transparent);padding:4px 0 12px}
+  nav ul.open{display:flex}
+  nav ul li{border-bottom:2px solid var(--line)}
+  nav ul li:last-child{border-bottom:0}
+  nav ul a{display:block;padding:20px 24px;font-size:26px;font-weight:800;font-stretch:110%}
+  nav ul a::after{display:none}
+}
+#afspraak{scroll-margin-top:84px}

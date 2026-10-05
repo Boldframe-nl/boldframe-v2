@@ -201,3 +201,18 @@ if (revInput) {
     if (e.target.closest("[data-cookie-reset]")) { e.preventDefault(); write(""); banner(); }
   });
 })();
+
+// 7) Hamburgermenu op mobiel.
+(function () {
+  const btn = document.querySelector(".nav-toggle");
+  const menu = document.getElementById("nav-menu");
+  if (!btn || !menu) return;
+  const set = (open) => {
+    menu.classList.toggle("open", open);
+    btn.setAttribute("aria-expanded", open ? "true" : "false");
+    btn.setAttribute("aria-label", open ? "Menu sluiten" : "Menu openen");
+  };
+  btn.addEventListener("click", () => set(!menu.classList.contains("open")));
+  menu.addEventListener("click", (e) => { if (e.target.closest("a")) set(false); });
+  document.addEventListener("keydown", (e) => { if (e.key === "Escape") set(false); });
+})();

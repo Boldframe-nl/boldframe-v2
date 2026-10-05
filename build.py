@@ -451,11 +451,14 @@ def page(title, description, path, body, extra_head=""):
 <body{ga_attr}>
 <nav aria-label="Hoofdmenu">
 <a class="logo" href="/"><img src="/assets/img/logo-blue.png" alt="Boldframe"></a>
-<ul>{nav_html}<li><a href="#afspraak"><strong>Contact</strong></a></li></ul>
+<button class="nav-toggle" type="button" aria-expanded="false" aria-controls="nav-menu" aria-label="Menu openen"><span></span><span></span><span></span></button>
+<ul id="nav-menu">{nav_html}<li><a href="#afspraak"><strong>Contact</strong></a></li></ul>
 </nav>
 {body}
-<section id="afspraak" class="wrap"><h2>Plan een kennismaking</h2>
-<p class="lead">Kies zelf een moment voor een gesprek van 30 minuten.</p>
+<section id="afspraak" class="wrap"><h2>Contact</h2>
+<p class="lead">Bel of mail gerust direct, of kies hieronder zelf een moment.</p>
+<div class="contact-direct"><a href="mailto:roy@boldframe.nl">{icon("mail")}roy@boldframe.nl</a><a href="tel:+31637617728">{icon("phone")}06-37617728</a></div>
+<h3 class="cal-h">Of plan een gesprek van 30 minuten</h3>
 <iframe src="https://calendly.com/roy-tc8/30min?embed_domain=boldframe.nl&amp;embed_type=Inline" frameborder="0" title="Selecteer een datum en tijd - Calendly"></iframe>
 <p>Zie je de agenda niet? <a href="https://calendly.com/roy-tc8/30min" target="_blank" rel="noopener">Open hem in een nieuw tabblad</a>.</p></section>
 <footer id="contact"><div class="wrap">
