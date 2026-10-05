@@ -11,7 +11,7 @@ import os
 ROOT = os.path.dirname(os.path.abspath(__file__))
 SITE_URL = "https://stage.boldframe.nl"  # bij livegang: https://boldframe.nl
 LIVE = False  # bij livegang op True: haalt noindex weg en laat zoekmachines toe (robots.txt + meta)
-GA_ID = ""  # Google Analytics 4 meet-ID (G-XXXXXXXXXX). Leeg = geen analytics en geen cookiebanner.
+GA_ID = "G-8N1ZFCB0FW"  # Google Analytics 4 meet-ID (G-XXXXXXXXXX). Leeg = geen analytics en geen cookiebanner.
 
 PIN_SVG = '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M14 3l7 7-3 1-3.5 3.5.5 4.5-1.5 1.5-4-4-5 5-1-1 5-5-4-4L6.5 10.5 11 11l3.5-3.5z"/></svg>'
 
@@ -188,7 +188,6 @@ CASES = {
              "rows": [
                  ["40% van de bezoekers haakte op de productpagina af voordat er iets in de winkelwagen ging, en onderweg was niet duidelijk onder welke voorwaarden er werd gekocht.", "Micro-garanties onder de winkelwagenknop"],
                  ["In heatmaps werden tekstlinks in blogs vaak gebruikt, maar bezoekers die op een blogbericht landen brachten verhoudingsgewijs weinig omzet op.", "Opvallendere tekstlinks"],
-                 ["Klanten zijn vooral Nederlands en Belgisch, en willen vooral zeker weten dat het product werkt.", "Land van herkomst bij het product"],
                  ["Interne zoekopdrachten, Google Ads en Search Console lieten zien dat ‘enzymatische reiniger’ een sleutelterm is, en AI-chatbots noemen dit type product vaak als oplossing voor kattengeur. Ook bleek er een breed scala aan toepassingen.", "Toepassingsgebied bij de productomschrijving"],
              ]},
             {"type": "tests", "h2": "Wat we testten", "lead": "Een selectie van de 20 tests die we draaiden, met hypothese, uitkomst en learning. Nieuwste bovenaan, vastgepinde tests eerst."},
@@ -216,18 +215,6 @@ CASES = {
                 "learn": "Op mobiel, waar het merendeel van de bezoekers zit, werkt het expliciet benoemen van de toepassingen duidelijk. Op desktop daalde de orderwaarde; met 63 conversies in dat segment is dat nog geen harde conclusie. Daarom hebben we de aanpassing alleen op mobiel doorgevoerd.",
                 "img": "/assets/img/tests/e5.jpg", "alt": "Ecodor productpagina voor en na: blok met toepassingsgebied bij de productomschrijving",
                 "pinned": False,
-            },
-            {
-                "id": "e1", "date": "2026-06-09", "status": "w", "duration": "21 dagen",
-                "title": "Land van herkomst bij het product",
-                "observation": "We verkopen vooral aan Nederlandse en Belgische klanten, en die willen vooral zeker weten dat het product werkt. We wilden bezoekers dichter bij het product brengen en hen een groter gevoel van vertrouwen geven.",
-                "principle": "Vertrouwen, een duurzamere benadering, lokale trots en een hogere waargenomen waarde.",
-                "hyp": "Door te vermelden dat het product in Nederland is gemaakt, en de Nederlandse vlag te tonen, stijgen het vertrouwen en de waargenomen waarde, zodat bezoekers sneller overtuigd zijn.",
-                "metrics": [("+10,43%", "Omzet per bezoeker", "€5,60 → €6,18"), ("+6,42%", "Orderwaarde", "€42,25 → €44,97"), ("-5,17%", "Conversie", "13,10% → 12,43%")],
-                "note": "Testgroepen: 1.366 bezoekers (origineel, 179 kopers) tegen 1.360 bezoekers (variant, 169 kopers). Op conversie is geen significant verschil: de kans dat de variant de originele versie verslaat is 29,81%. Wat opvalt is dat de kopers gemiddeld meer besteedden. Volgens de testtool is het geschatte effect circa +€1.135 omzet per maand.",
-                "learn": "Er is een duidelijke correlatie tussen lokale trots en vertrouwen in Nederland. Of dat ook in België en andere landen geldt, valt te betwisten; het is dus de vraag of we de ‘Gemaakt in Nederland’-badge ook voor die landen moeten tonen.",
-                "img": "/assets/img/tests/e1.jpg", "alt": "Ecodor productpagina voor en na: label Gemaakt in Nederland",
-                "pinned": True,
             },
             {
                 "id": "e2", "date": "2026-06-26", "status": "v", "duration": "",
@@ -340,6 +327,8 @@ CLIENT_LOGOS = [
     ("Home Care Innovation", "home-care-innovation.png", 98, 35, None),
     ("Pro-Darts.be", "pro-darts.png", 129, 26, None),
     ("Camping Jagtveld", "jagtveld.png", 98, 35, None),
+    ("Petite Zara", "petite-zara.png", 81, 42, None),
+    ("Vestiti del Capo", "capo.png", 54, 54, None),
 ]
 
 
