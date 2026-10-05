@@ -15,7 +15,62 @@ GA_ID = ""  # Google Analytics 4 meet-ID (G-XXXXXXXXXX). Leeg = geen analytics e
 
 PIN_SVG = '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M14 3l7 7-3 1-3.5 3.5.5 4.5-1.5 1.5-4-4-5 5-1-1 5-5-4-4L6.5 10.5 11 11l3.5-3.5z"/></svg>'
 
-HERO_BG = '<div class="hero-bg" aria-hidden="true"></div>'
+import math
+import random
+
+
+def hero_art(seed, ridges=11, top=300, bottom=545, amp=(60, 110), sun=(1090, 300, 150), stars=36, band=False):
+    """Genereert de hero-illustratie: lagen berglijnen (als groeicurves), een gestreepte zon en sterren.
+    Alles is vectorlijnwerk in off-white op merkblauw en wordt met CSS geanimeerd."""
+    rnd = random.Random(seed)
+    W, H = 1600, 640
+    layers = []
+    for i in range(ridges):
+        t = i / max(1, ridges - 1)
+        base = top + (bottom - top) * (t ** 0.85)
+        a = amp[0] + (amp[1] - amp[0]) * t
+        comps = [(rnd.uniform(0.5, 1.2), rnd.uniform(0, 6.28), 0.55), (rnd.uniform(1.6, 3.2), rnd.uniform(0, 6.28), 0.3), (rnd.uniform(4.0, 7.0), rnd.uniform(0, 6.28), 0.15)]
+        pts = []
+        x = -40
+        while x <= W + 40:
+            f = sum(w * math.sin(x / W * 6.283 * fr + ph) for fr, ph, w in comps)
+            f = 0.5 + 0.5 * f
+            f = f * f * (3 - 2 * f)  # steilere flanken, plateaus
+            pts.append((x, base - a * f))
+            x += 16
+        line = "M" + " L".join(f"{x},{y:.1f}" for x, y in pts)
+        fill = line + f" L{W + 40},{H + 20} L-40,{H + 20} Z"
+        op = 0.22 + 0.73 * t
+        k = round(0.2 * (1 - t), 3)
+        dl = round(-rnd.uniform(0, 9), 2)
+        ab = round(-(2 + 5 * t), 1)
+        dur = round(7 + 4 * (1 - t), 1)
+        ds = round(0.12 * i, 2)
+        layers.append(
+            f'<g class="rg" style="--k:{k}"><g class="rb" style="--a:{ab}px;--dl:{dl}s;--dur:{dur}s">'
+            f'<path class="rf" style="--ds:{ds}s" d="{fill}"/>'
+            f'<path class="rh" style="--ds:{ds}s;--ho:{0.10 + 0.22 * t:.2f}" fill="url(#hatch-{seed})" d="{fill}"/>'
+            f'<path class="rs" style="--ds:{ds}s;stroke-opacity:{op:.2f}" pathLength="1" d="{line}"/></g></g>'
+        )
+    sx, sy, sr = sun or (0, 0, 0)
+    stripes = "".join(f'<line x1="{sx - sr}" x2="{sx + sr}" y1="{y}" y2="{y}"/>' for y in range(int(sy - sr) - 10, int(sy + sr) + 20, 9))
+    sun_svg = (
+        f'<clipPath id="sun-{seed}"><circle cx="{sx}" cy="{sy}" r="{sr}"/></clipPath>'
+        f'<g class="sun"><circle cx="{sx}" cy="{sy}" r="{sr}" class="sun-glow"/><g clip-path="url(#sun-{seed})"><g class="stripes">{stripes}</g></g></g>'
+    ) if sun else ""
+    star_svg = "".join(
+        f'<circle class="st" style="animation-delay:{-rnd.uniform(0, 6):.1f}s" cx="{rnd.randint(10, W - 10)}" cy="{rnd.randint(10, max(40, top - 40))}" r="{rnd.choice([0.8, 1.1, 1.5])}"/>'
+        for _ in range(stars)
+    )
+    defs = f'<defs><pattern id="hatch-{seed}" width="5" height="5" patternUnits="userSpaceOnUse"><line x1="0.5" y1="0" x2="0.5" y2="5" stroke="#f6f4f0" stroke-width="1"/></pattern></defs>'
+    return (f'<svg class="hero-art" viewBox="0 0 {W} {H}" preserveAspectRatio="xMidYMax slice" aria-hidden="true" focusable="false">{defs}'
+            f'<g class="stars">{star_svg}</g>{sun_svg}{"".join(layers)}</svg>')
+
+
+HERO_ART_BIG = hero_art(7, ridges=13, top=380, bottom=585, amp=(90, 190), sun=(1060, 395, 175), stars=44)
+HERO_BG = hero_art(11, ridges=8, top=450, bottom=590, amp=(50, 110), sun=(1180, 470, 95), stars=22)
+HERO_BAND = hero_art(5, ridges=6, top=430, bottom=600, amp=(40, 80), sun=None, stars=0)
+
 
 NAV_ITEMS = [
     ("Cases", "/cases/"),
@@ -477,6 +532,7 @@ def page(title, description, path, body, extra_head=""):
 <ul id="nav-menu">{nav_html}<li><a href="#afspraak"><strong>Contact</strong></a></li></ul>
 </nav>
 {body}
+<div class="art-band" aria-hidden="true">{HERO_BAND}</div>
 <section id="afspraak" class="wrap"><h2>Contact</h2>
 <p class="lead">Bel of mail gerust direct, of kies hieronder zelf een moment.</p>
 <div class="contact-direct"><a href="mailto:roy@boldframe.nl">{icon("mail")}roy@boldframe.nl</a><a href="tel:+31637617728">{icon("phone")}06-37617728</a></div>
@@ -704,7 +760,7 @@ def build_insights_index():
         f'<li data-reveal style="--d:{i}"><a class="row" href="/insights/{slug}/"><h3>{INSIGHTS[slug]["title"]}</h3><span>{fmt_date(INSIGHTS[slug]["date"])}</span></a></li>'
         for i, slug in enumerate(INSIGHT_ORDER)
     )
-    body = f'''<header class="hero" style="padding:56px 24px 40px">{HERO_BG}<h1 style="font-size:clamp(36px,7vw,64px)">Insights.</h1><p>Wat we zien gebeuren in de markt, met steeds een tool erbij die je direct kunt gebruiken.</p></header>
+    body = f'''<header class="hero">{HERO_BG}<h1 style="font-size:clamp(36px,7vw,64px)">Insights.</h1><p>Wat we zien gebeuren in de markt, met steeds een tool erbij die je direct kunt gebruiken.</p></header>
 <section class="art"><ul class="insight-list">{rows}</ul></section>'''
     return page("Insights", "Wat Boldframe ziet gebeuren in de markt, met een tool om direct mee aan de slag te gaan.", "/insights/", body)
 
@@ -721,7 +777,7 @@ def build_home():
         f'<li data-reveal style="--d:{i}"><a class="row" href="/insights/{slug}/"><h3>{INSIGHTS[slug]["title"]}</h3><span>{fmt_date(INSIGHTS[slug]["date"])}</span></a></li>'
         for i, slug in enumerate(INSIGHT_ORDER)
     )
-    body = f'''<header class="hero">{HERO_BG}<h1>Van kliks naar klanten.</h1><p>Data-gedreven conversie-optimalisatie met A/B-tests voor webshops die meer omzet willen halen uit bezoekers die ze al hebben.</p><a class="btn" href="#afspraak">Claim mijn gratis Conversie Audit</a></header>
+    body = f'''<header class="hero hero-home">{HERO_ART_BIG}<h1>Van kliks naar klanten.</h1><p>Data-gedreven conversie-optimalisatie met A/B-tests voor webshops die meer omzet willen halen uit bezoekers die ze al hebben.</p><a class="btn" href="#afspraak">Claim mijn gratis Conversie Audit</a></header>
 {build_logo_wall()}
 <section><h2 data-reveal>Cases</h2><p class="lead" data-reveal>Open een case om te zien wat we testten, waarom, en wat het opleverde. <a href="/cases/">Alle cases →</a></p><ul class="list">{case_rows}</ul></section>
 {build_testimonials()}

@@ -251,3 +251,12 @@ function testDuration(visitors, ratePct, mdePct, z, variants) {
   ids.forEach((i) => el(i).addEventListener("input", update));
   update();
 })();
+
+// 9) Lichte parallax op de hero-illustratie (uit bij reduced motion).
+(function () {
+  const hero = document.querySelector(".hero");
+  if (!hero || reduceMotion) return;
+  let ticking = false;
+  const upd = () => { hero.style.setProperty("--py", Math.min(window.scrollY, 900)); ticking = false; };
+  window.addEventListener("scroll", () => { if (!ticking) { ticking = true; requestAnimationFrame(upd); } }, { passive: true });
+})();
