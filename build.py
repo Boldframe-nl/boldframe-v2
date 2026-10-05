@@ -87,11 +87,11 @@ CASES = {
         "sub": "Van circa €40k naar een verwachte €325k omzet per jaar",
         "eyebrow": "Case · Huisdieren · WooCommerce",
         "headline": "Van circa €40k naar €325k omzet per jaar.",
-        "intro": "Ecodor verkoopt enzymatische geurverwijderaars voor huisdieren. In juli 2024 bouwden we de webshop opnieuw, van OpenCart naar WooCommerce, en sindsdien optimaliseren we hem doorlopend met onderzoek en A/B-tests. De omzet van de eigen webshop groeide van circa €40k op jaarbasis (2024) naar een verwachte €325k in 2026.",
+        "intro": "Ecodor verkoopt enzymatische geurverwijderaars voor huisdieren. In juli 2024 bouwden we de webshop opnieuw, van OpenCart naar WooCommerce, en sindsdien optimaliseren we hem doorlopend met onderzoek en A/B-tests. De omzet van de eigen webshop groeide van circa €40k op jaarbasis (2024), via circa €74k in 2025, naar een verwachte €325k in 2026.",
         "hero": "/assets/img/cases/ecodor-hero.jpg",
         "facts": [],
         "stats": [
-            {"count": 224157, "prefix": "€", "label": "omzet in 2026, t/m 5 oktober"},
+            {"count": 224157, "prefix": "€", "label": "omzet in 2026 t/m 5 oktober, incl. btw"},
             {"count": 325, "prefix": "≈ €", "suffix": "k", "label": "prognose voor heel 2026"},
             {"text": "79–82%", "label": "van de omzet komt via mobiel"},
             {"count": 45, "suffix": "%", "label": "winrate van onze tests; de rest was negatief of onbeslist"},
@@ -106,10 +106,11 @@ CASES = {
              "rows": [
                  ("2024 (jun–dec)", 21420.56, "€21.421", "act"),
                  ("2024 op jaarbasis", 40000, "≈ €40.000", "est"),
+                 ("2025 (heel jaar)", 74000, "≈ €74.000", "act"),
                  ("2026 t/m 5 oktober", 224157.26, "€224.157", "act"),
                  ("2026 prognose", 325543.01, "≈ €325.543", "est"),
              ],
-             "note": "Volle balk: gerealiseerde omzet. Gearceerde balk: omrekening of prognose. 2024 op jaarbasis is een omrekening van de omzet van juni tot en met december; de prognose voor 2026 is gebaseerd op de omzet tot en met 5 oktober 2026."},
+             "note": "Volle balk: gerealiseerde omzet. Gearceerde balk: omrekening of prognose. Omzet van de eigen webshop, inclusief btw (dus zonder Bol.com en Amazon). 2024 op jaarbasis is een omrekening van de omzet van juni tot en met december. De prognose voor 2026 is gebaseerd op de omzet tot en met 5 oktober 2026, aangevuld met het verwachte najaar: Black Friday, extra verkoop doordat katten en andere huisdieren in het najaar en de winter vaker binnen worden gehouden, en doorzetting van de groei."},
             {"type": "cards", "h2": "Vier uitdagingen", "lead": "Dit moest de webshop oplossen om bezoekers zeker te laten kopen.",
              "items": [
                  ("Laten zien dat het écht werkt", "shield", "Er zijn aanbieders die de geur alleen maskeren, waarna die terugkomt. De site moest vroeg in de klantreis duidelijk maken dat dit product de geur wél verwijdert."),
