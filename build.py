@@ -87,14 +87,14 @@ CASES = {
         "sub": "Van circa €40k naar een verwachte €325k omzet per jaar",
         "eyebrow": "Case · Huisdieren · WooCommerce",
         "headline": "Van circa €40k naar €325k omzet per jaar.",
-        "intro": "Ecodor verkoopt enzymatische geurverwijderaars voor huisdieren. In juli 2024 bouwden we de webshop opnieuw, van OpenCart naar WooCommerce, en sindsdien optimaliseren we hem doorlopend met onderzoek en A/B-tests. De omzet van de eigen webshop groeide van circa €40k op jaarbasis (2024), via circa €74k in 2025, naar een verwachte €325k in 2026.",
+        "intro": "Ecodor verkoopt enzymatische geurverwijderaars voor huisdieren. In juli 2024 bouwden we de webshop opnieuw, van OpenCart naar WooCommerce, en sindsdien optimaliseren we hem doorlopend met onderzoek en A/B-tests. De omzet van de eigen webshop groeide van circa €40k op jaarbasis (2024), via circa €75k in 2025, naar een verwachte €325k in 2026.",
         "hero": "/assets/img/cases/ecodor-hero.jpg",
         "facts": [],
         "stats": [
             {"count": 224157, "prefix": "€", "label": "omzet in 2026 t/m 5 oktober, incl. btw"},
             {"count": 325, "prefix": "≈ €", "suffix": "k", "label": "prognose voor heel 2026"},
             {"text": "79–82%", "label": "van de omzet komt via mobiel"},
-            {"count": 45, "suffix": "%", "label": "winrate van onze tests; de rest was negatief of onbeslist"},
+            {"count": 45, "suffix": "%", "label": "winrate over 20 tests, waarvan een deel nog loopt"},
         ],
         "blocks": [
             {"type": "text", "h2": "Het uitgangspunt", "paras": [
@@ -106,7 +106,7 @@ CASES = {
              "rows": [
                  ("2024 (jun–dec)", 21420.56, "€21.421", "act"),
                  ("2024 op jaarbasis", 40000, "≈ €40.000", "est"),
-                 ("2025 (heel jaar)", 74000, "≈ €74.000", "act"),
+                 ("2025 (heel jaar)", 74569.83, "€74.570", "act"),
                  ("2026 t/m 5 oktober", 224157.26, "€224.157", "act"),
                  ("2026 prognose", 325543.01, "≈ €325.543", "est"),
              ],
@@ -129,16 +129,16 @@ CASES = {
              "head": ["Bevinding", "Test"],
              "rows": [
                  ["40% van de bezoekers haakte op de productpagina af voordat er iets in de winkelwagen ging, en onderweg was niet duidelijk onder welke voorwaarden er werd gekocht.", "Micro-garanties onder de winkelwagenknop"],
-                 ["In heatmaps werden tekstlinks in blogs vaak gebruikt, maar bezoekers die op een blogbericht landen brachten verhoudingsgewijs weinig omzet op.", "Opvallendere tekstlinks, in twee rondes"],
+                 ["In heatmaps werden tekstlinks in blogs vaak gebruikt, maar bezoekers die op een blogbericht landen brachten verhoudingsgewijs weinig omzet op.", "Opvallendere tekstlinks"],
                  ["Klanten zijn vooral Nederlands en Belgisch, en willen vooral zeker weten dat het product werkt.", "Land van herkomst bij het product"],
                  ["Interne zoekopdrachten, Google Ads en Search Console lieten zien dat ‘enzymatische reiniger’ een sleutelterm is, en AI-chatbots noemen dit type product vaak als oplossing voor kattengeur. Ook bleek er een breed scala aan toepassingen.", "Toepassingsgebied bij de productomschrijving"],
              ]},
-            {"type": "tests", "h2": "Wat we testten", "lead": "Een selectie van de tests, met hypothese, uitkomst en learning. Nieuwste bovenaan, vastgepinde tests eerst."},
+            {"type": "tests", "h2": "Wat we testten", "lead": "Een selectie van de 20 tests die we draaiden, met hypothese, uitkomst en learning. Nieuwste bovenaan, vastgepinde tests eerst."},
             {"type": "cards", "h2": "Hoe we testen, en wat dat betekent", "lead": "Cijfers zijn pas bruikbaar als je weet hoe ze tot stand kwamen.",
              "items": [
                  ("Indicatief, niet absoluut", "flask", "Onze uitslagen komen vaak uit op een chance to beat van ongeveer 90 tot 95%. Dat is sterk genoeg om op te sturen, maar geen wetenschappelijk bewijs. Bij Ecodor kiezen we daar bewust voor: een hoge testsnelheid en snel winsten boeken weegt zwaarder dan 100% zekerheid."),
-                 ("Niet elke test wint", "cross", "De winrate is op dit moment 45%; de rest was negatief of onbeslist. Dat is precies waarom we testen: een verliezer gaat niet live, dus de shop wordt niet slechter. Een negatieve uitslag stuurt bovendien de volgende hypothese."),
-                 ("Dit is een selectie", "search", "Hier staan vooral de tests met aanzienlijke winst, plus een verliezer als voorbeeld. Het zijn niet alle tests die we hebben gedraaid."),
+                 ("Niet elke test wint", "cross", "Over 20 tests, waarvan een deel nog loopt, is de winrate op dit moment 45%; de rest was negatief of onbeslist. Dat is precies waarom we testen: een verliezer gaat niet live, dus de shop wordt niet slechter. Een negatieve uitslag stuurt bovendien de volgende hypothese."),
+                 ("Dit is een selectie", "search", "Hier staan vooral de tests met aanzienlijke winst, plus een verliezer als voorbeeld. Het zijn niet alle 20 tests die we hebben gedraaid."),
              ]},
             {"type": "text", "h2": "Wat het heeft opgeleverd", "paras": [
                 "In een kleine twee jaar staat er een sterke webshop met veel learnings. Ecodor heeft in Nederland online een sterke marktpositie opgebouwd, bedient inkomend verkeer goed en overtuigt bezoekers dat dit het product is dat hen helpt.",
@@ -148,14 +148,14 @@ CASES = {
         ],
         "tests": [
             {
-                "id": "e5", "status": "w", "duration": "",
+                "id": "e5", "started": "2026-09-04", "status": "w", "duration": "",
                 "title": "Toepassingsgebied bij de productomschrijving",
                 "observation": "Interne zoekopdrachten, Google Ads en Search Console lieten zien dat ‘enzymatische reiniger’ een sleutelterm is, en AI-chatbots adviseren dit type product vaak als oplossing voor kattengeur. Ook kregen we inzicht in de uiteenlopende toepassingen van de producten.",
                 "principle": "Zekerheid bij het bestellen: wie ziet dat het product op zijn ondergrond werkt, bestelt zekerder.",
                 "hyp": "Als we alle toepassingen expliciet noemen op de productpagina’s en andere plekken, kan de klant zekerder bestellen.",
                 "metrics": [("+9,98%", "Omzet per bezoeker, totaal", ""), ("+22,9%", "Omzet per bezoeker, mobiel", "793 tegen 800 gebruikers"), ("-7,1%", "Omzet per bezoeker, desktop", "162 tegen 156 gebruikers")],
                 "note": "Op mobiel is de kans dat de variant de controleversie verslaat 91,7%. Op desktop bleef de conversieratio vrijwel gelijk (+0,6%), maar daalde de gemiddelde orderwaarde met 7,7%, op basis van 63 conversies in dat segment.",
-                "learn": "Op mobiel, waar het merendeel van de bezoekers zit, werkt het expliciet benoemen van de toepassingen duidelijk. Op desktop daalde de orderwaarde; met 63 conversies in dat segment is dat nog geen harde conclusie.",
+                "learn": "Op mobiel, waar het merendeel van de bezoekers zit, werkt het expliciet benoemen van de toepassingen duidelijk. Op desktop daalde de orderwaarde; met 63 conversies in dat segment is dat nog geen harde conclusie. Daarom hebben we de aanpassing alleen op mobiel doorgevoerd.",
                 "img": "/assets/img/tests/e5.jpg", "alt": "Ecodor productpagina voor en na: blok met toepassingsgebied bij de productomschrijving",
                 "pinned": False,
             },
@@ -171,23 +171,11 @@ CASES = {
                 "pinned": True,
             },
             {
-                "id": "e4", "status": "w", "duration": "",
-                "title": "Opvallendere tekstlinks, ronde 2: dikgedrukt",
-                "observation": "In heatmaps werden tekstlinks in blogberichten regelmatig gebruikt, maar bezoekers die op een blogbericht landen brachten verhoudingsgewijs weinig omzet op.",
-                "principle": "Links moeten meer opvallen, zodat tekst makkelijk te scannen is naar een vervolgactie.",
-                "hyp": "Door de links een zwaarder gewicht te geven maken we de tekst beter scanbaar en de vervolgactie duidelijker, zodat bezoekers meer pagina’s bekijken en sneller naar een productpagina gaan.",
-                "metrics": [("+12,08%", "Omzet per bezoeker", "€3,04 → €3,41"), ("-1,61%", "Orderwaarde", "€45,81 → €45,07")],
-                "learn": "Bezoekers herkennen de groene links nu niet alleen als gemarkeerde tekst, maar ook als doorklikbare links. Doordat ze dikgedrukt zijn vallen ze extra op, ook op mobiel. Mogelijk speelt mee dat dikgedrukte tekst de gedachte oproept dat het belangrijk is.",
-                "next": "Had ook deze ronde niet gewerkt, dan was de volgende stap een volledig conventionele linkkleur (#0645AD) geweest: lelijker, maar ‘ugly converts better’. Dat hadden we eerst met Ecodor overlegd.",
-                "img": "/assets/img/tests/e4.jpg", "alt": "Ecodor blogtekst voor en na: dikgedrukte groene tekstlinks",
-                "pinned": False,
-            },
-            {
                 "id": "e2", "date": "2026-06-26", "status": "v", "duration": "",
-                "title": "Opvallendere tekstlinks, ronde 1: groen",
+                "title": "Groene tekstlinks in blogs",
                 "hyp": "Met merkgroene links in plaats van blauwe vallen ze meer op, dus navigeren bezoekers sneller naar productpagina's.",
                 "metrics": [("-12,55%", "Omzet per bezoeker", "€3,23 → €2,82"), ("-8,02%", "Orderwaarde", "€52,00 → €47,83")],
-                "learn": "Groen wijkt af van de webconventie dat links blauw zijn, en was op mobiel bij fel licht slecht leesbaar. Dit was de aanleiding voor ronde 2.",
+                "learn": "Groen wijkt af van de webconventie dat links blauw zijn, en was op mobiel bij fel licht slecht leesbaar.",
                 "img": "/assets/img/tests/e2.jpg", "alt": "Ecodor blogtekst voor en na: groene tekstlinks",
                 "pinned": False,
             },
@@ -201,6 +189,18 @@ CASES = {
                 "note": "Op basis van 109 conversies uit 839 sessies.",
                 "learn": "Op mobiel was de winst veel groter, maar die data is helaas verloren gegaan. We hebben de aanpassing doorgevoerd en kunnen met redelijk vertrouwen zeggen dat het een verbetering is.",
                 "img": "/assets/img/tests/e3.jpg", "alt": "Ecodor productpagina voor en na: vertrouwensblok onder de knop",
+                "pinned": False,
+            },
+            {
+                "id": "e4", "started": "2026-05-25", "status": "w", "duration": "",
+                "title": "Dikgedrukte groene tekstlinks in blogs",
+                "observation": "In heatmaps werden tekstlinks in blogberichten regelmatig gebruikt, maar bezoekers die op een blogbericht landen brachten verhoudingsgewijs weinig omzet op.",
+                "principle": "Links moeten meer opvallen, zodat tekst makkelijk te scannen is naar een vervolgactie.",
+                "hyp": "Door de links een zwaarder gewicht te geven maken we de tekst beter scanbaar en de vervolgactie duidelijker, zodat bezoekers meer pagina’s bekijken en sneller naar een productpagina gaan.",
+                "metrics": [("+12,08%", "Omzet per bezoeker", "€3,04 → €3,41"), ("-1,61%", "Orderwaarde", "€45,81 → €45,07")],
+                "learn": "Bezoekers herkennen de groene links nu niet alleen als gemarkeerde tekst, maar ook als doorklikbare links. Doordat ze dikgedrukt zijn vallen ze extra op, ook op mobiel. Mogelijk speelt mee dat dikgedrukte tekst de gedachte oproept dat het belangrijk is.",
+                "next": "Had deze test niet gewerkt, dan was de volgende stap een volledig conventionele linkkleur (#0645AD) geweest: lelijker, maar ‘ugly converts better’. Dat hadden we eerst met Ecodor overlegd.",
+                "img": "/assets/img/tests/e4.jpg", "alt": "Ecodor blogtekst voor en na: dikgedrukte groene tekstlinks",
                 "pinned": False,
             },
         ],
@@ -267,7 +267,7 @@ INSIGHTS = {
         "dek": "75% van de consumenten koopt liever in de eigen taal, en 96% van de bedrijven met geautomatiseerde vertaaltechnologie ziet een positieve ROI. Voor webshops is internationale groei kosteneffectiever dan ooit.",
         "body": [
             "Google Translate is als eerste stap voor een meertalige website inmiddels achterhaald. Moderne vertaaltools maken het mogelijk om content direct professioneel, geautomatiseerd, consistent en schaalbaar te vertalen voor meerdere markten, zonder dat elke wijziging opnieuw een kostbare vertaalronde vraagt.",
-            "Voor Ecodor, producent van geurverdrijvers tegen bijvoorbeeld kattenpis, realiseerde Boldframe onmiskenbare internationale groei: de website is via WPML vertaald in 18 talen op basis van DeepL, video's zijn meertalig ondertiteld, en dankzij een groeiend dealernetwerk in Europa kan Ecodor internationaal groeien zonder overal fysieke distributiepunten te hebben.",
+            "Voor Ecodor, producent van geurverdrijvers tegen bijvoorbeeld kattenpis, realiseerde Boldframe onmiskenbare internationale groei: de website is via WPML vertaald in 19 talen op basis van DeepL, video's zijn meertalig ondertiteld, en dankzij een groeiend dealernetwerk in Europa kan Ecodor internationaal groeien zonder overal fysieke distributiepunten te hebben.",
             "Begin klein: richt je eerst op de landen met de grootste potentie, combineer geautomatiseerde vertaling met menselijke review voor nuance, en zorg dat marketing, content en logistiek aansluiten bij de lokale markt.",
         ],
         "steps": [],
@@ -379,6 +379,8 @@ def metrics_html(m):
 def test_card(t, i=0, order=0):
     dur = f'<span>{t["duration"]}</span>' if t.get("duration") else ""
     date = f'<span>{fmt_date(t["date"])}</span>' if t.get("date") else ""
+    if t.get("started"):
+        date = f'<span>Gestart {fmt_date(t["started"])}</span>'
     pinned = t["pinned"]
     cls = "item pinned" if pinned else "item"
     pressed = "true" if pinned else "false"
