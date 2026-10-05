@@ -163,3 +163,41 @@ if (revInput) {
     document.getElementById("rev-out").textContent = reachEstimate(revInput.value);
   });
 }
+
+// 6) Analytics met toestemming: alleen als <body data-ga="G-..."> is gezet. Zonder keuze wordt er niets geladen.
+(function () {
+  const gaId = document.body.getAttribute("data-ga");
+  if (!gaId) return;
+  const KEY = "bf-consent";
+  const read = () => { try { return localStorage.getItem(KEY); } catch (e) { return null; } };
+  const write = (v) => { try { localStorage.setItem(KEY, v); } catch (e) {} };
+  function loadGA() {
+    if (window.__gaLoaded) return;
+    window.__gaLoaded = true;
+    const s = document.createElement("script");
+    s.async = true;
+    s.src = "https://www.googletagmanager.com/gtag/js?id=" + encodeURIComponent(gaId);
+    document.head.appendChild(s);
+    window.dataLayer = window.dataLayer || [];
+    window.gtag = function () { window.dataLayer.push(arguments); };
+    gtag("js", new Date());
+    gtag("config", gaId, { anonymize_ip: true });
+  }
+  function banner() {
+    if (document.querySelector(".cookie")) return;
+    const b = document.createElement("div");
+    b.className = "cookie";
+    b.setAttribute("role", "dialog");
+    b.setAttribute("aria-label", "Cookies");
+    b.innerHTML = '<p>We gebruiken analytische cookies om de site te verbeteren, alleen met jouw toestemming. <a href="/privacy/">Privacyverklaring</a></p><div class="cookie-btns"><button type="button" class="no">Weigeren</button><button type="button" class="yes">Accepteren</button></div>';
+    b.querySelector(".yes").addEventListener("click", () => { write("yes"); loadGA(); b.remove(); });
+    b.querySelector(".no").addEventListener("click", () => { write("no"); b.remove(); });
+    document.body.appendChild(b);
+  }
+  const c = read();
+  if (c === "yes") loadGA();
+  else if (c !== "no") banner();
+  document.addEventListener("click", (e) => {
+    if (e.target.closest("[data-cookie-reset]")) { e.preventDefault(); write(""); banner(); }
+  });
+})();

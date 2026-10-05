@@ -5,10 +5,13 @@ Regenerates every HTML page from the data below into this same folder.
 Only this script + assets/ are the source of truth — edit here, not the
 generated *.html files directly, or your edits will be overwritten.
 """
+import json
 import os
 
 ROOT = os.path.dirname(os.path.abspath(__file__))
-SITE_URL = "https://stage.boldframe.nl"  # update when the real domain is wired up
+SITE_URL = "https://stage.boldframe.nl"  # bij livegang: https://boldframe.nl
+LIVE = False  # bij livegang op True: haalt noindex weg en laat zoekmachines toe (robots.txt + meta)
+GA_ID = ""  # Google Analytics 4 meet-ID (G-XXXXXXXXXX). Leeg = geen analytics en geen cookiebanner.
 
 PIN_SVG = '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M14 3l7 7-3 1-3.5 3.5.5 4.5-1.5 1.5-4-4-5 5-1-1 5-5-4-4L6.5 10.5 11 11l3.5-3.5z"/></svg>'
 
@@ -211,10 +214,10 @@ CASES = {
         "sub": "Lopend testtraject in dierenvoeding & hengelsport",
         "headline": "Testen waar de omzet echt vandaan komt.",
         "eyebrow": "Lopend testtraject",
-        "intro": "Schuurman Dier & Hengelsport heeft een enorm assortiment, en het grootste deel van de omzet komt uit dierenvoeding. Samen bouwen we een testprogramma op dat daarop is afgestemd. De eerste test loopt op dit moment, de resultaten verschijnen hier zodra ze er zijn.",
+        "intro": "Schuurman Dier & Hengelsport heeft een enorm assortiment, en het grootste deel van de omzet komt uit dierenvoeding. Samen bouwen we een testprogramma op dat daarop is afgestemd. De eerste test is afgerond, de tweede loopt op dit moment.",
         "hero": "/assets/img/cases/schuurman-hero.jpg",
         "stats": [
-            {"count": 1, "label": "test loopt op dit moment"},
+            {"count": 2, "label": "tests: één afgerond, één loopt nog"},
             {"count": 3, "label": "niveaus in het nieuwe menu"},
             {"count": 50, "suffix": "%", "label": "van de productpagina-bezoekers scrolt langs de add-to-cart-knop"},
             {"count": 70, "suffix": "%", "label": "van de productpagina-bezoekers voegt uiteindelijk niets toe aan de winkelwagen"},
@@ -239,7 +242,7 @@ CASES = {
                  ("Focus op dieren", "paw", "De meeste omzet komt uit dierenwinkelproducten, dus die krijgen nu voorrang."),
                  ("Ruimte voor de zoekfunctie", "search", "Zoeken werd op mobiel veel gebruikt, maar op desktop bleef het achter omdat het een klein icoontje was. Het is nu een groot veld. Zoekverkeer converteert doorgaans 2 tot 3 keer zo goed, mits de zoekfunctie goed werkt."),
              ]},
-            {"type": "tests", "h2": "Testtijdlijn", "lead": "Elke test met observatie, hypothese en uitkomst. Zodra een test is afgerond, voegen we het resultaat hier toe."},
+            {"type": "tests", "h2": "Testtijdlijn", "lead": "Elke test met hypothese en uitkomst, ook als er geen significant verschil uit komt. Zodra de lopende test is afgerond, voegen we het resultaat hier toe."},
             {"type": "text", "h2": "Waar Schuurman nu staat", "paras": [
                 "Schuurman staat aan het begin van een testtraject. We tonen daarom geen omzetcijfers of groei: die kunnen we pas eerlijk benoemen na meerdere afgeronde winnende tests. Deze pagina wordt aangevuld zodra de resultaten binnen zijn.",
             ]},
@@ -254,6 +257,16 @@ CASES = {
                 "metrics": [],
                 "learn": "Nog geen learning: de test loopt.",
                 "img": "/assets/img/tests/s3.jpg", "alt": "Schuurman productpagina op mobiel voor en na: sticky add-to-cart-balk onderaan",
+                "pinned": False,
+            },
+            {
+                "id": "s2", "date": "2026-09-11", "status": "n", "duration": "18 dagen",
+                "title": "Productpagina opschonen: filterknop en broodkruimelbalk (mobiel)",
+                "hyp": "Als we de overbodige filterknop verwijderen en de massieve broodkruimelbalk op mobiel minimaliseren, stijgt het add-to-cart-percentage. Dat komt doordat we de cognitieve overbelasting verlagen en de kerninformatie (titel, prijs en bestelknop) direct in het eerste zichtbare scherm plaatsen.",
+                "metrics": [("+3,91%", "Conversie (alle apparaten)", "7,82% → 8,13%"), ("-3,01%", "Omzet per bezoeker", "€8,18 → €7,93"), ("+1,86%", "Conversie mobiel", "7,87% → 8,01%"), ("+2,33%", "Orderwaarde mobiel", "€69,32 → €70,94")],
+                "note": "De test liep van 11 t/m 29 september met 3.814 gebruikers en 304 conversies. De kans dat de variant beter presteert dan het origineel is 63,62%. Dat is ruim onder de gebruikelijke 90 tot 95%, dus de uitkomst is niet te onderscheiden van toeval.",
+                "learn": "Het opschonen van de productpagina geeft geen betrouwbaar verschil: de conversie steeg licht, maar de omzet per bezoeker daalde licht.",
+                "img": "/assets/img/tests/s2.jpg", "alt": "Schuurman productpagina op mobiel voor en na het opschonen",
                 "pinned": False,
             },
         ],
@@ -284,7 +297,22 @@ def build_logo_wall(h2="Webshops waarvoor we werken"):
     return f'<section><h2 data-reveal>{h2}</h2><p class="lead" data-reveal>Webshops in onder meer huisdieren, hobby\u2019s en care. Bij een deel daarvan lees je hier de volledige case.</p><ul class="logos">{"".join(cells)}</ul></section>'
 
 
-STATUS_LABEL = {"w": "Winnaar", "v": "Verliezer", "l": "Loopt nog"}
+GOOGLE_REVIEWS_URL = "https://share.google/dzaxrX2aVZA24SoVb"
+TESTIMONIALS = [
+    ("Wij zijn ontzettend tevreden over de samenwerking met Boldframe […]. Vanaf het eerste contact verliep alles soepel en professioneel. […] Hij denkt mee, schakelt snel en weet technische wensen perfect te vertalen naar een gebruiksvriendelijke website.", "Robin Kanters", "Ecodor"),
+    ("Van idee tot een werkende webshop voor onze camping: alles liep soepel. Er is goed meegedacht. Fijn contact en snel schakelen. Zeer tevreden met het eindresultaat.", "Mark", "Camping Jagtveld"),
+]
+
+
+def build_testimonials():
+    cards = "".join(
+        f'<figure data-reveal style="--d:{i}"><blockquote>{q}</blockquote><figcaption><b>{n}</b>, {r}</figcaption></figure>'
+        for i, (q, n, r) in enumerate(TESTIMONIALS)
+    )
+    return f'<section><h2 data-reveal>Wat klanten zeggen</h2><div class="quotes">{cards}</div><p data-reveal><a href="{GOOGLE_REVIEWS_URL}" target="_blank" rel="noopener">Lees alle reviews op Google →</a></p></section>'
+
+
+STATUS_LABEL = {"w": "Winnaar", "v": "Verliezer", "l": "Loopt nog", "n": "Inconclusief"}
 
 INSIGHTS = {
     "ai-verkeer-meten-in-ga4": {
@@ -346,7 +374,7 @@ DIENSTEN_CHALLENGES = [
 DIENSTEN_FAQ = [
     ("Moet ik mijn webbouwer ontslaan?", "Zeker niet. We kunnen de volledige development van je webshop op ons nemen, maar werken minstens zo graag samen met je huidige webbouwer om een bewezen winnaar structureel door te voeren."),
     ("Vertraagt dit mijn site?", "Nee. Een test draait via lichte A/B-testtools naast je bestaande webshop; pas een bewezen winnaar verwerken we structureel in de code."),
-    ("Wat als ik niet tevreden ben?", "Dan betaal je niets. Het Webshop Groei-Traject werkt op no-cure-no-pay-basis, met 100% geld-terug-garantie."),
+    ("Wat als de uplift uitblijft?", "Dan werken we kosteloos door. Halen we binnen zes maanden niet minimaal 10% uplift in omzet per bezoeker, dan vervallen de maandelijkse kosten van het traject totdat we dat wel hebben aangetoond. Het is dus geen geld-terug-garantie: we stoppen niet, maar blijven testen tot het resultaat er is. De meetmethode leggen we vooraf samen vast, op basis van de A/B-tests."),
     ("Moet ik direct duizenden euro's investeren in aanpassingen?", "Nee. We beginnen met de tests die het meeste opleveren tegen de minste ontwikkeltijd, en breiden pas uit zodra die hun waarde hebben bewezen."),
     ("Ik heb al andere marketingpartijen, werk jij hen niet tegen?", "Nee. Jouw advertentie- of SEO-partij zorgt voor het verkeer; wij zorgen dat een groter deel daarvan ook daadwerkelijk klant wordt."),
     ("Heb ik wel tijd om al die analyses door te nemen?", "Nauwelijks. Wij doen de analyse en het testen; jij krijgt korte, concrete updates — zoals de testtijdlijn die je bij elke case terugziet."),
@@ -385,20 +413,42 @@ def page(title, description, path, body, extra_head=""):
         current = ' aria-current="page"' if path.startswith(href) and href != "/" else ""
         nav_links.append(f'<li><a href="{href}"{current}>{label}</a></li>')
     nav_html = "".join(nav_links)
+    robots_meta = "" if LIVE else '<meta name="robots" content="noindex,nofollow">\n'
+    ga_attr = f' data-ga="{GA_ID}"' if GA_ID else ""
+    cookie_link = '<a href="#" data-cookie-reset>Cookie-instellingen</a>' if GA_ID else ""
+    jsonld = ""
+    if path == "/":
+        jsonld = '<script type="application/ld+json">' + json.dumps({
+            "@context": "https://schema.org", "@type": "ProfessionalService", "name": "Boldframe",
+            "url": SITE_URL.rstrip("/") + "/", "logo": SITE_URL.rstrip("/") + "/assets/img/logo-blue.png",
+            "image": SITE_URL.rstrip("/") + "/assets/img/og.png",
+            "description": "Conversie-optimalisatie met A/B-tests voor webshops.",
+            "email": "roy@boldframe.nl", "telephone": "+31637617728",
+            "address": {"@type": "PostalAddress", "streetAddress": "Zwarte Zee 98", "addressLocality": "Maassluis", "addressCountry": "NL"},
+            "sameAs": ["https://www.linkedin.com/company/boldframenl/", "https://www.instagram.com/boldframe_nl", "https://www.facebook.com/people/Boldframe/61568444076737/"],
+        }, ensure_ascii=False) + '</script>\n'
     return f"""<!DOCTYPE html>
 <html lang="nl">
 <head>
 <meta charset="utf-8">
-<meta name="robots" content="noindex,nofollow">
+{robots_meta}<meta name="theme-color" content="#1800ad">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>{title} · Boldframe</title>
 <meta name="description" content="{description}">
 <link rel="canonical" href="{canonical}">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="nl_NL">
+<meta property="og:site_name" content="Boldframe">
+<meta property="og:title" content="{title} · Boldframe">
+<meta property="og:description" content="{description}">
+<meta property="og:url" content="{canonical}">
+<meta property="og:image" content="{SITE_URL.rstrip("/")}/assets/img/og.png">
+<meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="/assets/img/logo-blue.png">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&display=swap">
 <link rel="stylesheet" href="/assets/css/style.css">
-{extra_head}</head>
-<body>
+{jsonld}{extra_head}</head>
+<body{ga_attr}>
 <nav aria-label="Hoofdmenu">
 <a class="logo" href="/"><img src="/assets/img/logo-blue.png" alt="Boldframe"></a>
 <ul>{nav_html}<li><a href="#afspraak"><strong>Contact</strong></a></li></ul>
@@ -416,7 +466,7 @@ def page(title, description, path, body, extra_head=""):
 <div><h3>Volg ons</h3><a href="https://www.linkedin.com/company/boldframenl/" target="_blank" rel="noopener">LinkedIn</a><br><a href="https://www.instagram.com/boldframe_nl" target="_blank" rel="noopener">Instagram</a><br><a href="https://www.facebook.com/people/Boldframe/61568444076737/" target="_blank" rel="noopener">Facebook</a></div>
 <div><h3>Bedrijfsgegevens</h3>BTW NL002393881B08</div>
 </div>
-<div class="fine"><span>© 2026 Boldframe. Alle rechten voorbehouden.</span></div>
+<div class="fine"><span>© 2026 Boldframe. Alle rechten voorbehouden.</span><a href="/privacy/">Privacyverklaring</a>{cookie_link}</div>
 </div></footer>
 <script src="/assets/js/site.js"></script>
 </body>
@@ -641,6 +691,7 @@ def build_home():
     body = f'''<header class="hero">{HERO_BG}<h1>Van kliks naar klanten.</h1><p>Data-gedreven conversie-optimalisatie met A/B-tests voor webshops die meer omzet willen halen uit bezoekers die ze al hebben.</p><a class="btn" href="#afspraak">Claim mijn gratis Conversie Audit</a></header>
 {build_logo_wall()}
 <section><h2 data-reveal>Cases</h2><p class="lead" data-reveal>Open een case om te zien wat we testten, waarom, en wat het opleverde. <a href="/cases/">Alle cases →</a></p><ul class="list">{case_rows}</ul></section>
+{build_testimonials()}
 {build_branches_section()}
 <section><h2 data-reveal>Insights</h2><p class="lead" data-reveal>Wat we zien gebeuren in de markt, met een tool om direct mee aan de slag te gaan. <a href="/insights/">Alle insights →</a></p><ul class="insight-list">{insight_rows}</ul></section>'''
     return page("Van kliks naar klanten", "Data-gedreven conversie-optimalisatie voor MKB-webshops. Boldframe dicht conversie-lekken op basis van A/B-tests, niet op onderbuikgevoel.", "/", body)
@@ -662,8 +713,8 @@ def build_diensten():
     )
     faq_html = "".join(f"<details><summary>{q}</summary><p>{a}</p></details>" for q, a in DIENSTEN_FAQ)
     body = f'''<header class="hero">{HERO_BG}<h1 class="case">Conversie-optimalisatie, geen giswerk.</h1><p>Je advertenties trekken bezoekers, maar als je landingspagina's en checkout ze niet vasthouden, betaal je voor verkeer dat nooit klant wordt. Wij herstellen die correlatie tussen advertentie en landingspagina met data-gedreven A/B-tests.</p></header>
-<section><h2 data-reveal>Het No-cure-no-pay Webshop Groei-Traject</h2><p class="lead" data-reveal>Meer rendement uit de bezoekers die je al hebt. Een hoge klikfrequentie is waardeloos als je checkout de verkoop blokkeert. Wij nemen het risico: geen extra omzet, geen kosten. Jij krijgt de data en de extra verkopen.</p>
-<div class="facts"><div data-reveal style="--d:0"><h3>Risico</h3><p>No-cure-no-pay, met 100% geld-terug-garantie.</p></div><div data-reveal style="--d:1"><h3>Start</h3><p>Gratis conversie-audit binnen 48 uur.</p></div><div data-reveal style="--d:2"><h3>Capaciteit</h3><p>Maximaal 5 nieuwe shops per maand, voor diepgang per klant.</p></div></div>
+<section><h2 data-reveal>Het Webshop Groei-Traject met uplift-garantie</h2><p class="lead" data-reveal>Meer rendement uit de bezoekers die je al hebt. Een hoge klikfrequentie is waardeloos als je checkout de verkoop blokkeert. Daarom nemen wij het risico: halen we binnen zes maanden niet minimaal 10% uplift, dan werken we gratis door totdat we het wel hebben aangetoond. Geen geld-terug-garantie, maar een traject dat doorgaat tot het resultaat er is.</p>
+<div class="facts"><div data-reveal style="--d:0"><h3>Uplift-garantie</h3><p>Minimaal 10% uplift in zes maanden, anders werken we gratis door.</p></div><div data-reveal style="--d:1"><h3>Start</h3><p>Gratis conversie-audit binnen 48 uur.</p></div><div data-reveal style="--d:2"><h3>Capaciteit</h3><p>Maximaal 5 nieuwe shops per maand, voor diepgang per klant.</p></div></div>
 <p><a class="btn" href="#afspraak">Claim mijn gratis Conversie Audit</a></p></section>
 {build_branches_section(id_attr="")}
 <section><h2 data-reveal>Voor wie dit werkt</h2><p class="lead" data-reveal style="max-width:66ch">Wij werken met een doorlopend testprogramma: geen losse optimalisaties, maar een reeks onderbouwde experimenten die samen een strategie vormen. Dat werkt voor webshops met genoeg verkeer om betrouwbaar te testen, en die bereid zijn te leren van elke uitkomst, ook als een test verliest.</p></section>
@@ -674,7 +725,7 @@ def build_diensten():
 <section><h2 data-reveal>Veelgestelde vragen</h2><div class="faq">{faq_html}</div></section>'''
     return page(
         "Diensten",
-        "Data-gedreven conversie-optimalisatie voor MKB-webshops: het No-cure-no-pay Webshop Groei-Traject van Boldframe.",
+        "Data-gedreven conversie-optimalisatie voor MKB-webshops: het Webshop Groei-Traject met uplift-garantie van Boldframe.",
         "/diensten/",
         body,
     )
@@ -696,7 +747,7 @@ def build_werkwijze():
 <ul class="steps-detail">{steps_html}</ul></section>
 <section><h2 data-reveal>Hoe we prioriteren</h2><p class="lead" data-reveal>Met meerdere knelpunten tegelijk is de vraag niet wát we testen, maar in welke volgorde. We wegen elke hypothese op drie punten.</p>
 <div class="facts">{priority_html}</div></section>
-<section><h2 data-reveal>Wat je kunt verwachten</h2><p class="lead" data-reveal>Korte lijnen, geen dikke rapporten. Na elke afgeronde test krijg je een update met de uitkomst, de learning, en wat we daarna gaan testen — terug te zien in de testtijdlijn van je eigen <a href="/cases/">case</a>. Geen interesse? Dan betaal je niets: het traject werkt op <a href="/diensten/">no-cure-no-pay-basis</a>.</p>
+<section><h2 data-reveal>Wat je kunt verwachten</h2><p class="lead" data-reveal>Korte lijnen, geen dikke rapporten. Na elke afgeronde test krijg je een update met de uitkomst, de learning, en wat we daarna gaan testen — terug te zien in de testtijdlijn van je eigen <a href="/cases/">case</a>. Blijft de afgesproken uplift uit? Dan werken we gratis door: lees de <a href="/diensten/">uplift-garantie</a>.</p>
 <p><a class="btn" href="#afspraak">Claim mijn gratis Conversie Audit</a></p></section>'''
     return page(
         "Werkwijze",
@@ -714,7 +765,12 @@ def build_over_ons():
     body = f'''<header class="hero">{HERO_BG}<h1 class="case">50% techniek, 50% gedrag.</h1><p>Conversie-optimalisatie zit precies tussen die twee in. Bij Boldframe combineren we ontwikkelaars die een test technisch correct bouwen met een strateeg die weet waaróm een bezoeker afhaakt.</p></header>
 <section><h2 data-reveal>Onze visie</h2><p class="lead" data-reveal style="max-width:66ch">We geloven niet in giswerk of onderbuikgevoel. Elke aanpassing die we voorstellen is eerst een hypothese, dan een A/B-test tegen de huidige situatie, en pas daarna een implementatie — met een concreet omzet-effect als uitkomst. Precies zoals je in onze <a href="/cases/">testtijdlijnen</a> kunt teruglezen: ook de tests die niet werkten laten we zien, want ook dat is bewijs.</p>
 <div class="stats">{stats_html}</div></section>
-<section><h2 data-reveal>Roy van Hees</h2><p class="lead" data-reveal style="max-width:66ch">E-commerce strateeg en oprichter van Boldframe. Roy combineert een achtergrond in sales consultancy met hands-on CRO-werk: hij weet waar bezoekers in de klantreis afhaken, en bouwt vandaaruit de hypothese die we vervolgens testen. <a href="mailto:roy@boldframe.nl">roy@boldframe.nl</a></p></section>
+<section><div class="about"><img class="about-photo" src="/assets/img/roy.jpg" alt="Roy van Hees, oprichter van Boldframe" width="190" height="190" data-reveal><div><h2 data-reveal>Roy van Hees</h2>
+<p class="lead" data-reveal style="max-width:66ch">Roy werkt al elf jaar in de e-commerce. Hij begon met het bouwen van webshops en richt zich inmiddels volledig op experimenttrajecten en conversie-optimalisatie met A/B-tests.</p>
+<p class="lead" data-reveal style="max-width:66ch">Hij is gek op het uitpluizen van data en op het maken van meetbare impact voor webshops. Door de jaren heen bouwde hij een stevige basis: hij weet wat wel en niet werkt, en kent de aanpassingen die daadwerkelijk de needle verplaatsen.</p>
+<p class="lead" data-reveal style="max-width:66ch">Roy is ervan overtuigd dat je met snel testen de concurrentie voorblijft. Zeker nu advertentiekosten stijgen en concurrenten zelf ook slimmer werken, is dat de enige manier.</p>
+<p class="lead" data-reveal style="max-width:66ch">Roy is 28 en woont met zijn vrouw en twee zoontjes in Maassluis. <a href="mailto:roy@boldframe.nl">roy@boldframe.nl</a></p></div></div></section>
+{build_testimonials()}
 <section><h2 data-reveal>Hoe we werken</h2><p class="lead" data-reveal style="max-width:66ch">Audit, hypothese, A/B-test, implementatie — dezelfde vier stappen bij elke shop. Lees meer over onze <a href="/diensten/">werkwijze</a> of bekijk direct wat het heeft opgeleverd in onze <a href="/cases/">cases</a>.</p>
 <p><a class="btn" href="#afspraak">Plan een kennismaking</a></p></section>'''
     return page(
@@ -723,6 +779,36 @@ def build_over_ons():
         "/over-ons/",
         body,
     )
+
+
+def build_privacy():
+    ga = ""
+    if GA_ID:
+        ga = "<h2>Statistieken</h2><p>Met jouw toestemming gebruiken we Google Analytics 4 om te meten hoe de website wordt gebruikt, zodat we hem kunnen verbeteren. Daarvoor worden cookies geplaatst en gegevens zoals je pagina\u2019s, apparaat en ongeveer locatie verwerkt door Google. Zonder toestemming laden we Google Analytics niet. Je kunt je keuze altijd wijzigen via \u2018Cookie-instellingen\u2019 onderaan de pagina.</p>"
+    body = f'''<header class="hero">{HERO_BG}<h1 class="case">Privacyverklaring</h1><p>Hoe Boldframe omgaat met jouw gegevens. Laatst bijgewerkt: oktober 2026.</p></header>
+<section class="art"><h2>Wie zijn wij</h2><p>Boldframe, Zwarte Zee 98, Maassluis. BTW-nummer NL002393881B08. Contact: <a href="mailto:roy@boldframe.nl">roy@boldframe.nl</a> of 06-37617728. Boldframe is verantwoordelijk voor de verwerking van de gegevens die in deze verklaring staan.</p>
+<h2>Welke gegevens we verwerken</h2><p>Wij gebruiken op deze website geen contactformulieren. Je kunt ons mailen, bellen of een afspraak inplannen. Dan verwerken we alleen de gegevens die je zelf met ons deelt, zoals je naam, e-mailadres, telefoonnummer en de inhoud van je bericht. We gebruiken die om contact met je op te nemen en om een eventuele samenwerking voor te bereiden.</p>
+<h2>Afspraak inplannen (Calendly)</h2><p>Voor het plannen van een gesprek gebruiken we Calendly. Als je een afspraak boekt, verwerkt Calendly je naam, e-mailadres en het gekozen tijdstip, volgens het eigen privacybeleid van Calendly.</p>
+<h2>Lettertypen</h2><p>De website laadt het lettertype Archivo via Google Fonts. Daarbij ontvangt Google je IP-adres.</p>
+{ga}
+<h2>Bewaartermijn</h2><p>We bewaren gegevens niet langer dan nodig is voor het doel waarvoor je ze hebt gegeven, of zolang de wet dat vraagt.</p>
+<h2>Je rechten</h2><p>Je kunt ons vragen om inzage in, correctie of verwijdering van je gegevens, of bezwaar maken tegen de verwerking. Stuur daarvoor een e-mail naar <a href="mailto:roy@boldframe.nl">roy@boldframe.nl</a>. Heb je een klacht? Dan kun je die indienen bij de Autoriteit Persoonsgegevens.</p></section>'''
+    return page("Privacyverklaring", "Privacyverklaring van Boldframe: welke gegevens we verwerken en waarom.", "/privacy/", body)
+
+
+def build_sitemap():
+    base = SITE_URL.rstrip("/")
+    paths = ["/", "/cases/", "/diensten/", "/werkwijze/", "/over-ons/", "/insights/"]
+    paths += [f"/cases/{slug}/" for slug in CASES]
+    paths += [f"/insights/{slug}/" for slug in INSIGHT_ORDER]
+    urls = "".join(f"<url><loc>{base}{pth}</loc></url>" for pth in paths)
+    return f'<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">{urls}</urlset>\n'
+
+
+def build_robots():
+    if LIVE:
+        return f"User-agent: *\nAllow: /\n\nSitemap: {SITE_URL.rstrip('/')}/sitemap.xml\n"
+    return "User-agent: *\nDisallow: /\n\n# Stage-omgeving. Zet LIVE = True in build.py bij livegang.\n"
 
 
 def write(path, content):
@@ -744,6 +830,11 @@ def main():
     write("/diensten/", build_diensten())
     write("/werkwijze/", build_werkwijze())
     write("/over-ons/", build_over_ons())
+    write("/privacy/", build_privacy())
+    for name, content in (("sitemap.xml", build_sitemap()), ("robots.txt", build_robots())):
+        with open(os.path.join(ROOT, name), "w", encoding="utf-8") as f:
+            f.write(content)
+        print("wrote", name)
 
     # 404
     body = f'<header class="hero">{HERO_BG}<h1 class="case">Pagina niet gevonden</h1><p>Deze pagina bestaat niet (meer). <a href="/">Terug naar de homepage</a>.</p></header>'

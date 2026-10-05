@@ -67,3 +67,9 @@ Elke push naar `main` bouwt en publiceert automatisch opnieuw.
   op het definitieve domein staat.
 - Logo staat nu als PNG (`assets/img/logo-*.png`); een SVG-versie geeft
   scherpere weergave op alle schermdichtheden.
+
+## Livegang (checklist)
+
+1. In `build.py`: `SITE_URL = "https://boldframe.nl"`, `LIVE = True` en `GA_ID = "G-..."` (Google Analytics 4).
+2. `python3 build.py` draaien en pushen. Dit verwijdert noindex, zet robots.txt open en genereert sitemap.xml.
+3. Sitemap indienen in Google Search Console.
