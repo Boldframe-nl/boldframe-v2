@@ -98,6 +98,14 @@ ICONS = {
     "paw": '<circle cx="7" cy="8" r="1.6"/><circle cx="12" cy="6" r="1.6"/><circle cx="17" cy="8" r="1.6"/><circle cx="19.2" cy="13" r="1.8"/><ellipse cx="12" cy="16" rx="5.2" ry="4.2"/>',
     "hanger": '<path d="M12 3a2 2 0 10-2 2c0 .7.4 1.3 1 1.7V8L3.3 15c-1 .7-.5 2.2.7 2.2h16c1.2 0 1.7-1.5.7-2.2L13 8V6.7c.6-.4 1-1 1-1.7"/>',
     "palette": '<path d="M12 3a9 9 0 100 18c1 0 1.8-.8 1.8-1.8 0-.5-.2-.9-.5-1.2-.3-.3-.5-.7-.5-1.2 0-1 .8-1.8 1.8-1.8H17a4 4 0 004-4c0-4.4-4-8-9-8z"/><circle cx="7.5" cy="10.5" r="1" fill="currentColor"/><circle cx="7.5" cy="14.5" r="1" fill="currentColor"/><circle cx="12" cy="7.5" r="1" fill="currentColor"/><circle cx="16" cy="9.5" r="1" fill="currentColor"/>',
+    "home": '<path d="M3 11l9-8 9 8"/><path d="M5 10v10h14V10"/><path d="M10 20v-6h4v6"/>',
+    "bike": '<circle cx="6" cy="16" r="3.5"/><circle cx="18" cy="16" r="3.5"/><path d="M6 16l4-7h5l3 7M10 9L8.5 6H7M13 12.5h-4"/>',
+    "leaf": '<path d="M5 19c0-8 5-14 15-14 0 10-6 15-14 15"/><path d="M5 19c3-5 6-8 10-10"/>',
+    "gem": '<path d="M6 4h12l3 5-9 11L3 9z"/><path d="M3 9h18M9 4l3 5 3-5M12 9v11"/>',
+    "tool": '<path d="M14.5 6.5a4 4 0 00-5 5L3.5 17.5a1.8 1.8 0 002.5 2.5l6-6a4 4 0 005-5l-2.5 2.5-2-.5-.5-2z"/>',
+    "baby": '<circle cx="12" cy="12" r="8.5"/><circle cx="9" cy="11" r=".9" fill="currentColor"/><circle cx="15" cy="11" r=".9" fill="currentColor"/><path d="M9.5 15c1.4 1.2 3.6 1.2 5 0M12 3.5c0 1.5 1 2 2 2"/>',
+    "bolt": '<path d="M13 3L5 13.5h6L10 21l8-10.5h-6z"/>',
+    "cart": '<circle cx="9" cy="20" r="1.4"/><circle cx="17" cy="20" r="1.4"/><path d="M3 4h2.5l2.2 11h10.3L20 8H6.5"/>',
     "heart": '<path d="M12 21s-7-4.35-9.5-8.5C1 9 2.5 5 6 5c2 0 3.5 1.2 4 2.3C10.5 6.2 12 5 14 5c3.5 0 5 4 3.5 7.5C19 16.65 12 21 12 21z"/>',
 }
 
@@ -109,10 +117,18 @@ def icon(key, cls="icon"):
 # Branches waar Boldframe voor webshops werkt — gebruikt op de homepage en Diensten.
 # Uitbreiden: voeg een (naam, icoon-key, beschrijving) tuple toe.
 BRANCHES = [
-    ("Fashion", "hanger", "Kleding- en accessoirewebshops: maattabellen, size-guides en productfoto's die retouren voorkomen."),
-    ("Huisdieren", "paw", "Dierbenodigdheden en -voeding: vertrouwen opbouwen rond kwaliteit en veiligheid van het product."),
-    ("Hobby's", "palette", "Hobby- en vrijetijdswebshops: een groot assortiment overzichtelijk maken voor een snellere keuze."),
-    ("Care products", "heart", "Verzorgings- en gezondheidsproducten: twijfel wegnemen precies op het moment vóór de aankoop."),
+    ("Fashion & accessoires", "hanger", "Maattabellen, size-guides en productfoto's die retouren voorkomen."),
+    ("Huisdieren", "paw", "Vertrouwen opbouwen rond kwaliteit en veiligheid van het product."),
+    ("Hobby's & vrije tijd", "palette", "Een groot assortiment overzichtelijk maken voor een snellere keuze."),
+    ("Care & gezondheid", "heart", "Twijfel wegnemen precies op het moment vóór de aankoop."),
+    ("Wonen & interieur", "home", "Grote aankopen: maat, kleur en bezorging zo helder maken dat bezoekers durven bestellen."),
+    ("Sport & outdoor", "bike", "Specificaties en maatadvies simpel uitleggen, zodat de juiste keuze snel gemaakt is."),
+    ("Eten, drinken & supplementen", "leaf", "Herhaalaankopen en abonnementen stimuleren en vertrouwen opbouwen rond ingrediënten."),
+    ("Sieraden & cadeaus", "gem", "Een emotionele aankoop ondersteunen met vertrouwen, presentatie en een soepele checkout."),
+    ("Doe-het-zelf & techniek", "tool", "Technische producten begrijpelijk maken en bezoekers helpen de juiste variant te kiezen."),
+    ("Baby & kind", "baby", "Ouders snel overtuigen met duidelijke maten, veiligheid en bezorgbeloftes."),
+    ("Elektronica & gadgets", "bolt", "Vergelijkingen en specificaties zo tonen dat bezoekers zonder twijfel afrekenen."),
+    ("En jouw branche?", "cart", "Geen beperking op branche: per aanvraag kijken we of er genoeg verkeer en potentieel is om samen resultaat te halen."),
 ]
 
 
@@ -121,7 +137,7 @@ def build_branches_section(id_attr=' id="branches"'):
         f'<div class="branch" data-reveal style="--d:{i}">{icon(k)}<h3>{name}</h3><p>{desc}</p></div>'
         for i, (name, k, desc) in enumerate(BRANCHES)
     )
-    return f'''<section{id_attr}><h2 data-reveal>Voor welke webshops?</h2><p class="lead" data-reveal>Boldframe werkt uitsluitend voor webwinkels — in uiteenlopende branches, met dezelfde data-gedreven aanpak.</p>
+    return f'''<section{id_attr}><h2 data-reveal>Voor welke webshops?</h2><p class="lead" data-reveal>Boldframe werkt uitsluitend voor webwinkels, in elke branche. De aanpak is overal dezelfde: data, onderzoek en testen. Staat jouw branche er niet bij? Dan bekijken we per aanvraag of het een goede match is.</p>
 <div class="branches">{cards}</div></section>'''
 
 # Case-model
@@ -197,6 +213,7 @@ CASES = {
                  ("Niet elke test wint", "cross", "Over 20 tests, waarvan een deel nog loopt, is de winrate op dit moment 45%; de rest was negatief of onbeslist. Dat is precies waarom we testen: een verliezer gaat niet live, dus de shop wordt niet slechter. Een negatieve uitslag stuurt bovendien de volgende hypothese."),
                  ("Dit is een selectie", "search", "Hier staan vooral de tests met aanzienlijke winst, plus een verliezer als voorbeeld. Het zijn niet alle 20 tests die we hebben gedraaid."),
              ]},
+            {"type": "quote", "h2": "Wat Ecodor zegt", "quote": ("Wij zijn ontzettend tevreden over de samenwerking met Boldframe […]. Vanaf het eerste contact verliep alles soepel en professioneel. […] Hij denkt mee, schakelt snel en weet technische wensen perfect te vertalen naar een gebruiksvriendelijke website.", "Robin Kanters", "Ecodor")},
             {"type": "text", "h2": "Wat het heeft opgeleverd", "paras": [
                 "In een kleine twee jaar staat er een sterke webshop met veel learnings. Ecodor heeft in Nederland online een sterke marktpositie opgebouwd, bedient inkomend verkeer goed en overtuigt bezoekers dat dit het product is dat hen helpt.",
                 "De rode draad in alle tests: gebruiksgemak, en het vertrouwen en de zelfverzekerdheid van de koper vergroten, zodat bestellen sneller en met meer zekerheid gaat. We zijn nooit gestopt met optimaliseren, en ook van tests die geen winnaar waren hebben we geleerd welke richting we op moesten.",
@@ -332,6 +349,13 @@ CLIENT_LOGOS = [
 ]
 
 
+def row_logo(slug):
+    for name, f, w, h, href in CLIENT_LOGOS:
+        if href == f"/cases/{slug}/":
+            return f'<img class="rowlogo" src="/assets/img/logos/{f}" alt="" width="{round(w*.62)}" height="{round(h*.62)}">'
+    return ""
+
+
 def build_logo_wall(h2="Webshops waarvoor we werken"):
     cells = []
     for i, (name, f, w, h, href) in enumerate(CLIENT_LOGOS):
@@ -344,8 +368,17 @@ def build_logo_wall(h2="Webshops waarvoor we werken"):
 GOOGLE_REVIEWS_URL = "https://share.google/dzaxrX2aVZA24SoVb"
 TESTIMONIALS = [
     ("Wij zijn ontzettend tevreden over de samenwerking met Boldframe […]. Vanaf het eerste contact verliep alles soepel en professioneel. […] Hij denkt mee, schakelt snel en weet technische wensen perfect te vertalen naar een gebruiksvriendelijke website.", "Robin Kanters", "Ecodor"),
-    ("Van idee tot een werkende webshop voor onze camping: alles liep soepel. Er is goed meegedacht. Fijn contact en snel schakelen. Zeer tevreden met het eindresultaat.", "Mark", "Camping Jagtveld"),
+    ("Van idee tot een werkende webshop voor onze camping: alles liep soepel. Er is goed meegedacht. Fijn contact en snel schakelen. Zeer tevreden met het eindresultaat.", "Mark Leerdam", "Camping Jagtveld"),
 ]
+
+
+def build_offer(id_attr=' id="scan"'):
+    return f'''<section{id_attr}><h2 data-reveal>Claim jouw gratis website scan</h2><p class="lead" data-reveal>Je krijgt twee dingen die je direct kunt gebruiken, ook als je daarna niet met mij verder wilt.</p>
+<div class="offer">
+<div data-reveal style="--d:0">{icon("search")}<span class="tag">Onderdeel 1</span><h3>Volledige website conversiescan</h3><p>Ik bezoek je webshop en analyseer waar je conversie-lekken zitten. Geen vaag rapport, maar directe actiepunten waar je zelf mee aan de slag kunt.</p></div>
+<div data-reveal style="--d:1">{icon("flask")}<span class="tag">Onderdeel 2</span><h3>Het ‘Van Gokken naar Groeien’ Playbook (PDF)</h3><ul><li>Mijn volledige stappenplan bij de onboarding van nieuwe klanten</li><li>Mijn Figma-template voor funnelbreakdowns</li><li>Een lijst met 20 van mijn favoriete A/B-tests voor shops in jouw branche</li></ul></div>
+</div>
+<p data-reveal><a class="btn" href="#afspraak">Claim jouw gratis website scan</a></p></section>'''
 
 
 def build_testimonials():
@@ -669,14 +702,24 @@ def render_block(b, c):
             for i, (src, alt, cap, w, h) in enumerate(b["items"])
         )
         return f'<section><h2 data-reveal>{b["h2"]}</h2><p class="lead" data-reveal>{b["lead"]}</p><div class="media">{figs}</div></section>'
+    if t == "quote":
+        q, n, r = b["quote"]
+        return f'<section><h2 data-reveal>{b["h2"]}</h2><div class="quotes single"><figure data-reveal><blockquote>{q}</blockquote><figcaption><b>{n}</b>, {r}</figcaption></figure></div></section>'
     if t == "tests":
         return tests_section(c, b["h2"], b["lead"])
     if t == "cta":
         other = ""
         if b.get("other"):
             other = f' <a class="cta-other" href="{b["other"][0]}">{b["other"][1]}</a>'
-        return f'<section><div class="cta-band" data-reveal><h2>{b["h2"]}</h2><p class="lead">{b["lead"]}</p><a class="btn" href="#afspraak">Claim mijn gratis Conversie Audit</a>{other}</div></section>'
+        return f'<section><div class="cta-band" data-reveal><h2>{b["h2"]}</h2><p class="lead">{b["lead"]}</p><a class="btn" href="#afspraak">Claim jouw gratis website scan</a>{other}</div></section>'
     raise ValueError("onbekend blok: " + t)
+
+
+def client_strip(slug, c):
+    for name, f, w, h, href in CLIENT_LOGOS:
+        if href == f"/cases/{slug}/":
+            return f'<section class="client" data-reveal><img src="/assets/img/logos/{f}" alt="{name}" width="{round(w*1.3)}" height="{round(h*1.3)}"><p>Klant van Boldframe &middot; {c["eyebrow"].replace("Case · ", "")}</p></section>'
+    return ""
 
 
 def build_case(slug, c):
@@ -687,6 +730,7 @@ def build_case(slug, c):
         blocks = "\n".join(render_block(b, c) for b in c["blocks"])
         body = f'''<a class="back" href="/cases/">← Alle cases</a>
 <header class="hero" style="padding-top:32px">{HERO_BG}{eyebrow}<h1 class="case">{headline}</h1><p>{c['intro']}</p><img class="chero" src="{c['hero']}" alt="{c['name']} homepage" loading="lazy"></header>
+{client_strip(slug, c)}
 {kpis}
 {blocks}'''
         return page(c["name"], c["sub"], f"/cases/{slug}/", body)
@@ -706,7 +750,7 @@ def build_case(slug, c):
 
 def build_cases_index():
     rows = "".join(
-        f'<li data-reveal style="--d:{i}"><a class="row" href="/cases/{slug}/"><h3>{c["name"]}</h3><span>{c["sub"]}</span></a></li>'
+        f'<li data-reveal style="--d:{i}"><a class="row" href="/cases/{slug}/"><h3>{row_logo(slug)}{c["name"]}</h3><span>{c["sub"]}</span></a></li>'
         for i, (slug, c) in enumerate(CASES.items())
     ) + "".join(
         f'<li data-reveal style="--d:{i+len(CASES)}"><div class="row"><h3>{n}</h3><span>Case volgt</span></div></li>'
@@ -760,7 +804,7 @@ def build_insights_index():
 
 def build_home():
     case_rows = "".join(
-        f'<li data-reveal style="--d:{i}"><a class="row" href="/cases/{slug}/"><h3>{c["name"]}</h3><span>{c["sub"]}</span></a></li>'
+        f'<li data-reveal style="--d:{i}"><a class="row" href="/cases/{slug}/"><h3>{row_logo(slug)}{c["name"]}</h3><span>{c["sub"]}</span></a></li>'
         for i, (slug, c) in enumerate(CASES.items())
     ) + "".join(
         f'<li data-reveal style="--d:{i+len(CASES)}"><div class="row"><h3>{n}</h3><span>Case volgt</span></div></li>'
@@ -770,7 +814,8 @@ def build_home():
         f'<li data-reveal style="--d:{i}"><a class="row" href="/insights/{slug}/"><h3>{INSIGHTS[slug]["title"]}</h3><span>{fmt_date(INSIGHTS[slug]["date"])}</span></a></li>'
         for i, slug in enumerate(INSIGHT_ORDER)
     )
-    body = f'''<header class="hero hero-home">{HERO_ART_BIG}<h1>Van kliks naar klanten.</h1><p>Data-gedreven conversie-optimalisatie met A/B-tests voor webshops die meer omzet willen halen uit bezoekers die ze al hebben.</p><a class="btn" href="#afspraak">Claim mijn gratis Conversie Audit</a></header>
+    body = f'''<header class="hero hero-home">{HERO_ART_BIG}<h1>Van kliks naar klanten.</h1><p>Data-gedreven conversie-optimalisatie met A/B-tests voor webshops die meer omzet willen halen uit bezoekers die ze al hebben.</p><a class="btn" href="#afspraak">Claim jouw gratis website scan</a></header>
+{build_offer()}
 {build_logo_wall()}
 <section><h2 data-reveal>Cases</h2><p class="lead" data-reveal>Open een case om te zien wat we testten, waarom, en wat het opleverde. <a href="/cases/">Alle cases →</a></p><ul class="list">{case_rows}</ul></section>
 {build_testimonials()}
@@ -796,8 +841,9 @@ def build_diensten():
     faq_html = "".join(f"<details><summary>{q}</summary><p>{a}</p></details>" for q, a in DIENSTEN_FAQ)
     body = f'''<header class="hero">{HERO_BG}<h1 class="case">Conversie-optimalisatie, geen giswerk.</h1><p>Je advertenties trekken bezoekers, maar als je landingspagina's en checkout ze niet vasthouden, betaal je voor verkeer dat nooit klant wordt. Wij herstellen die correlatie tussen advertentie en landingspagina met data-gedreven A/B-tests.</p></header>
 <section><h2 data-reveal>Het Webshop Groei-Traject met uplift-garantie</h2><p class="lead" data-reveal>Meer rendement uit de bezoekers die je al hebt. Een hoge klikfrequentie is waardeloos als je checkout de verkoop blokkeert. Daarom nemen wij het risico: halen we binnen zes maanden niet minimaal 10% uplift, dan werken we gratis door totdat we het wel hebben aangetoond. Geen geld-terug-garantie, maar een traject dat doorgaat tot het resultaat er is.</p>
-<div class="facts"><div data-reveal style="--d:0"><h3>Uplift-garantie</h3><p>Minimaal 10% uplift in zes maanden, anders werken we gratis door.</p></div><div data-reveal style="--d:1"><h3>Start</h3><p>Gratis conversie-audit binnen 48 uur.</p></div><div data-reveal style="--d:2"><h3>Capaciteit</h3><p>Maximaal 5 nieuwe shops per maand, voor diepgang per klant.</p></div></div>
-<p><a class="btn" href="#afspraak">Claim mijn gratis Conversie Audit</a></p></section>
+<div class="facts"><div data-reveal style="--d:0"><h3>Uplift-garantie</h3><p>Minimaal 10% uplift in zes maanden, anders werken we gratis door.</p></div><div data-reveal style="--d:1"><h3>Start</h3><p>Gratis website scan binnen 48 uur.</p></div><div data-reveal style="--d:2"><h3>Capaciteit</h3><p>Maximaal 5 nieuwe shops per maand, voor diepgang per klant.</p></div></div>
+<p><a class="btn" href="#afspraak">Claim jouw gratis website scan</a></p></section>
+{build_offer(id_attr="")}
 {build_branches_section(id_attr="")}
 <section><h2 data-reveal>Voor wie dit werkt</h2><p class="lead" data-reveal style="max-width:66ch">Wij werken met een doorlopend testprogramma: geen losse optimalisaties, maar een reeks onderbouwde experimenten die samen een strategie vormen. Dat werkt voor webshops met genoeg verkeer om betrouwbaar te testen, en die bereid zijn te leren van elke uitkomst, ook als een test verliest.</p></section>
 <section><h2 data-reveal>Waar we conversie-lekken vinden</h2><p class="lead" data-reveal>Herkenbaar? Dit zijn de signalen waarmee webshopondernemers meestal bij ons aankloppen.</p>
@@ -830,7 +876,7 @@ def build_werkwijze():
 <section><h2 data-reveal>Hoe we prioriteren</h2><p class="lead" data-reveal>Met meerdere knelpunten tegelijk is de vraag niet wát we testen, maar in welke volgorde. We wegen elke hypothese op drie punten.</p>
 <div class="facts">{priority_html}</div></section>
 <section><h2 data-reveal>Wat je kunt verwachten</h2><p class="lead" data-reveal>Korte lijnen, geen dikke rapporten. Na elke afgeronde test krijg je een update met de uitkomst, de learning, en wat we daarna gaan testen — terug te zien in de testtijdlijn van je eigen <a href="/cases/">case</a>. Blijft de afgesproken uplift uit? Dan werken we gratis door: lees de <a href="/diensten/">uplift-garantie</a>.</p>
-<p><a class="btn" href="#afspraak">Claim mijn gratis Conversie Audit</a></p></section>'''
+<p><a class="btn" href="#afspraak">Claim jouw gratis website scan</a></p></section>'''
     return page(
         "Werkwijze",
         "Hoe een CRO-traject bij Boldframe werkt: audit, hypothese, A/B-test en implementatie, met prioritering op impact, zekerheid en inspanning.",
@@ -849,7 +895,7 @@ def build_over_ons():
 <div class="stats">{stats_html}</div></section>
 <section><div class="about"><img class="about-photo" src="/assets/img/roy.jpg" alt="Roy van Hees, oprichter van Boldframe" width="190" height="190" data-reveal><div><h2 data-reveal>Roy van Hees</h2>
 <p class="lead" data-reveal style="max-width:66ch">Roy werkt al elf jaar in de e-commerce. Hij begon met het bouwen van webshops en richt zich inmiddels volledig op experimenttrajecten en conversie-optimalisatie met A/B-tests.</p>
-<p class="lead" data-reveal style="max-width:66ch">Hij is gek op het uitpluizen van data en op het maken van meetbare impact voor webshops. Door de jaren heen bouwde hij een stevige basis: hij weet wat wel en niet werkt, en kent de aanpassingen die daadwerkelijk de needle verplaatsen.</p>
+<p class="lead" data-reveal style="max-width:66ch">Hij is gek op het uitpluizen van data en op het maken van meetbare impact voor webshops. Door de jaren heen bouwde hij een stevige basis: hij weet wat wel en niet werkt, en weet welke aanpassingen daadwerkelijk bijdragen aan meer omzet en meer winst.</p>
 <p class="lead" data-reveal style="max-width:66ch">Roy is ervan overtuigd dat je met snel testen de concurrentie voorblijft. Zeker nu advertentiekosten stijgen en concurrenten zelf ook slimmer werken, is dat de enige manier.</p>
 <p class="lead" data-reveal style="max-width:66ch">Roy is 28 en woont met zijn vrouw en twee zoontjes in Maassluis. <a href="mailto:roy@boldframe.nl">roy@boldframe.nl</a></p></div></div></section>
 {build_testimonials()}
