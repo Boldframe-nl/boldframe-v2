@@ -199,6 +199,7 @@ CASES = {
                  ("Prioriteren", "bulb", "Uit het onderzoek volgden twee lijsten: een optimalisatiebacklog met ‘just do it’-aanpassingen, waarvan een test waarschijnlijk geen significant verschil zou tonen, en een testbacklog voor wijzigingen met hoog risico en grote impact. De volgorde bepaalden we samen met Ecodor, op basis van hoeveel een test raakt, de geschatte omzet en het gemak van implementatie.", "Uitkomst: een geprioriteerde backlog, afgestemd op de strategie van Ecodor."),
                  ("Testen", "flask", "We starten altijd meerdere tests met hoge impact tegelijk. In de beginjaren was er niet genoeg verkeer om kleine aanpassingen te testen; die voerden we deels direct door op basis van het onderzoek. Wat riskant en impactvol was, testten we altijd eerst.", "Uitkomst: een doorlopend programma, met de testtijdlijn hieronder."),
              ]},
+            {"type": "quote", "h2": "Wat Ecodor zegt", "quote": ("Wij zijn ontzettend tevreden over de samenwerking met Boldframe […]. Vanaf het eerste contact verliep alles soepel en professioneel. […] Hij denkt mee, schakelt snel en weet technische wensen perfect te vertalen naar een gebruiksvriendelijke website.", "Robin Kanters", "Ecodor")},
             {"type": "table", "h2": "Van bevinding naar test", "lead": "Elke test begon met een observatie uit het onderzoek.",
              "head": ["Bevinding", "Test"],
              "rows": [
@@ -213,7 +214,6 @@ CASES = {
                  ("Niet elke test wint", "cross", "Over 20 tests, waarvan een deel nog loopt, is de winrate op dit moment 45%; de rest was negatief of onbeslist. Dat is precies waarom we testen: een verliezer gaat niet live, dus de shop wordt niet slechter. Een negatieve uitslag stuurt bovendien de volgende hypothese."),
                  ("Dit is een selectie", "search", "Hier staan vooral de tests met aanzienlijke winst, plus een verliezer als voorbeeld. Het zijn niet alle 20 tests die we hebben gedraaid."),
              ]},
-            {"type": "quote", "h2": "Wat Ecodor zegt", "quote": ("Wij zijn ontzettend tevreden over de samenwerking met Boldframe […]. Vanaf het eerste contact verliep alles soepel en professioneel. […] Hij denkt mee, schakelt snel en weet technische wensen perfect te vertalen naar een gebruiksvriendelijke website.", "Robin Kanters", "Ecodor")},
             {"type": "text", "h2": "Wat het heeft opgeleverd", "paras": [
                 "In een kleine twee jaar staat er een sterke webshop met veel learnings. Ecodor heeft in Nederland online een sterke marktpositie opgebouwd, bedient inkomend verkeer goed en overtuigt bezoekers dat dit het product is dat hen helpt.",
                 "De rode draad in alle tests: gebruiksgemak, en het vertrouwen en de zelfverzekerdheid van de koper vergroten, zodat bestellen sneller en met meer zekerheid gaat. We zijn nooit gestopt met optimaliseren, en ook van tests die geen winnaar waren hebben we geleerd welke richting we op moesten.",
@@ -375,10 +375,9 @@ TESTIMONIALS = [
 def build_offer(id_attr=' id="scan"'):
     return f'''<section{id_attr}><h2 data-reveal>Claim jouw gratis website scan</h2><p class="lead" data-reveal>Je krijgt twee dingen die je direct kunt gebruiken, ook als je daarna niet met mij verder wilt.</p>
 <div class="offer">
-<div data-reveal style="--d:0">{icon("search")}<span class="tag">Onderdeel 1</span><h3>Volledige website conversiescan</h3><p>Ik bezoek je webshop en analyseer waar je conversie-lekken zitten. Geen vaag rapport, maar directe actiepunten waar je zelf mee aan de slag kunt.</p></div>
-<div data-reveal style="--d:1">{icon("flask")}<span class="tag">Onderdeel 2</span><h3>Het ‘Van Gokken naar Groeien’ Playbook (PDF)</h3><ul><li>Mijn volledige stappenplan bij de onboarding van nieuwe klanten</li><li>Mijn Figma-template voor funnelbreakdowns</li><li>Een lijst met 20 van mijn favoriete A/B-tests voor shops in jouw branche</li></ul></div>
-</div>
-<p data-reveal><a class="btn" href="#afspraak">Claim jouw gratis website scan</a></p></section>'''
+<div data-reveal style="--d:0"><span class="tag">Onderdeel 1</span><h3>Volledige website conversiescan</h3><p>Ik bezoek je webshop en analyseer waar je conversie-lekken zitten. Geen vaag rapport, maar directe actiepunten waar je zelf mee aan de slag kunt.</p></div>
+<div data-reveal style="--d:1"><span class="tag">Onderdeel 2</span><h3>Het ‘Van Gokken naar Groeien’ Playbook (PDF)</h3><ul><li>Mijn volledige stappenplan bij de onboarding van nieuwe klanten</li><li>Mijn Figma-template voor funnelbreakdowns</li><li>Een lijst met 20 van mijn favoriete A/B-tests voor shops in jouw branche</li></ul></div>
+</div></section>'''
 
 
 def build_testimonials():
@@ -564,6 +563,7 @@ def page(title, description, path, body, extra_head=""):
 <h3 class="cal-h">Of plan een gesprek van 30 minuten</h3>
 <iframe src="https://calendly.com/roy-tc8/30min?embed_domain=boldframe.nl&amp;embed_type=Inline" frameborder="0" title="Selecteer een datum en tijd - Calendly"></iframe>
 <p>Zie je de agenda niet? <a href="https://calendly.com/roy-tc8/30min" target="_blank" rel="noopener">Open hem in een nieuw tabblad</a>.</p></section>
+{build_offer()}
 <footer id="contact"><div class="wrap">
 <img class="flogo" src="/assets/img/logo-white.png" alt="Boldframe">
 <div class="fgrid">
@@ -750,7 +750,7 @@ def build_case(slug, c):
 
 def build_cases_index():
     rows = "".join(
-        f'<li data-reveal style="--d:{i}"><a class="row" href="/cases/{slug}/"><h3>{row_logo(slug)}{c["name"]}</h3><span>{c["sub"]}</span></a></li>'
+        f'<li data-reveal style="--d:{i}"><a class="row" href="/cases/{slug}/"><h3>{c["name"]}</h3><span>{c["sub"]}</span></a></li>'
         for i, (slug, c) in enumerate(CASES.items())
     ) + "".join(
         f'<li data-reveal style="--d:{i+len(CASES)}"><div class="row"><h3>{n}</h3><span>Case volgt</span></div></li>'
@@ -804,7 +804,7 @@ def build_insights_index():
 
 def build_home():
     case_rows = "".join(
-        f'<li data-reveal style="--d:{i}"><a class="row" href="/cases/{slug}/"><h3>{row_logo(slug)}{c["name"]}</h3><span>{c["sub"]}</span></a></li>'
+        f'<li data-reveal style="--d:{i}"><a class="row" href="/cases/{slug}/"><h3>{c["name"]}</h3><span>{c["sub"]}</span></a></li>'
         for i, (slug, c) in enumerate(CASES.items())
     ) + "".join(
         f'<li data-reveal style="--d:{i+len(CASES)}"><div class="row"><h3>{n}</h3><span>Case volgt</span></div></li>'
@@ -815,7 +815,6 @@ def build_home():
         for i, slug in enumerate(INSIGHT_ORDER)
     )
     body = f'''<header class="hero hero-home">{HERO_ART_BIG}<h1>Van kliks naar klanten.</h1><p>Data-gedreven conversie-optimalisatie met A/B-tests voor webshops die meer omzet willen halen uit bezoekers die ze al hebben.</p><a class="btn" href="#afspraak">Claim jouw gratis website scan</a></header>
-{build_offer()}
 {build_logo_wall()}
 <section><h2 data-reveal>Cases</h2><p class="lead" data-reveal>Open een case om te zien wat we testten, waarom, en wat het opleverde. <a href="/cases/">Alle cases →</a></p><ul class="list">{case_rows}</ul></section>
 {build_testimonials()}
@@ -843,7 +842,6 @@ def build_diensten():
 <section><h2 data-reveal>Het Webshop Groei-Traject met uplift-garantie</h2><p class="lead" data-reveal>Meer rendement uit de bezoekers die je al hebt. Een hoge klikfrequentie is waardeloos als je checkout de verkoop blokkeert. Daarom nemen wij het risico: halen we binnen zes maanden niet minimaal 10% uplift, dan werken we gratis door totdat we het wel hebben aangetoond. Geen geld-terug-garantie, maar een traject dat doorgaat tot het resultaat er is.</p>
 <div class="facts"><div data-reveal style="--d:0"><h3>Uplift-garantie</h3><p>Minimaal 10% uplift in zes maanden, anders werken we gratis door.</p></div><div data-reveal style="--d:1"><h3>Start</h3><p>Gratis website scan binnen 48 uur.</p></div><div data-reveal style="--d:2"><h3>Capaciteit</h3><p>Maximaal 5 nieuwe shops per maand, voor diepgang per klant.</p></div></div>
 <p><a class="btn" href="#afspraak">Claim jouw gratis website scan</a></p></section>
-{build_offer(id_attr="")}
 {build_branches_section(id_attr="")}
 <section><h2 data-reveal>Voor wie dit werkt</h2><p class="lead" data-reveal style="max-width:66ch">Wij werken met een doorlopend testprogramma: geen losse optimalisaties, maar een reeks onderbouwde experimenten die samen een strategie vormen. Dat werkt voor webshops met genoeg verkeer om betrouwbaar te testen, en die bereid zijn te leren van elke uitkomst, ook als een test verliest.</p></section>
 <section><h2 data-reveal>Waar we conversie-lekken vinden</h2><p class="lead" data-reveal>Herkenbaar? Dit zijn de signalen waarmee webshopondernemers meestal bij ons aankloppen.</p>
