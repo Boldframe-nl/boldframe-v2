@@ -744,7 +744,8 @@ def build_insight(slug, x):
     body = f'''<a class="back" href="/insights/">← Alle insights</a>
 <header class="hero" style="padding-top:32px;padding-bottom:24px">{HERO_BG}<span class="meta">{fmt_date(x['date'])}</span><h1 class="case">{x['title']}</h1><p>{x['dek']}</p></header>
 <section class="art">{"".join((f"<h2>{p[3:]}</h2>" if p.startswith("## ") else f"<p>{p}</p>") for p in x['body'])}{steps_html}{tool_html}</section>'''
-    return page(x["title"], x["dek"], f"/insights/{slug}/", body)
+    desc = x["dek"] if len(x["dek"]) <= 160 else x["dek"][:157].rsplit(" ", 1)[0] + "…"
+    return page(x["title"], desc, f"/insights/{slug}/", body)
 
 
 def build_insights_index():
