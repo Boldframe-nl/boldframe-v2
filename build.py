@@ -270,15 +270,15 @@ CASES = {
     },
     "bidet": {
         "name": "Bidet.nl",
-        "sub": "Van €48k naar een verwachte €450k omzet in vier jaar",
+        "sub": "Van €48k naar een verwachte €500k+ omzet in vier jaar",
         "eyebrow": "Case · Douche-wc's · WooCommerce",
-        "headline": "Van €48k naar bijna €450k omzet in vier jaar.",
+        "headline": "Van €48k naar een verwachte €500k+ omzet in vier jaar.",
         "intro": "Bidet.nl verkoopt en installeert douche-wc's, en verkoopt online veel douche-wc-producten, op wens inclusief installatie. Boldframe bouwde de hele webshop en verbetert hem sinds 2022 doorlopend op basis van onderzoek naar reviews, chatberichten en data. De omzet groeide van €47.625 in 2022 naar €368.518 in 2025, en staat in 2026 na negen maanden al op €399.240.",
         "hero": "/assets/img/cases/bidet-hero.jpg",
         "facts": [],
         "stats": [
             {"count": 399240, "prefix": "€", "label": "omzet in 2026 t/m 7 oktober, incl. btw"},
-            {"count": 450, "prefix": "≈ €", "suffix": "k", "label": "verwachte omzet voor heel 2026"},
+            {"count": 500, "prefix": "€", "suffix": "k+", "label": "verwachte omzet voor heel 2026"},
             {"text": "7,7×", "label": "omzet in 2025 ten opzichte van 2022 (gerealiseerd)"},
         ],
         "blocks": [
@@ -294,7 +294,7 @@ CASES = {
                  ("2024", 188124.08, "€188.124", "act"),
                  ("2025", 368517.51, "€368.518", "act"),
                  ("2026 t/m 7 oktober", 399240.41, "€399.240", "act"),
-                 ("2026 verwachting", 450000, "≈ €450.000", "est"),
+                 ("2026 verwachting", 500000, "€500.000+", "est"),
              ],
              "note": "Volle balk: gerealiseerde omzet. Gearceerde balk: verwachting. Het gaat om de totale verkopen volgens de webshopstatistieken, inclusief btw en verzendkosten, over een kalenderjaar (1 januari tot en met 31 december). De verwachting voor 2026 is een inschatting op basis van de omzet tot en met 7 oktober en het najaar."},
             {"type": "cards", "h2": "Waar de groei vandaan komt", "lead": "De omzet is niet alleen het resultaat van optimalisatie. Dit zijn de factoren die samen meespelen.",
@@ -352,7 +352,7 @@ CASES = {
                  ("/assets/img/cases/bidet-mobiel-2026.jpg", "Bidet.nl op mobiel in 2026", "Na (2026): zoekbalk direct onder de header, beoordeling bovenaan", 657, 1400),
              ]},
             {"type": "text", "h2": "Wat het heeft opgeleverd", "paras": [
-                "De omzet groeide van €47.625 in 2022 naar €368.518 in 2025, ruim 7,7 keer zoveel. In 2026 staat de webshop na negen maanden op €399.240, en de verwachting voor het hele jaar is circa €450.000.",
+                "De omzet groeide van €47.625 in 2022 naar €368.518 in 2025, ruim 7,7 keer zoveel. In 2026 staat de webshop na negen maanden op €399.240, en de verwachting voor het hele jaar is meer dan €500.000.",
                 "Een deel van die groei is gedreven door de markt en het uitgebreidere assortiment. Wat de shop zelf doet is dat bezoekers sneller antwoord vinden op hun vragen over installatie, techniek en keuze, en daardoor vaker bestellen.",
             ]},
             {"type": "cta", "h2": "Benieuwd wat dit voor jouw webshop kan betekenen?", "lead": "Plan een gesprek van 30 minuten, dan laten we zien waar jouw conversie-lekken zitten.", "other": ("/cases/ecodor/", "Bekijk ook de case van Ecodor →")},
