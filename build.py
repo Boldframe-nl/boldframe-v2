@@ -268,6 +268,96 @@ CASES = {
             },
         ],
     },
+    "bidet": {
+        "name": "Bidet.nl",
+        "sub": "Van €48k naar een verwachte €450k omzet in vier jaar",
+        "eyebrow": "Case · Douche-wc's · WooCommerce",
+        "headline": "Van €48k naar bijna €450k omzet in vier jaar.",
+        "intro": "Bidet.nl verkoopt en installeert douche-wc's, en verkoopt online veel douche-wc-producten, op wens inclusief installatie. Boldframe bouwde de hele webshop en verbetert hem sinds 2022 doorlopend op basis van onderzoek naar reviews, chatberichten en data. De omzet groeide van €47.625 in 2022 naar €368.518 in 2025, en staat in 2026 na negen maanden al op €399.240.",
+        "hero": "/assets/img/cases/bidet-hero.jpg",
+        "facts": [],
+        "stats": [
+            {"count": 399240, "prefix": "€", "label": "omzet in 2026 t/m 7 oktober, incl. btw"},
+            {"count": 450, "prefix": "≈ €", "suffix": "k", "label": "verwachte omzet voor heel 2026"},
+            {"text": "7,7×", "label": "omzet in 2025 ten opzichte van 2022 (gerealiseerd)"},
+        ],
+        "blocks": [
+            {"type": "text", "h2": "Het uitgangspunt", "paras": [
+                "Bidet.nl is verkoper en installateur van douche-wc's, met een eigen showroom in Nieuwerkerk aan den IJssel en een eigen installatieteam. De webshop moest meer doen dan producten tonen: een douche-wc is een aankoop waar klanten over twijfelen, omdat het om water, stroom en installatie gaat.",
+                "Boldframe bouwde de volledige webshop en blijft hem sinds 2022 verbeteren. Dit is een andere case dan die van Ecodor: er zijn geen A/B-tests uitgevoerd, omdat het verkeer daarvoor te beperkt was. In plaats daarvan baseerden we elke aanpassing op onderzoek, data en best practices. Het bewijs is dan ook niet een testuitslag, maar de verandering van de shop en de omzet over de jaren heen.",
+            ]},
+            {"type": "bars", "h2": "Omzetgroei van de webshop",
+             "lead": "Elk jaar meer omzet dan het jaar ervoor, en 2026 ligt na negen maanden al boven het volledige jaar 2025.",
+             "rows": [
+                 ("2022", 47625.25, "€47.625", "act"),
+                 ("2023", 143877.44, "€143.877", "act"),
+                 ("2024", 188124.08, "€188.124", "act"),
+                 ("2025", 368517.51, "€368.518", "act"),
+                 ("2026 t/m 7 oktober", 399240.41, "€399.240", "act"),
+                 ("2026 verwachting", 450000, "≈ €450.000", "est"),
+             ],
+             "note": "Volle balk: gerealiseerde omzet. Gearceerde balk: verwachting. Het gaat om de totale verkopen volgens de webshopstatistieken, inclusief btw en verzendkosten, over een kalenderjaar (1 januari tot en met 31 december). De verwachting voor 2026 is een inschatting op basis van de omzet tot en met 7 oktober en het najaar."},
+            {"type": "cards", "h2": "Waar de groei vandaan komt", "lead": "De omzet is niet alleen het resultaat van optimalisatie. Dit zijn de factoren die samen meespelen.",
+             "items": [
+                 ("Een groeiende markt", "target", "Douche-wc's zijn in korte tijd een veel bekender product geworden. Die interesse in de markt zorgt voor meer zoekers en dus meer bezoekers."),
+                 ("Een uitgebreider assortiment", "check", "Bidet.nl heeft de afgelopen jaren nieuwe modellen toegevoegd, waardoor er meer klanten met een passende keuze te bedienen zijn."),
+                 ("Een sterkere webshop", "bulb", "Elke aanpassing hieronder komt voort uit onderzoek naar wat klanten twijfelen en zoeken. Zo zetten we het extra verkeer vaker om in bestellingen."),
+                 ("Geen A/B-tests, wel onderzoek", "search", "Het verkeer was te laag om te testen. We kozen daarom bewust voor aanpassingen op basis van onderzoek, data en best practices, en volgden de omzet over de jaren heen."),
+             ]},
+            {"type": "cards", "h2": "Wat het onderzoek liet zien", "lead": "Bij de start, en gedurende het project, onderzochten we reviews, chatberichten en data.",
+             "items": [
+                 ("Vragen over installatie", "phone", "Klanten stelden veel vragen over installatie en productadvies. Stroom, water en technische specificaties kwamen steeds terug en zorgden voor twijfel."),
+                 ("Onzekerheid over techniek", "shield", "Het was niet altijd duidelijk wat nodig is om een douche-wc aan te sluiten, zoals de afstand tot het stopcontact of de wateraansluiting. Veel klanten willen de installatie liever uit handen geven en zeker weten dat het goed gebeurt."),
+                 ("Lastig kiezen en vergelijken", "search", "Klanten vonden het moeilijk om een model te kiezen en de functies van de modellen met elkaar te vergelijken."),
+                 ("Behoefte aan persoonlijk advies", "target", "Klanten willen een adviseur die vertelt welk model past bij hun wensen, hoe de installatie eruit komt te zien en hoe het in zijn werk gaat. Een bezoek aan de showroom neemt die twijfel weg."),
+             ]},
+            {"type": "table", "h2": "Van inzicht naar aanpassing", "lead": "Elke grote wijziging begon met een bevinding uit het onderzoek.",
+             "head": ["Bevinding", "Aanpassing"],
+             "rows": [
+                 ["Klanten twijfelen over installatie, stroom en water, en willen de installatie liever uit handen geven.", "Installatie-opties met prijs direct bij het product, een duidelijke levertijd en installatietijd, en een trustbox met showroom, installatieteam en garantie onder de knop."],
+                 ["Klanten vinden het moeilijk om een model te kiezen en te vergelijken.", "Filters op merk, afstandsbediening, föhn, type, verwarmde zitting, stroomvoorziening en douchekop, een keuzehulp en standaard sorteren op populariteit."],
+                 ["Klanten willen persoonlijk advies en de producten kunnen beleven.", "De showroom en het installatieteam prominent op de homepage, en de keuzehulp ook op de homepage aangeboden."],
+                 ["De interne zoekfunctie wordt veel gebruikt.", "De zoekbalk op mobiel direct onder de header, en veel tijd besteed aan zoekresultaten die aansluiten bij wat klanten zoeken."],
+                 ["Klanten verdwalen in vakjargon van merken en categorieën.", "Een menu dat producten direct toont en is ingedeeld op toepassing en functie."],
+                 ["De belangrijkste informatie stond ver onder in de productpagina.", "Infographics bij het product, een grotere afbeelding op desktop, de beoordeling bovenaan op mobiel en de afmetingen van de zitting."],
+             ]},
+            {"type": "media", "h2": "De productpagina",
+             "lead": "De pagina begint nu met wat klanten willen weten: beoordelingen, levertijd, installatie-opties en afmetingen. Onder de knop staat een trustbox met de showroom, het installatieteam en de garantie.",
+             "items": [
+                 ("/assets/img/cases/bidet-product-2022.jpg", "Bidet.nl productpagina in 2022", "Voor (2022): beschrijving en optie-keuze, weinig installatie-informatie", 1400, 1219),
+                 ("/assets/img/cases/bidet-product-2026.jpg", "Bidet.nl productpagina in 2026", "Na (2026): beoordelingen, levertijd, installatie-opties en trustbox", 1400, 1111),
+             ]},
+            {"type": "media", "h2": "De categoriepagina",
+             "lead": "Meer filters, een keuzehulp en sortering op populariteit helpen klanten sneller bij het product dat bij hen past.",
+             "items": [
+                 ("/assets/img/cases/bidet-categorie-2022.jpg", "Bidet.nl categoriepagina in 2022", "Voor (2022): beperkte filters", 1400, 1389),
+                 ("/assets/img/cases/bidet-categorie-2026.jpg", "Bidet.nl categoriepagina in 2026", "Na (2026): meer filters, keuzehulp en sortering op populariteit", 1400, 1167),
+             ]},
+            {"type": "media", "h2": "De homepage",
+             "lead": "De homepage laat nu zien dat Bidet.nl meer is dan een dozenschuiver: met een eigen installatieteam, een showroom en een keuzehulp.",
+             "items": [
+                 ("/assets/img/cases/bidet-home-2022.jpg", "Bidet.nl homepage in 2022", "Voor (2022): vooral producten en aanbiedingen", 1400, 1282),
+                 ("/assets/img/cases/bidet-home-2026.jpg", "Bidet.nl homepage in 2026", "Na (2026): installatieteam, showroom en keuzehulp", 1400, 1158),
+             ]},
+            {"type": "media", "h2": "Het menu",
+             "lead": "Het menu toont nu producten in plaats van alleen merken en categorieën. Klanten zien direct welk model bij hen past, zonder vakjargon.",
+             "items": [
+                 ("/assets/img/cases/bidet-menu-2022.jpg", "Bidet.nl menu in 2022", "Voor (2022): lijsten met merken en categorieën", 1400, 874),
+                 ("/assets/img/cases/bidet-menu-2026.jpg", "Bidet.nl menu in 2026", "Na (2026): producten met afbeeldingen, op toepassing ingedeeld", 1400, 844),
+             ]},
+            {"type": "media", "h2": "Op mobiel", "cls": "phones",
+             "lead": "De zoekbalk staat direct onder de header, omdat uit de data bleek dat die veel gebruikt wordt. Op de productpagina staat de klantbeoordeling bovenaan, en de bestaande content is naar beneden verschoven, met infographics om snel doorheen te klikken.",
+             "items": [
+                 ("/assets/img/cases/bidet-mobiel-2022.jpg", "Bidet.nl op mobiel in 2022", "Voor (2022): geen zoekbalk in beeld", 702, 1400),
+                 ("/assets/img/cases/bidet-mobiel-2026.jpg", "Bidet.nl op mobiel in 2026", "Na (2026): zoekbalk direct onder de header, beoordeling bovenaan", 657, 1400),
+             ]},
+            {"type": "text", "h2": "Wat het heeft opgeleverd", "paras": [
+                "De omzet groeide van €47.625 in 2022 naar €368.518 in 2025, ruim 7,7 keer zoveel. In 2026 staat de webshop na negen maanden op €399.240, en de verwachting voor het hele jaar is circa €450.000.",
+                "Een deel van die groei is gedreven door de markt en het uitgebreidere assortiment. Wat de shop zelf doet is dat bezoekers sneller antwoord vinden op hun vragen over installatie, techniek en keuze, en daardoor vaker bestellen.",
+            ]},
+            {"type": "cta", "h2": "Benieuwd wat dit voor jouw webshop kan betekenen?", "lead": "Plan een gesprek van 30 minuten, dan laten we zien waar jouw conversie-lekken zitten.", "other": ("/cases/ecodor/", "Bekijk ook de case van Ecodor →")},
+        ],
+    },
     "schuurman": {
         "name": "Schuurman Dier & Hengelsport",
         "sub": "Lopend testtraject in dierenvoeding & hengelsport",
@@ -339,7 +429,7 @@ CLIENT_LOGOS = [
     ("Schuurman Dier & Hengelsport", "schuurman.png", 120, 28, "/cases/schuurman/"),
     ("Ecodor", "ecodor.png", 68, 50, "/cases/ecodor/"),
     ("Hulpmiddelenspecialist.nl", "hulpmiddelenspecialist.png", 91, 37, None),
-    ("Bidet.nl", "bidet.png", 111, 30, None),
+    ("Bidet.nl", "bidet.png", 111, 30, "/cases/bidet/"),
     ("Drempelhulp", "drempelhulp.png", 150, 22, None),
     ("Home Care Innovation", "home-care-innovation.png", 98, 35, None),
     ("Pro-Darts.be", "pro-darts.png", 129, 26, None),
@@ -701,7 +791,7 @@ def render_block(b, c):
             f'<figure data-reveal style="--d:{i}"><img src="{src}" alt="{alt}" width="{w}" height="{h}" loading="lazy"><figcaption>{cap}</figcaption></figure>'
             for i, (src, alt, cap, w, h) in enumerate(b["items"])
         )
-        return f'<section><h2 data-reveal>{b["h2"]}</h2><p class="lead" data-reveal>{b["lead"]}</p><div class="media">{figs}</div></section>'
+        return f'<section><h2 data-reveal>{b["h2"]}</h2><p class="lead" data-reveal>{b["lead"]}</p><div class="media {b.get("cls", "")}">{figs}</div></section>'
     if t == "quote":
         q, n, r = b["quote"]
         return f'<section><h2 data-reveal>{b["h2"]}</h2><div class="quotes single"><figure data-reveal><blockquote>{q}</blockquote><figcaption><b>{n}</b>, {r}</figcaption></figure></div></section>'

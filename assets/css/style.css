@@ -347,3 +347,5 @@ footer .btn{background:var(--onblue);color:var(--blue)}
 .hero-art{transform:translateZ(0);backface-visibility:hidden}
 .hero-art .rg{will-change:transform}
 @media (hover:none){.hero-home .btn::after{animation:none!important}}
+
+.media.phones{grid-template-columns:repeat(2,minmax(0,300px));justify-content:start}
