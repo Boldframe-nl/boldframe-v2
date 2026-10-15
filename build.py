@@ -222,10 +222,10 @@ CASES = {
         ],
         "tests": [
             {
-                "id": "e6", "status": "w", "duration": "",
+                "id": "e6", "started": "2026-09-24", "status": "w", "duration": "",
                 "title": "Degradatie van het verkooppunt",
                 "hyp": "Door de “Vind een verkooppunt”-knop te degraderen tot een onopvallend grijs linkje blijven klanten in de verkoopfunnel en hoeft de add-to-cart-knop de aandacht van de bezoeker niet te delen. Daardoor kopen meer mensen online.",
-                "metrics": [("+11,05%", "Conversie", ""), ("+6,34%", "Omzet per bezoeker", ""), ("-4,56%", "Orderwaarde", ""), ("14,73% → 18,81%", "Add-to-cart ratio (Clarity)", "")],
+                "metrics": [("+11,05%", "Conversie", ""), ("+5,11%", "Omzet per bezoeker", ""), ("-4,56%", "Orderwaarde", ""), ("14,73% → 18,81%", "Add-to-cart ratio (Clarity)", "")],
                 "note": "De klikken op het verkooppunt daalden van 3,59% naar 1,19%, dus ruim 2% van de bezoekers werd een andere kant op gestuurd, naar de gewenste actie. De test is gemeten op basis van 333 conversies. Op mobiel is de kans dat de variant beter presteert dan het origineel 84,1%. Dat is onder de gebruikelijke 90 tot 95%, maar het gedrag in Clarity wijst dezelfde kant op.",
                 "learn": "Een onopvallender verkooppunt houdt bezoekers in de verkoopfunnel. De orderwaarde zakte iets, maar het hogere aantal bestellingen compenseert dat ruim, en de omzet per bezoeker steeg.",
                 "img": "/assets/img/tests/e6.jpg", "alt": "Ecodor productpagina voor en na: Vind een verkooppunt-knop als grijs linkje",
@@ -378,7 +378,8 @@ CASES = {
         "facts": [],
         "stats": [
             {"text": "0,57%", "label": "conversie in de 30 dagen vóór de aanpassingen"},
-            {"text": "0,87%", "label": "conversie in de 30 dagen vóór de themawissel (+53%)"},
+            {"text": "0,87%", "label": "conversie in de 30 dagen vóór de themawissel"},
+            {"text": "+52,6%", "label": "relatieve groei van de conversie"},
         ],
         "blocks": [
             {"type": "text", "h2": "Het uitgangspunt", "paras": [
@@ -491,7 +492,7 @@ CASES = {
         ],
         "tests": [
             {
-                "id": "s5", "status": "l", "duration": "",
+                "id": "s5", "started": "2026-10-14", "status": "l", "duration": "",
                 "title": "Compacte trust-sectie onder de add-to-cart",
                 "observation": "70% van de productpagina-bezoekers voegt geen product toe aan de winkelwagen. Een deel twijfelt waarschijnlijk niet aan het product, maar aan de winkel: is deze shop betrouwbaar, en waarom hier bestellen en niet bij een grotere speler? Op de productpagina stond geen social proof, wel een lange lijst met acht losse USP's in dezelfde vorm, waardoor de belangrijkste punten niet opvielen. Ondertussen blijven er sterke trustsignalen onbenut: 235+ beoordelingen met gemiddeld 4,85/5, en een fysieke winkel met een vaste specialist.",
                 "principle": "Vertrouwen en sociale bewijskracht: wie ziet dat anderen tevreden zijn en dat er een echt persoon achter de winkel staat, twijfelt minder.",
