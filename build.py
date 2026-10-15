@@ -222,6 +222,16 @@ CASES = {
         ],
         "tests": [
             {
+                "id": "e6", "status": "w", "duration": "",
+                "title": "Degradatie van het verkooppunt",
+                "hyp": "Door de “Vind een verkooppunt”-knop te degraderen tot een onopvallend grijs linkje blijven klanten in de verkoopfunnel en hoeft de add-to-cart-knop de aandacht van de bezoeker niet te delen. Daardoor kopen meer mensen online.",
+                "metrics": [("+11,05%", "Conversie", ""), ("+6,34%", "Omzet per bezoeker", ""), ("-4,56%", "Orderwaarde", ""), ("14,73% → 18,81%", "Add-to-cart ratio (Clarity)", "")],
+                "note": "De klikken op het verkooppunt daalden van 3,59% naar 1,19%, dus ruim 2% van de bezoekers werd een andere kant op gestuurd, naar de gewenste actie. De test is gemeten op basis van 333 conversies. Op mobiel is de kans dat de variant beter presteert dan het origineel 84,1%. Dat is onder de gebruikelijke 90 tot 95%, maar het gedrag in Clarity wijst dezelfde kant op.",
+                "learn": "Een onopvallender verkooppunt houdt bezoekers in de verkoopfunnel. De orderwaarde zakte iets, maar het hogere aantal bestellingen compenseert dat ruim, en de omzet per bezoeker steeg.",
+                "img": "/assets/img/tests/e6.jpg", "alt": "Ecodor productpagina voor en na: Vind een verkooppunt-knop als grijs linkje",
+                "pinned": False,
+            },
+            {
                 "id": "e5", "started": "2026-09-04", "status": "w", "duration": "",
                 "title": "Toepassingsgebied bij de productomschrijving",
                 "observation": "Interne zoekopdrachten, Google Ads en Search Console lieten zien dat ‘enzymatische reiniger’ een sleutelterm is, en AI-chatbots adviseren dit type product vaak als oplossing voor kattengeur. Ook kregen we inzicht in de uiteenlopende toepassingen van de producten.",
@@ -369,7 +379,6 @@ CASES = {
         "stats": [
             {"text": "0,57%", "label": "conversie in de 30 dagen vóór de aanpassingen"},
             {"text": "0,87%", "label": "conversie in de 30 dagen vóór de themawissel (+53%)"},
-            {"text": "12 okt", "label": "nieuw thema live, verdere groei verwacht"},
         ],
         "blocks": [
             {"type": "text", "h2": "Het uitgangspunt", "paras": [
@@ -446,11 +455,11 @@ CASES = {
         "sub": "Lopend testtraject in dierenvoeding & hengelsport",
         "headline": "Testen waar de omzet echt vandaan komt.",
         "eyebrow": "Lopend testtraject",
-        "intro": "Schuurman Dier & Hengelsport heeft een enorm assortiment, en het grootste deel van de omzet komt uit dierenvoeding. Samen bouwen we een testprogramma op dat daarop is afgestemd. De eerste test is afgerond, de tweede loopt op dit moment.",
+        "intro": "Schuurman Dier & Hengelsport heeft een enorm assortiment, en het grootste deel van de omzet komt uit dierenvoeding. Samen bouwen we een testprogramma op dat daarop is afgestemd. Twee tests zijn afgerond, de derde loopt op dit moment.",
         "hero": "/assets/img/cases/schuurman-hero.jpg",
         "stats": [
-            {"count": 2, "label": "tests: één afgerond, één loopt nog"},
-            {"count": 3, "label": "niveaus in het nieuwe menu"},
+            {"count": 3, "label": "tests: twee afgerond, één loopt nog"},
+            {"text": "+29,5%", "label": "conversie met de sticky add-to-cart-balk (+41% op mobiel)"},
             {"count": 50, "suffix": "%", "label": "van de productpagina-bezoekers scrolt langs de add-to-cart-knop"},
             {"count": 70, "suffix": "%", "label": "van de productpagina-bezoekers voegt uiteindelijk niets toe aan de winkelwagen"},
         ],
@@ -476,18 +485,31 @@ CASES = {
              ]},
             {"type": "tests", "h2": "Testtijdlijn", "lead": "Elke test met hypothese en uitkomst, ook als er geen significant verschil uit komt. Zodra de lopende test is afgerond, voegen we het resultaat hier toe."},
             {"type": "text", "h2": "Waar Schuurman nu staat", "paras": [
-                "Schuurman staat aan het begin van een testtraject. We tonen daarom geen omzetcijfers of groei: die kunnen we pas eerlijk benoemen na meerdere afgeronde winnende tests. Deze pagina wordt aangevuld zodra de resultaten binnen zijn.",
+                "Schuurman staat nog aan het begin van een testtraject. De eerste winnaar is de sticky add-to-cart-balk, die op mobiel de conversie met 41% liet stijgen. We tonen nog geen omzetcijfers of groei van de webshop als geheel: die kunnen we pas eerlijk benoemen na meerdere afgeronde winnende tests. Deze pagina wordt aangevuld zodra de resultaten van de lopende test binnen zijn.",
             ]},
             {"type": "cta", "h2": "Benieuwd wat een testtraject voor jouw webshop kan betekenen?", "lead": "Plan een gesprek van 30 minuten, dan laten we zien waar jouw conversie-lekken zitten.", "other": ("/cases/ecodor/", "Bekijk ook de case van Ecodor →")},
         ],
         "tests": [
             {
-                "id": "s3", "started": "2026-09-29", "status": "l", "duration": "",
-                "title": "Sticky add-to-cart op de productpagina (mobiel)",
-                "observation": "Ongeveer 50% van de productpagina-bezoekers scrolt langs de add-to-cart-knop, waardoor de knop uit beeld verdwijnt. Dat kan betekenen dat klanten zich verder verdiepen in de productinformatie. Daarnaast voegt 70% van de bezoekers uiteindelijk geen product toe aan de winkelwagen.",
-                "hyp": "Als we een ‘In winkelwagen’-balk onderaan het mobiele scherm fixeren zodra de originele knop uit beeld verdwijnt, nemen we de frictie weg op het moment dat de bezoeker overtuigd is. Dat leidt tot een hogere add-to-cart rate en een hogere algehele conversie.",
+                "id": "s5", "status": "l", "duration": "",
+                "title": "Compacte trust-sectie onder de add-to-cart",
+                "observation": "70% van de productpagina-bezoekers voegt geen product toe aan de winkelwagen. Een deel twijfelt waarschijnlijk niet aan het product, maar aan de winkel: is deze shop betrouwbaar, en waarom hier bestellen en niet bij een grotere speler? Op de productpagina stond geen social proof, wel een lange lijst met acht losse USP's in dezelfde vorm, waardoor de belangrijkste punten niet opvielen. Ondertussen blijven er sterke trustsignalen onbenut: 235+ beoordelingen met gemiddeld 4,85/5, en een fysieke winkel met een vaste specialist.",
+                "principle": "Vertrouwen en sociale bewijskracht: wie ziet dat anderen tevreden zijn en dat er een echt persoon achter de winkel staat, twijfelt minder.",
+                "hyp": "Als we de losse checklist onder de add-to-cart vervangen door één compacte trust-sectie met de reviewscore (4,85/5 uit 235+ beoordelingen), een slider met klantreviews en Maarten als persoonlijke specialist, nemen we twijfel over de betrouwbaarheid van de winkel weg op het moment dat de bezoeker beslist. Dat leidt tot een hogere add-to-cart rate en een hogere algehele conversieratio.",
                 "metrics": [],
+                "note": "Primaire metric: add-to-cart rate op de productpagina. Secundair: conversieratio, klikken op WhatsApp naar Maarten en klikken naar de beoordelingenpagina.",
                 "learn": "Nog geen learning: de test loopt.",
+                "img": "/assets/img/tests/s5.jpg", "alt": "Schuurman productpagina op mobiel voor en na: compacte trust-sectie met reviews en persoonlijk advies",
+                "pinned": False,
+            },
+            {
+                "id": "s3", "started": "2026-09-29", "status": "w", "duration": "15 dagen",
+                "title": "Sticky add-to-cart op de productpagina",
+                "observation": "Ongeveer 50% van de productpagina-bezoekers scrolt langs de add-to-cart-knop, waardoor de knop uit beeld verdwijnt. Dat kan betekenen dat klanten zich verder verdiepen in de productinformatie. Daarnaast voegt 70% van de bezoekers uiteindelijk geen product toe aan de winkelwagen.",
+                "hyp": "Als we een ‘In winkelwagen’-balk fixeren zodra de originele knop uit beeld verdwijnt, nemen we de frictie weg op het moment dat de bezoeker overtuigd is. Dat leidt tot een hogere add-to-cart rate en een hogere algehele conversie.",
+                "metrics": [("+29,52%", "Conversie (alle apparaten)", "8,89% → 11,52%"), ("+10,46%", "Omzet per bezoeker", "€13,83 → €15,28"), ("+41,03%", "Conversie mobiel", "8,54% → 12,05%"), ("+21%", "Omzet per bezoeker mobiel", "€12,84 → €15,54")],
+                "note": "De test liep 15 dagen met 2.817 gebruikers en 287 conversies. Mobiel is 74% van het verkeer, en daar is de kans dat de variant beter is dan het origineel 99,60%. Op desktop (24% van het verkeer) daalden de conversie (-8,85%) en de omzet per bezoeker (-22,5%), maar dat is gebaseerd op slechts 67 conversies en dus niet te onderscheiden van toeval. De directe add-to-cart actie steeg op desktop wel met 12,32% (23,72% → 26,65%, 168 acties). De gemiddelde orderwaarde daalde, maar het hogere aantal bestellingen compenseert dat ruim.",
+                "learn": "De sticky balk werkt duidelijk op mobiel, waar het merendeel van de bezoekers zit. Op desktop is de data te beperkt voor een conclusie. We hebben de balk op de hele website doorgevoerd en nemen daarmee een berekend risico voor desktop, dat we blijven volgen.",
                 "img": "/assets/img/tests/s3.jpg", "alt": "Schuurman productpagina op mobiel voor en na: sticky add-to-cart-balk onderaan",
                 "pinned": False,
             },
