@@ -1,10 +1,11 @@
 :root{
   --bg:#f6f4f0;
   --blue:#1800ad;
-  --ink:#1800ad;
+  --ink:#1c1a2e;
   --onblue:#f6f4f0;
-  --muted:color-mix(in srgb,#1800ad 78%,#f6f4f0);
-  --line:color-mix(in srgb,#1800ad 28%,#f6f4f0);
+  --muted:color-mix(in srgb,#1c1a2e 74%,#f6f4f0);
+  --line:color-mix(in srgb,#1c1a2e 20%,#f6f4f0);
+  --sand:#ebe5da;
 }
 *{box-sizing:border-box}
 html{scroll-padding-top:16px}
@@ -29,6 +30,7 @@ h1{font-stretch:125%;font-weight:900;font-size:clamp(44px,9vw,104px);line-height
 h1.case{font-size:clamp(40px,8vw,84px)}
 h2{font-stretch:112%;font-weight:900;font-size:clamp(28px,4.5vw,44px);letter-spacing:-.02em;margin:0 0 8px}
 /* ---- Hero: volle breedte, merkblauw, met geanimeerde lijnillustratie ---- */
+.hero,.art-band{--blue:var(--sand);--onblue:#1800ad}
 .hero{--pad-x:max(24px,calc((100% - 980px)/2 + 24px));padding:64px var(--pad-x) 200px;max-width:none;margin:0;position:relative;overflow:hidden;background:var(--blue);color:var(--onblue)}
 .hero>*{position:relative;z-index:1}
 .hero>.hero-art{position:absolute;z-index:0;left:0;bottom:0;width:100%;height:clamp(260px,30vw,430px);pointer-events:none}
@@ -37,9 +39,9 @@ h2{font-stretch:112%;font-weight:900;font-size:clamp(28px,4.5vw,44px);letter-spa
 .hero h1,.hero h2,.hero a:not(.btn){color:var(--onblue)}
 .hero p{color:color-mix(in srgb,var(--onblue) 90%,var(--blue))}
 .hero .btn{background:var(--onblue);color:var(--blue)}
-.hero .btn:hover{box-shadow:0 10px 24px rgba(0,0,0,.28)}
+.hero .btn:hover{box-shadow:0 10px 24px rgba(24,0,173,.28)}
 .hero .meta{color:color-mix(in srgb,var(--onblue) 80%,var(--blue))}
-.hero .chero{border-color:color-mix(in srgb,var(--onblue) 55%,var(--blue));box-shadow:0 14px 40px rgba(0,0,40,.35)}
+.hero .chero{border-color:color-mix(in srgb,var(--onblue) 55%,var(--blue));box-shadow:0 14px 40px rgba(24,0,173,.16)}
 .hero-art .rf{fill:var(--blue);opacity:0;animation:bf-fade .9s ease forwards;animation-delay:var(--ds,0s)}
 .hero-art .rh{opacity:0;animation:bf-hatch 1.2s ease forwards;animation-delay:var(--ds,0s)}
 .hero-art .rs{fill:none;stroke:var(--onblue);stroke-width:1.6;stroke-dasharray:1;stroke-dashoffset:1;animation:bf-draw 2.6s cubic-bezier(.4,0,.2,1) forwards;animation-delay:var(--ds,0s)}
