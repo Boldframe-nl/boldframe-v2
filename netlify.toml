@@ -11,6 +11,52 @@
   status = 301
   force = true
 
+# Oude URL's van de vorige site, op basis van Search Console (23 oktober 2026)
+[[redirects]]
+  from = "/insights/landingspagina-ai-scan/*"
+  to = "/insights/ai-scan-landingspagina/"
+  status = 301
+
+[[redirects]]
+  from = "/diensten/conversie-optimalisatie/*"
+  to = "/diensten/"
+  status = 301
+
+[[redirects]]
+  from = "/diensten/webmastering/*"
+  to = "/diensten/"
+  status = 301
+
+[[redirects]]
+  from = "/contact/*"
+  to = "/#afspraak"
+  status = 301
+
+[[redirects]]
+  from = "/cases/capo-nl/*"
+  to = "/cases/"
+  status = 301
+
+[[redirects]]
+  from = "/cases/jagtveld/*"
+  to = "/cases/"
+  status = 301
+
+[[redirects]]
+  from = "/cases/cleanservice4you/*"
+  to = "/cases/"
+  status = 301
+
+[[redirects]]
+  from = "/cases/luzcap/*"
+  to = "/cases/"
+  status = 301
+
+[[redirects]]
+  from = "/luzcap/*"
+  to = "/cases/"
+  status = 301
+
 [[headers]]
   for = "/*"
   [headers.values]
