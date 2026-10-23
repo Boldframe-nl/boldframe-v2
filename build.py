@@ -10,8 +10,8 @@ import re
 import os
 
 ROOT = os.path.dirname(os.path.abspath(__file__))
-SITE_URL = "https://stage.boldframe.nl"  # bij livegang: https://boldframe.nl
-LIVE = False  # bij livegang op True: haalt noindex weg en laat zoekmachines toe (robots.txt + meta)
+SITE_URL = "https://boldframe.nl"
+LIVE = True  # bij livegang op True: haalt noindex weg en laat zoekmachines toe (robots.txt + meta)
 GA_ID = "G-8N1ZFCB0FW"  # Google Analytics 4 meet-ID (G-XXXXXXXXXX). Leeg = geen analytics en geen cookiebanner.
 
 PIN_SVG = '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M14 3l7 7-3 1-3.5 3.5.5 4.5-1.5 1.5-4-4-5 5-1-1 5-5-4-4L6.5 10.5 11 11l3.5-3.5z"/></svg>'

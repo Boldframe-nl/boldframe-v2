@@ -1,4 +1,4 @@
 User-agent: *
-Disallow: /
+Allow: /
 
-# Stage-omgeving. Zet LIVE = True in build.py bij livegang.
+Sitemap: https://boldframe.nl/sitemap.xml

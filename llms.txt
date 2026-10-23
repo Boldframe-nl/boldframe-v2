@@ -3,19 +3,19 @@
 > Boldframe doet data-gedreven conversie-optimalisatie (CRO) met A/B-tests voor webshops, gevestigd in Maassluis. Oprichter: Roy van Hees. Het Webshop Groei-Traject heeft een uplift-garantie.
 
 ## Pagina's
-- [Diensten](https://stage.boldframe.nl/diensten/): het Webshop Groei-Traject en veelgestelde vragen
-- [Werkwijze](https://stage.boldframe.nl/werkwijze/): audit, hypothese, A/B-test en implementatie
-- [Cases](https://stage.boldframe.nl/cases/): resultaten van Ecodor, Bidet.nl, Petite Zara en Schuurman, uitgedrukt in multipliers
-- [Over ons](https://stage.boldframe.nl/over-ons/)
+- [Diensten](https://boldframe.nl/diensten/): het Webshop Groei-Traject en veelgestelde vragen
+- [Werkwijze](https://boldframe.nl/werkwijze/): audit, hypothese, A/B-test en implementatie
+- [Cases](https://boldframe.nl/cases/): resultaten van Ecodor, Bidet.nl, Petite Zara en Schuurman, uitgedrukt in multipliers
+- [Over ons](https://boldframe.nl/over-ons/)
 
 ## Insights
-- [Wat zit er in een conversie-optimalisatie audit?](https://stage.boldframe.nl/insights/conversie-optimalisatie-audit/): Een goede audit begint met een nulmeting en eindigt met een geprioriteerde lijst, niet met een rapport vol losse tips. Zo ziet dat eruit, en met de checklist scoor je zelf alvast de zeven niveaus van je webshop.
-- [Wat is een goede conversieratio voor een webshop?](https://stage.boldframe.nl/insights/goede-conversieratio-webshop/): Als vuistregel ligt de conversieratio van een webshop rond de 2%. De betere vraag is wat een procentpunt extra voor jouw webshop waard is. Bereken het hieronder.
-- [Loont conversie-optimalisatie? Reken je break-even uit](https://stage.boldframe.nl/insights/loont-conversie-optimalisatie/): Conversie-optimalisatie kost maandelijks geld en verdient zich terug als de extra omzet na aftrek van je marge hoger is dan de kosten. Reken uit hoeveel stijging je daarvoor nodig hebt.
-- [Hoeveel verkeer heb je nodig om te testen?](https://stage.boldframe.nl/insights/hoeveel-verkeer-om-te-testen/): Als vuistregel heb je minimaal zo’n 500 meetbare conversies per maand nodig om snel te kunnen testen. Heb je minder, dan zijn er slimme alternatieven. Reken het hieronder uit voor jouw shop.
-- [AI-verkeer meten in GA4](https://stage.boldframe.nl/insights/ai-verkeer-meten-in-ga4/): AI-verkeer naar websites steeg in 2025 met 527%, en converteert volgens onderzoek tot 3x sneller dan andere kanalen. Voor de meeste sites is het nog maar 1-2% van het totaal, maar je kunt je nu al voorbereiden.
-- [Pas op: een AI-scan van je landingspagina is niet genoeg](https://stage.boldframe.nl/insights/ai-scan-landingspagina/): Een AI-scan van je pagina levert binnen twee minuten nieuwe inzichten op, maar het Baymard Institute meet 50-75% nauwkeurigheid voor AI UX-evaluaties. Zonder menselijke blik erop kan klakkeloos doorvoeren schadelijk zijn.
-- [Meertalige e-commerce: kansen voor Nederlandse webshops](https://stage.boldframe.nl/insights/meertalige-ecommerce/): 75% van de consumenten koopt liever in de eigen taal, en 96% van de bedrijven met geautomatiseerde vertaaltechnologie ziet een positieve ROI. Voor webshops is internationale groei kosteneffectiever dan ooit.
+- [Wat zit er in een conversie-optimalisatie audit?](https://boldframe.nl/insights/conversie-optimalisatie-audit/): Een goede audit begint met een nulmeting en eindigt met een geprioriteerde lijst, niet met een rapport vol losse tips. Zo ziet dat eruit, en met de checklist scoor je zelf alvast de zeven niveaus van je webshop.
+- [Wat is een goede conversieratio voor een webshop?](https://boldframe.nl/insights/goede-conversieratio-webshop/): Als vuistregel ligt de conversieratio van een webshop rond de 2%. De betere vraag is wat een procentpunt extra voor jouw webshop waard is. Bereken het hieronder.
+- [Loont conversie-optimalisatie? Reken je break-even uit](https://boldframe.nl/insights/loont-conversie-optimalisatie/): Conversie-optimalisatie kost maandelijks geld en verdient zich terug als de extra omzet na aftrek van je marge hoger is dan de kosten. Reken uit hoeveel stijging je daarvoor nodig hebt.
+- [Hoeveel verkeer heb je nodig om te testen?](https://boldframe.nl/insights/hoeveel-verkeer-om-te-testen/): Als vuistregel heb je minimaal zo’n 500 meetbare conversies per maand nodig om snel te kunnen testen. Heb je minder, dan zijn er slimme alternatieven. Reken het hieronder uit voor jouw shop.
+- [AI-verkeer meten in GA4](https://boldframe.nl/insights/ai-verkeer-meten-in-ga4/): AI-verkeer naar websites steeg in 2025 met 527%, en converteert volgens onderzoek tot 3x sneller dan andere kanalen. Voor de meeste sites is het nog maar 1-2% van het totaal, maar je kunt je nu al voorbereiden.
+- [Pas op: een AI-scan van je landingspagina is niet genoeg](https://boldframe.nl/insights/ai-scan-landingspagina/): Een AI-scan van je pagina levert binnen twee minuten nieuwe inzichten op, maar het Baymard Institute meet 50-75% nauwkeurigheid voor AI UX-evaluaties. Zonder menselijke blik erop kan klakkeloos doorvoeren schadelijk zijn.
+- [Meertalige e-commerce: kansen voor Nederlandse webshops](https://boldframe.nl/insights/meertalige-ecommerce/): 75% van de consumenten koopt liever in de eigen taal, en 96% van de bedrijven met geautomatiseerde vertaaltechnologie ziet een positieve ROI. Voor webshops is internationale groei kosteneffectiever dan ooit.
 
 ## Contact
 - E-mail: roy@boldframe.nl
