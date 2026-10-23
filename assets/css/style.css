@@ -349,3 +349,8 @@ footer .btn{background:var(--onblue);color:var(--blue)}
 @media (hover:none){.hero-home .btn::after{animation:none!important}}
 
 .media.phones{grid-template-columns:repeat(2,minmax(0,300px));justify-content:start}
+.tool fieldset.chk{border:2px solid var(--line);border-radius:6px;margin:0 0 12px;padding:10px 14px 4px}
+.tool fieldset.chk legend{font-weight:800;padding:0 6px}
+.tool .chk-row{display:flex;gap:10px;align-items:flex-start;font-weight:500;font-size:16px;margin:0 0 10px}
+.tool .chk-row input{width:auto;margin:5px 0 0;flex:none}
+.tool-out{font-size:17px}

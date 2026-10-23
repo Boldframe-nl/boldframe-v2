@@ -269,3 +269,59 @@ document.addEventListener("pointermove", (e) => {
   b.style.setProperty("--mx", e.clientX - r.left + "px");
   b.style.setProperty("--my", e.clientY - r.top + "px");
 });
+
+// 11) Tools: audit-checklist, conversiewaarde en break-even (insights).
+(function () {
+  const nl = (n, d) => n.toLocaleString("nl-NL", { minimumFractionDigits: d || 0, maximumFractionDigits: d || 0 });
+  const eur = (n) => "€" + nl(Math.round(n));
+  const val = (id) => parseFloat(document.getElementById(id).value);
+
+  const audit = document.getElementById("audit-tool");
+  if (audit) {
+    const out = document.getElementById("audit-out");
+    const boxes = Array.from(audit.querySelectorAll("input[type=checkbox]"));
+    const update = () => {
+      const lv = {};
+      boxes.forEach((b) => { const k = b.dataset.lvl; lv[k] = lv[k] || [0, 0]; lv[k][1]++; if (b.checked) lv[k][0]++; });
+      const total = boxes.filter((b) => b.checked).length;
+      const weak = Object.keys(lv).filter((k) => lv[k][0] < lv[k][1]).sort((a, b) => lv[a][0] - lv[b][0]);
+      let msg = "Score: <strong>" + total + " van " + boxes.length + "</strong>. ";
+      if (total === 0) msg += "Vink aan waar je webshop aan voldoet.";
+      else if (!weak.length) msg += "Alles aangevinkt. Controleer het bij je bezoekers met heatmaps en sessieopnames, want eigen blindheid is groot.";
+      else msg += "Hier is de meeste winst te halen: <strong>" + weak.slice(0, 3).join(", ") + "</strong>. Begin bij het eerste niveau.";
+      out.innerHTML = msg;
+    };
+    boxes.forEach((b) => b.addEventListener("change", update));
+    update();
+  }
+
+  const up = document.getElementById("uplift-tool");
+  if (up) {
+    const out = document.getElementById("up-out");
+    const update = () => {
+      const v = val("up-visitors"), r = val("up-rate") / 100, a = val("up-aov"), g = val("up-gain") / 100;
+      if (!(v > 0 && r > 0 && a > 0 && g >= 0)) { out.textContent = "Vul alle velden in voor een indicatie."; return; }
+      const now = v * r * a, after = now * (1 + g), rpvNow = r * a, rpvAfter = rpvNow * (1 + g);
+      out.innerHTML = "Je omzet is nu ongeveer <strong>" + eur(now) + "</strong> per maand, ofwel \u20ac" + nl(rpvNow, 2) + " per bezoeker. Met " + nl(g * 100) + "% meer conversie wordt dat <strong>" + eur(after) + "</strong> per maand: <strong>" + eur(after - now) + " extra per maand</strong>, " + eur((after - now) * 12) + " per jaar, bij dezelfde advertentiekosten.<br><small>Omzet per bezoeker: \u20ac" + nl(rpvNow, 2) + " \u2192 \u20ac" + nl(rpvAfter, 2) + ". Indicatief: gaat uit van een gelijkblijvende orderwaarde.</small>";
+    };
+    ["up-visitors", "up-rate", "up-aov", "up-gain"].forEach((i) => document.getElementById(i).addEventListener("input", update));
+    update();
+  }
+
+  const be = document.getElementById("be-tool");
+  if (be) {
+    const out = document.getElementById("be-out");
+    const update = () => {
+      const rev = val("be-rev"), m = val("be-margin") / 100, c = val("be-cost");
+      if (!(rev > 0 && m > 0 && c >= 0)) { out.textContent = "Vul alle velden in voor een indicatie."; return; }
+      const need = c / m, pct = (need / rev) * 100;
+      let verdict;
+      if (pct <= 10) verdict = "Een haalbare stijging: dit traject kan zich snel terugverdienen.";
+      else if (pct <= 20) verdict = "Haalbaar, maar je hebt wel merkbare winst nodig. Controleer eerst waar de grootste afhakers zitten.";
+      else verdict = "Een grote stijging ten opzichte van je omzet. Overweeg een lichter traject, met een nulmeting en gerichte verbeteringen in plaats van een volledig testprogramma.";
+      out.innerHTML = "Je hebt ongeveer <strong>" + eur(need) + " extra omzet per maand</strong> nodig om break-even te draaien, dat is <strong>" + nl(pct, 1) + "%</strong> van je huidige omzet. " + verdict + "<br><small>Gerekend als extra omzet maal brutomarge. Indicatief.</small>";
+    };
+    ["be-rev", "be-margin", "be-cost"].forEach((i) => document.getElementById(i).addEventListener("input", update));
+    update();
+  }
+})();

@@ -6,6 +6,7 @@ Only this script + assets/ are the source of truth — edit here, not the
 generated *.html files directly, or your edits will be overwritten.
 """
 import json
+import re
 import os
 
 ROOT = os.path.dirname(os.path.abspath(__file__))
@@ -158,15 +159,15 @@ def build_branches_section(id_attr=' id="branches"'):
 CASES = {
     "ecodor": {
         "name": "Ecodor",
-        "sub": "Van circa €40k naar een verwachte €325k omzet per jaar",
+        "sub": "Een verwachte 8× zoveel omzet in twee jaar",
         "eyebrow": "Case · Huisdieren · WooCommerce",
-        "headline": "Van circa €40k naar €325k omzet per jaar.",
-        "intro": "Ecodor verkoopt enzymatische geurverwijderaars voor huisdieren. In juli 2024 bouwden we de webshop opnieuw, van OpenCart naar WooCommerce, en sindsdien optimaliseren we hem doorlopend met onderzoek en A/B-tests. De omzet van de eigen webshop groeide van circa €40k op jaarbasis (2024), via circa €75k in 2025, naar een verwachte €325k in 2026.",
+        "headline": "Een verwachte 8× zoveel omzet in twee jaar.",
+        "intro": "Ecodor verkoopt enzymatische geurverwijderaars voor huisdieren. In juli 2024 bouwden we de webshop opnieuw, van OpenCart naar WooCommerce, en sindsdien optimaliseren we hem doorlopend met onderzoek en A/B-tests. De omzet van de eigen webshop groeide, uitgedrukt op jaarbasis, van 1× (2024) via 1,9× in 2025 naar een verwachte 8× in 2026.",
         "hero": "/assets/img/cases/ecodor-hero.jpg",
         "facts": [],
         "stats": [
-            {"count": 224157, "prefix": "€", "label": "omzet in 2026 t/m 5 oktober, incl. btw"},
-            {"count": 325, "prefix": "≈ €", "suffix": "k", "label": "prognose voor heel 2026"},
+            {"text": "5,6×", "label": "omzet in 2026 t/m 5 oktober, ten opzichte van 2024 op jaarbasis"},
+            {"text": "≈ 8×", "label": "prognose voor heel 2026, ten opzichte van 2024 op jaarbasis"},
             {"text": "79–82%", "label": "van de omzet komt via mobiel"},
             {"count": 45, "suffix": "%", "label": "winrate over 20 tests, waarvan een deel nog loopt"},
         ],
@@ -178,13 +179,13 @@ CASES = {
             {"type": "bars", "h2": "Omzetgroei van de webshop",
              "lead": "Door de nieuwe site te bouwen en consequent nieuwe ontwikkelingen te testen werd marketing rendabeler, en kon die worden opgeschaald. Die combinatie zit achter de groei, en op dit moment zien we hem nog niet vertragen.",
              "rows": [
-                 ("2024 (jun–dec)", 21420.56, "€21.421", "act"),
-                 ("2024 op jaarbasis", 40000, "≈ €40.000", "est"),
-                 ("2025 (heel jaar)", 74569.83, "€74.570", "act"),
-                 ("2026 t/m 5 oktober", 224157.26, "€224.157", "act"),
-                 ("2026 prognose", 325543.01, "≈ €325.543", "est"),
+                 ("2024 (jun–dec)", 0.54, "0,5×", "act"),
+                 ("2024 op jaarbasis", 1, "1×", "est"),
+                 ("2025 (heel jaar)", 1.86, "1,9×", "act"),
+                 ("2026 t/m 5 oktober", 5.6, "5,6×", "act"),
+                 ("2026 prognose", 8.14, "≈ 8,1×", "est"),
              ],
-             "note": "Volle balk: gerealiseerde omzet. Gearceerde balk: omrekening of prognose. Omzet van de eigen webshop, inclusief btw (dus zonder Bol.com en Amazon). 2024 op jaarbasis is een omrekening van de omzet van juni tot en met december. De prognose voor 2026 is gebaseerd op de omzet tot en met 5 oktober 2026, aangevuld met het verwachte najaar: Black Friday, extra verkoop doordat katten en andere huisdieren in het najaar en de winter vaker binnen worden gehouden, en doorzetting van de groei."},
+             "note": "Volle balk: gerealiseerde omzet. Gearceerde balk: omrekening of prognose. Omzet van de eigen webshop (dus zonder Bol.com en Amazon), uitgedrukt als veelvoud van 2024 op jaarbasis (= 1×). 2024 op jaarbasis is een omrekening van de omzet van juni tot en met december. De prognose voor 2026 is gebaseerd op de omzet tot en met 5 oktober 2026, aangevuld met het verwachte najaar: Black Friday, extra verkoop doordat katten en andere huisdieren in het najaar en de winter vaker binnen worden gehouden, en doorzetting van de groei."},
             {"type": "cards", "h2": "Vier uitdagingen", "lead": "Dit moest de webshop oplossen om bezoekers zeker te laten kopen.",
              "items": [
                  ("Laten zien dat het écht werkt", "shield", "Er zijn aanbieders die de geur alleen maskeren, waarna die terugkomt. De site moest vroeg in de klantreis duidelijk maken dat dit product de geur wél verwijdert."),
@@ -225,8 +226,8 @@ CASES = {
                 "id": "e6", "started": "2026-09-24", "status": "w", "duration": "",
                 "title": "Degradatie van het verkooppunt",
                 "hyp": "Door de “Vind een verkooppunt”-knop te degraderen tot een onopvallend grijs linkje blijven klanten in de verkoopfunnel en hoeft de add-to-cart-knop de aandacht van de bezoeker niet te delen. Daardoor kopen meer mensen online.",
-                "metrics": [("+11,05%", "Conversie", ""), ("+5,11%", "Omzet per bezoeker", ""), ("-4,56%", "Orderwaarde", ""), ("14,73% → 18,81%", "Add-to-cart ratio (Clarity)", "")],
-                "note": "De klikken op het verkooppunt daalden van 3,59% naar 1,19%, dus ruim 2% van de bezoekers werd een andere kant op gestuurd, naar de gewenste actie. De test is gemeten op basis van 333 conversies. Op mobiel is de kans dat de variant beter presteert dan het origineel 84,1%. Dat is onder de gebruikelijke 90 tot 95%, maar het gedrag in Clarity wijst dezelfde kant op.",
+                "metrics": [("+11,05%", "Conversie", ""), ("+5,11%", "Omzet per bezoeker", ""), ("-4,56%", "Orderwaarde", ""), ("+27,7%", "Add-to-cart ratio (Clarity)", "")],
+                "note": "De klikken op het verkooppunt daalden met 67%, waardoor bezoekers vaker bij de gewenste actie bleven. De test is gemeten op basis van 333 conversies. Op mobiel is de kans dat de variant beter presteert dan het origineel 84,1%. Dat is onder de gebruikelijke 90 tot 95%, maar het gedrag in Clarity wijst dezelfde kant op.",
                 "learn": "Een onopvallender verkooppunt houdt bezoekers in de verkoopfunnel. De orderwaarde zakte iets, maar het hogere aantal bestellingen compenseert dat ruim, en de omzet per bezoeker steeg.",
                 "img": "/assets/img/tests/e6.jpg", "alt": "Ecodor productpagina voor en na: Vind een verkooppunt-knop als grijs linkje",
                 "pinned": False,
@@ -247,7 +248,7 @@ CASES = {
                 "id": "e2", "date": "2026-06-26", "status": "v", "duration": "",
                 "title": "Groene tekstlinks in blogs",
                 "hyp": "Met merkgroene links in plaats van blauwe vallen ze meer op, dus navigeren bezoekers sneller naar productpagina's.",
-                "metrics": [("-12,55%", "Omzet per bezoeker", "€3,23 → €2,82"), ("-8,02%", "Orderwaarde", "€52,00 → €47,83")],
+                "metrics": [("-12,55%", "Omzet per bezoeker", ""), ("-8,02%", "Orderwaarde", "")],
                 "learn": "Groen wijkt af van de webconventie dat links blauw zijn, en was op mobiel bij fel licht slecht leesbaar.",
                 "img": "/assets/img/tests/e2.jpg", "alt": "Ecodor blogtekst voor en na: groene tekstlinks",
                 "pinned": False,
@@ -258,7 +259,7 @@ CASES = {
                 "observation": "Vanaf de productpagina zagen we 40% drop-off naar het toevoegen van producten aan de winkelwagen. Ook was tijdens het aankoopproces niet duidelijk onder welke voorwaarden er werd gekocht.",
                 "principle": "Bezoekers moeten zelfverzekerd een aankoop kunnen doen.",
                 "hyp": "Door de USP’s direct onder de winkelwagenknop te plaatsen, verhogen we het vertrouwen op het beslismoment, wat leidt tot een hogere conversie.",
-                "metrics": [("+2,63%", "Omzet per bezoeker", "€7,12 → €7,31"), ("+7,39%", "Orderwaarde", "€52,13 → €55,98")],
+                "metrics": [("+2,63%", "Omzet per bezoeker", ""), ("+7,39%", "Orderwaarde", "")],
                 "note": "Op basis van 109 conversies uit 839 sessies.",
                 "learn": "Op mobiel was de winst veel groter, maar die data is helaas verloren gegaan. We hebben de aanpassing doorgevoerd en kunnen met redelijk vertrouwen zeggen dat het een verbetering is.",
                 "img": "/assets/img/tests/e3.jpg", "alt": "Ecodor productpagina voor en na: vertrouwensblok onder de knop",
@@ -270,7 +271,7 @@ CASES = {
                 "observation": "In heatmaps werden tekstlinks in blogberichten regelmatig gebruikt, maar bezoekers die op een blogbericht landen brachten verhoudingsgewijs weinig omzet op.",
                 "principle": "Links moeten meer opvallen, zodat tekst makkelijk te scannen is naar een vervolgactie.",
                 "hyp": "Door de links een zwaarder gewicht te geven maken we de tekst beter scanbaar en de vervolgactie duidelijker, zodat bezoekers meer pagina’s bekijken en sneller naar een productpagina gaan.",
-                "metrics": [("+12,08%", "Omzet per bezoeker", "€3,04 → €3,41"), ("-1,61%", "Orderwaarde", "€45,81 → €45,07")],
+                "metrics": [("+12,08%", "Omzet per bezoeker", ""), ("-1,61%", "Orderwaarde", "")],
                 "learn": "Bezoekers herkennen de groene links nu niet alleen als gemarkeerde tekst, maar ook als doorklikbare links. Doordat ze dikgedrukt zijn vallen ze extra op, ook op mobiel. Mogelijk speelt mee dat dikgedrukte tekst de gedachte oproept dat het belangrijk is.",
                 "next": "Had deze test niet gewerkt, dan was de volgende stap een volledig conventionele linkkleur (#0645AD) geweest: lelijker, maar ‘ugly converts better’. Dat hadden we eerst met Ecodor overlegd.",
                 "img": "/assets/img/tests/e4.jpg", "alt": "Ecodor blogtekst voor en na: dikgedrukte groene tekstlinks",
@@ -280,15 +281,15 @@ CASES = {
     },
     "bidet": {
         "name": "Bidet.nl",
-        "sub": "Van €48k naar een verwachte €500k+ omzet in vier jaar",
+        "sub": "Een verwachte 10× zoveel omzet in vier jaar",
         "eyebrow": "Case · Douche-wc's · WooCommerce",
-        "headline": "Van €48k naar een verwachte €500k+ omzet in vier jaar.",
-        "intro": "Bidet.nl verkoopt en installeert douche-wc's, en verkoopt online veel douche-wc-producten, op wens inclusief installatie. Boldframe bouwde de hele webshop en verbetert hem sinds 2022 doorlopend op basis van onderzoek naar reviews, chatberichten en data. De omzet groeide van €47.625 in 2022 naar €368.518 in 2025, en staat in 2026 na negen maanden al op €399.240.",
+        "headline": "Een verwachte 10× zoveel omzet in vier jaar.",
+        "intro": "Bidet.nl verkoopt en installeert douche-wc's, en verkoopt online veel douche-wc-producten, op wens inclusief installatie. Boldframe bouwde de hele webshop en verbetert hem sinds 2022 doorlopend op basis van onderzoek naar reviews, chatberichten en data. De omzet groeide van 1× in 2022 naar 7,7× in 2025, en staat in 2026 na negen maanden al op 8,4×.",
         "hero": "/assets/img/cases/bidet-hero.jpg",
         "facts": [],
         "stats": [
-            {"count": 399240, "prefix": "€", "label": "omzet in 2026 t/m 7 oktober, incl. btw"},
-            {"count": 500, "prefix": "€", "suffix": "k+", "label": "verwachte omzet voor heel 2026"},
+            {"text": "8,4×", "label": "omzet in 2026 t/m 7 oktober, ten opzichte van heel 2022"},
+            {"text": "10×+", "label": "verwachte omzet voor heel 2026, ten opzichte van 2022"},
             {"text": "7,7×", "label": "omzet in 2025 ten opzichte van 2022 (gerealiseerd)"},
         ],
         "blocks": [
@@ -299,14 +300,14 @@ CASES = {
             {"type": "bars", "h2": "Omzetgroei van de webshop",
              "lead": "Elk jaar meer omzet dan het jaar ervoor, en 2026 ligt na negen maanden al boven het volledige jaar 2025.",
              "rows": [
-                 ("2022", 47625.25, "€47.625", "act"),
-                 ("2023", 143877.44, "€143.877", "act"),
-                 ("2024", 188124.08, "€188.124", "act"),
-                 ("2025", 368517.51, "€368.518", "act"),
-                 ("2026 t/m 7 oktober", 399240.41, "€399.240", "act"),
-                 ("2026 verwachting", 500000, "€500.000+", "est"),
+                 ("2022", 1, "1×", "act"),
+                 ("2023", 3.02, "3,0×", "act"),
+                 ("2024", 3.95, "4,0×", "act"),
+                 ("2025", 7.74, "7,7×", "act"),
+                 ("2026 t/m 7 oktober", 8.38, "8,4×", "act"),
+                 ("2026 verwachting", 10.5, "10×+", "est"),
              ],
-             "note": "Volle balk: gerealiseerde omzet. Gearceerde balk: verwachting. Het gaat om de totale verkopen volgens de webshopstatistieken, inclusief btw en verzendkosten, over een kalenderjaar (1 januari tot en met 31 december). De verwachting voor 2026 is een inschatting op basis van de omzet tot en met 7 oktober en het najaar."},
+             "note": "Volle balk: gerealiseerde omzet. Gearceerde balk: verwachting. Het gaat om de totale verkopen volgens de webshopstatistieken over een kalenderjaar, uitgedrukt als veelvoud van de omzet in 2022 (= 1×). De verwachting voor 2026 is een inschatting op basis van de omzet tot en met 7 oktober en het najaar."},
             {"type": "cards", "h2": "Waar de groei vandaan komt", "lead": "De omzet is niet alleen het resultaat van optimalisatie. Dit zijn de factoren die samen meespelen.",
              "items": [
                  ("Een groeiende markt", "target", "Douche-wc's zijn in korte tijd een veel bekender product geworden. Die interesse in de markt zorgt voor meer zoekers en dus meer bezoekers."),
@@ -362,7 +363,7 @@ CASES = {
                  ("/assets/img/cases/bidet-mobiel-2026.jpg", "Bidet.nl op mobiel in 2026", "Na (2026): zoekbalk direct onder de header, beoordeling bovenaan", 657, 1400),
              ]},
             {"type": "text", "h2": "Wat het heeft opgeleverd", "paras": [
-                "De omzet groeide van €47.625 in 2022 naar €368.518 in 2025, ruim 7,7 keer zoveel. In 2026 staat de webshop na negen maanden op €399.240, en de verwachting voor het hele jaar is meer dan €500.000.",
+                "De omzet groeide van 1× in 2022 naar 7,7× in 2025. In 2026 staat de webshop na negen maanden op 8,4×, en de verwachting voor het hele jaar is meer dan 10×.",
                 "Een deel van die groei is gedreven door de markt en het uitgebreidere assortiment. Wat de shop zelf doet is dat bezoekers sneller antwoord vinden op hun vragen over installatie, techniek en keuze, en daardoor vaker bestellen.",
             ]},
             {"type": "cta", "h2": "Benieuwd wat dit voor jouw webshop kan betekenen?", "lead": "Plan een gesprek van 30 minuten, dan laten we zien waar jouw conversie-lekken zitten.", "other": ("/cases/ecodor/", "Bekijk ook de case van Ecodor →")},
@@ -370,20 +371,20 @@ CASES = {
     },
     "petite-zara": {
         "name": "Petite Zara",
-        "sub": "Conversie van 0,57% naar 0,87%, zonder extra advertentiebudget",
+        "sub": "Ruim 50% meer conversie, zonder extra advertentiebudget",
         "eyebrow": "Case · Kinderkleding · Shopify",
-        "headline": "Conversie van 0,57% naar 0,87%, en we zijn nog niet klaar.",
-        "intro": "Petite Zara is een online luxe boetiek voor kinderkleding, met een eigen winkel in Best. Boldframe optimaliseert de Shopify-webshop op basis van een heuristische analyse, klantdata en reviews. De conversie steeg in korte tijd van 0,57% naar 0,87%, en op 12 oktober ging het nieuwe thema live.",
+        "headline": "Ruim 50% meer conversie, en we zijn nog niet klaar.",
+        "intro": "Petite Zara is een online luxe boetiek voor kinderkleding, met een eigen winkel in Best. Boldframe optimaliseert de Shopify-webshop op basis van een heuristische analyse, klantdata en reviews. De conversie steeg in korte tijd met ruim 50%, en op 12 oktober ging het nieuwe thema live.",
         "hero": "/assets/img/cases/petite-zara-hero.jpg",
         "facts": [],
         "stats": [
-            {"text": "0,57%", "label": "conversie in de 30 dagen vóór de aanpassingen"},
-            {"text": "0,87%", "label": "conversie in de 30 dagen vóór de themawissel"},
-            {"text": "+52,6%", "label": "relatieve groei van de conversie"},
+            {"text": "+52,6%", "label": "conversie: de 30 dagen vóór de themawissel ten opzichte van de 30 dagen vóór de eerste aanpassingen"},
+            {"text": "1,5×", "label": "zoveel bestellingen uit hetzelfde verkeer"},
+            {"text": "95%", "label": "van het verkeer komt via mobiel"},
         ],
         "blocks": [
             {"type": "text", "h2": "Het uitgangspunt", "paras": [
-                "Petite Zara verkoopt kinderkleding van bekende merken, via Facebook en Instagram en met een eigen winkel in Best. Er kwam voldoende verkeer op de webshop (ruim 11.000 sessies in de nulmeting, vrijwel allemaal via mobiel), maar slechts een klein deel kocht iets. De gemiddelde orderwaarde was met ruim €130 juist hoog.",
+                "Petite Zara verkoopt kinderkleding van bekende merken, via Facebook en Instagram en met een eigen winkel in Best. Er kwam voldoende verkeer op de webshop (vrijwel allemaal via mobiel), maar slechts een klein deel kocht iets. De gemiddelde orderwaarde was juist hoog.",
                 "Het doel was daarom niet meer verkeer kopen, maar meer halen uit de bezoekers die er al waren. Net als bij Bidet.nl hebben we geen A/B-tests uitgevoerd, omdat er te weinig data was om betrouwbare uitslagen te krijgen. We baseerden elke aanpassing op best practices, klantdata en reviews.",
             ]},
             {"type": "cards", "h2": "Wat het onderzoek liet zien", "lead": "We combineerden een heuristische analyse op zeven niveaus van het conversiemodel van André Morys met gedragsdata uit Google Analytics en Microsoft Clarity.",
@@ -445,7 +446,7 @@ CASES = {
                  ("/assets/img/cases/petite-zara-merken-na.jpg", "Petite Zara merkenlijst na de aanpassingen", "Na: top 5 van populaire merken", 438, 600),
              ]},
             {"type": "text", "h2": "Wat het heeft opgeleverd", "paras": [
-                "De conversie steeg van 0,57% in de 30 dagen voor de eerste aanpassingen naar 0,87% in de 30 dagen voor de themawissel, ruim 50% meer bestellingen uit hetzelfde verkeer. Omdat we niet A/B-testen, kunnen we niet met zekerheid zeggen hoeveel hiervan door de aanpassingen komt en hoeveel door seizoen of campagnes.",
+                "De conversie in de 30 dagen voor de themawissel lag 52,6% hoger dan in de 30 dagen voor de eerste aanpassingen: ruim 1,5 keer zoveel bestellingen uit hetzelfde verkeer. Omdat we niet A/B-testen, kunnen we niet met zekerheid zeggen hoeveel hiervan door de aanpassingen komt en hoeveel door seizoen of campagnes.",
                 "Het werk is nog niet af. Op 12 oktober ging het nieuwe Stiletto-thema live, waarin veel van bovenstaande aanpassingen zitten, en we verwachten dat de conversie verder stijgt. We blijven de data volgen en passen de shop verder aan.",
             ]},
             {"type": "cta", "h2": "Benieuwd wat dit voor jouw webshop kan betekenen?", "lead": "Plan een gesprek van 30 minuten, dan laten we zien waar jouw conversie-lekken zitten.", "other": ("/cases/bidet/", "Bekijk ook de case van Bidet.nl →")},
@@ -508,8 +509,8 @@ CASES = {
                 "title": "Sticky add-to-cart op de productpagina",
                 "observation": "Ongeveer 50% van de productpagina-bezoekers scrolt langs de add-to-cart-knop, waardoor de knop uit beeld verdwijnt. Dat kan betekenen dat klanten zich verder verdiepen in de productinformatie. Daarnaast voegt 70% van de bezoekers uiteindelijk geen product toe aan de winkelwagen.",
                 "hyp": "Als we een ‘In winkelwagen’-balk fixeren zodra de originele knop uit beeld verdwijnt, nemen we de frictie weg op het moment dat de bezoeker overtuigd is. Dat leidt tot een hogere add-to-cart rate en een hogere algehele conversie.",
-                "metrics": [("+29,52%", "Conversie (alle apparaten)", "8,89% → 11,52%"), ("+10,46%", "Omzet per bezoeker", "€13,83 → €15,28"), ("+41,03%", "Conversie mobiel", "8,54% → 12,05%"), ("+21%", "Omzet per bezoeker mobiel", "€12,84 → €15,54")],
-                "note": "De test liep 15 dagen met 2.817 gebruikers en 287 conversies. Mobiel is 74% van het verkeer, en daar is de kans dat de variant beter is dan het origineel 99,60%. Op desktop (24% van het verkeer) daalden de conversie (-8,85%) en de omzet per bezoeker (-22,5%), maar dat is gebaseerd op slechts 67 conversies en dus niet te onderscheiden van toeval. De directe add-to-cart actie steeg op desktop wel met 12,32% (23,72% → 26,65%, 168 acties). De gemiddelde orderwaarde daalde, maar het hogere aantal bestellingen compenseert dat ruim.",
+                "metrics": [("+29,52%", "Conversie (alle apparaten)", ""), ("+10,46%", "Omzet per bezoeker", ""), ("+41,03%", "Conversie mobiel", ""), ("+21%", "Omzet per bezoeker mobiel", "")],
+                "note": "De test liep 15 dagen met 2.817 gebruikers en 287 conversies. Mobiel is 74% van het verkeer, en daar is de kans dat de variant beter is dan het origineel 99,60%. Op desktop (24% van het verkeer) daalden de conversie (-8,85%) en de omzet per bezoeker (-22,5%), maar dat is gebaseerd op slechts 67 conversies en dus niet te onderscheiden van toeval. De directe add-to-cart actie steeg op desktop wel met 12,32% (op basis van 168 acties). De gemiddelde orderwaarde daalde, maar het hogere aantal bestellingen compenseert dat ruim.",
                 "learn": "De sticky balk werkt duidelijk op mobiel, waar het merendeel van de bezoekers zit. Op desktop is de data te beperkt voor een conclusie. We hebben de balk op de hele website doorgevoerd en nemen daarmee een berekend risico voor desktop, dat we blijven volgen.",
                 "img": "/assets/img/tests/s3.jpg", "alt": "Schuurman productpagina op mobiel voor en na: sticky add-to-cart-balk onderaan",
                 "pinned": False,
@@ -518,7 +519,7 @@ CASES = {
                 "id": "s2", "date": "2026-09-11", "status": "n", "duration": "18 dagen",
                 "title": "Productpagina opschonen: filterknop en broodkruimelbalk (mobiel)",
                 "hyp": "Als we de overbodige filterknop verwijderen en de massieve broodkruimelbalk op mobiel minimaliseren, stijgt het add-to-cart-percentage. Dat komt doordat we de cognitieve overbelasting verlagen en de kerninformatie (titel, prijs en bestelknop) direct in het eerste zichtbare scherm plaatsen.",
-                "metrics": [("+3,91%", "Conversie (alle apparaten)", "7,82% → 8,13%"), ("-3,01%", "Omzet per bezoeker", "€8,18 → €7,93"), ("+1,86%", "Conversie mobiel", "7,87% → 8,01%"), ("+2,33%", "Orderwaarde mobiel", "€69,32 → €70,94")],
+                "metrics": [("+3,91%", "Conversie (alle apparaten)", ""), ("-3,01%", "Omzet per bezoeker", ""), ("+1,86%", "Conversie mobiel", ""), ("+2,33%", "Orderwaarde mobiel", "")],
                 "note": "De test liep van 11 t/m 29 september met 3.814 gebruikers en 304 conversies. De kans dat de variant beter presteert dan het origineel is 63,62%. Dat is ruim onder de gebruikelijke 90 tot 95%, dus de uitkomst is niet te onderscheiden van toeval.",
                 "learn": "Het opschonen van de productpagina geeft geen betrouwbaar verschil: de conversie steeg licht, maar de omzet per bezoeker daalde licht.",
                 "img": "/assets/img/tests/s2.jpg", "alt": "Schuurman productpagina op mobiel voor en na het opschonen",
@@ -608,6 +609,11 @@ INSIGHTS = {
         ],
         "steps": [],
         "tool": "duration",
+        "faq": [
+            ("Hoeveel verkeer heb je nodig om een A/B-test te draaien?", "Als vuistregel minimaal zo\u2019n 500 meetbare conversies per maand. Dan kan een test in twee tot drie weken vooral grotere effecten aantonen."),
+            ("Welke zekerheid is genoeg voor een A/B-test?", "Voor een webshop is een probability van 90 tot 95% vaak voldoende. Bij 95% voer je statistisch gezien eens in de 20 keer een wijziging door die geen wezenlijk effect had."),
+            ("Wat doe je als je te weinig verkeer hebt om te testen?", "Kies een meetwaarde die vaker voorkomt, zoals add-to-carts, of voer verbeteringen door op basis van onderzoek en best practices en volg de omzet."),
+        ],
     },
     "ai-verkeer-meten-in-ga4": {
         "title": "AI-verkeer meten in GA4",
@@ -626,6 +632,87 @@ INSIGHTS = {
             "Sla de kanaalgroep op en sleep hem via 'Reorder' boven 'Referral'.",
         ],
         "tool": "ga4",
+        "faq": [
+            ("Hoe meet je verkeer van ChatGPT in GA4?", "Maak in GA4 een eigen kanaalgroep met een regex die AI-chatbots zoals ChatGPT, Gemini, Copilot, Perplexity en Claude herkent, en zet die boven Referral."),
+            ("Waarom is het handig om AI-verkeer apart te meten?", "Zo zie je hoeveel bezoekers via AI binnenkomen en welke pagina\u2019s populair zijn bij de LLM\u2019s."),
+        ],
+    },
+    "conversie-optimalisatie-audit": {
+        "title": "Wat zit er in een conversie-optimalisatie audit?",
+        "date": "2026-10-23",
+        "dek": "Een goede audit begint met een nulmeting en eindigt met een geprioriteerde lijst, niet met een rapport vol losse tips. Zo ziet dat eruit, en met de checklist scoor je zelf alvast de zeven niveaus van je webshop.",
+        "body": [
+            "## Wat is een conversie-optimalisatie audit?",
+            "Een conversie-optimalisatie audit (CRO-audit) onderzoekt waar bezoekers van je webshop afhaken en waarom, en vertaalt dat naar een geprioriteerde lijst met verbeteringen. Het is het fundament onder elk optimalisatietraject: zonder audit pas je je webshop aan op gevoel.",
+            "## Stap 1: de nulmeting",
+            "Voordat er iets verandert, meten we waar je nu staat: conversieratio, gemiddelde orderwaarde en omzet per bezoeker, uitgesplitst per apparaat en verkeersbron. Bij Petite Zara bleek zo dat vrijwel al het verkeer via mobiel binnenkwam, en dat de conversie ruim onder de ongeveer 2% lag die je als vuistregel bij een webshop mag verwachten. Daarmee wist iedereen waar de winst zat, en kon later worden aangetoond wat de aanpassingen deden.",
+            "## Stap 2: gedragsdata en funnelanalyse",
+            "Met Google Analytics zien we wat er gebeurt: hoeveel bezoekers per stap doorklikken en waar ze wegvallen. Met Microsoft Clarity (heatmaps en sessieopnames) zien we waarom: waar bezoekers klikken, scrollen en frustratie tonen. Zo vonden we bij Petite Zara bijvoorbeeld dat bezoekers veel met de filters werkten, maar steeds door honderden producten moesten scrollen zonder te weten of hun maat beschikbaar was.",
+            "## Stap 3: heuristische analyse op zeven niveaus",
+            "Een heuristische analyse beoordeelt je webshop systematisch aan de hand van vaste vragen. Wij gebruiken het piramidemodel van André Morys met zeven niveaus: relevantie, vertrouwen, oriëntatie, stimulans, veiligheid, gemak en bevestiging, aangevuld met e-commerce best practices van het Baymard Institute. Twee experts scoren de webshop onafhankelijk van elkaar, en we vergelijken met concurrenten. Zo haal je persoonlijke voorkeuren uit de beoordeling en zie je op welk niveau jouw shop achterblijft.",
+            "## Stap 4: klantonderzoek",
+            "Data laat zien wat er gebeurt, maar niet wat de klant denkt. Daarom analyseren we ook reviews, chatberichten, e-mails en telefoongesprekken, en zetten we waar het kan on-site surveys in op momenten van twijfel of frustratie.",
+            "## Stap 5: prioriteren",
+            "Uit de audit volgen twee lijsten: aanpassingen die je gewoon kunt doorvoeren omdat de uitkomst voor de hand ligt, en hypotheses die je eerst met een A/B-test toetst omdat het risico of de impact groot is. De volgorde bepalen we op verwachte impact, zekerheid en de inspanning om het te bouwen.",
+            "## Wat levert een audit op?",
+            "Geen dik rapport, maar een nulmeting, bevindingen die onderbouwd zijn met data en klantonderzoek, en een geprioriteerd plan. Heb je te weinig verkeer om te testen, dan blijft de audit evengoed waardevol: dan voeren we de verbeteringen door op basis van onderzoek en best practices, zoals bij Bidet.nl en Petite Zara. Hoeveel verkeer je nodig hebt om te testen lees je in <a href='/insights/hoeveel-verkeer-om-te-testen/'>dit artikel</a>. De bijbehorende cases staan bij <a href='/cases/petite-zara/'>Petite Zara</a> en <a href='/cases/bidet/'>Bidet.nl</a>.",
+        ],
+        "steps": [],
+        "tool": "checklist",
+        "faq": [
+            ("Wat is een conversie-optimalisatie audit?", "Een onderzoek naar waar bezoekers van je webshop afhaken en waarom, met een geprioriteerde lijst met verbeteringen als uitkomst. Het combineert een nulmeting, gedragsdata, een heuristische analyse en klantonderzoek."),
+            ("Wat kost een CRO-audit?", "Dat hangt af van de omvang van je webshop en de hoeveelheid data die er al is. Je kunt starten met een gratis website scan; daarna bepalen we samen welke diepgang past."),
+            ("Heb ik een audit nodig als ik te weinig verkeer heb om te A/B-testen?", "Ja, juist dan. Zonder testmogelijkheid is een goede onderbouwing nog belangrijker. We baseren de aanpassingen dan op data, klantonderzoek en best practices, en volgen daarna de omzet."),
+            ("Wat is het verschil tussen een CRO-audit en een UX-audit?", "Een UX-audit beoordeelt gebruiksgemak. Een CRO-audit gebruikt dat ook, maar voegt een nulmeting, funnel- en gedragsdata en prioritering op omzet-impact toe, zodat duidelijk is wat je als eerste aanpakt."),
+        ],
+    },
+    "goede-conversieratio-webshop": {
+        "title": "Wat is een goede conversieratio voor een webshop?",
+        "date": "2026-10-23",
+        "dek": "Als vuistregel ligt de conversieratio van een webshop rond de 2%. De betere vraag is wat een procentpunt extra voor jouw webshop waard is. Bereken het hieronder.",
+        "body": [
+            "## De vuistregel: rond de 2%",
+            "Als vuistregel noemen we voor een webshop een conversieratio van ongeveer 2%. Dat is geen wet: de uitkomst verschilt per branche, productprijs, apparaat en verkeersbron. Duurdere producten en mobiel verkeer converteren doorgaans lager, terwijl terugkerende klanten juist hoger scoren.",
+            "## Vergelijk vooral met jezelf",
+            "Een benchmark is een startpunt, geen doel. Belangrijker is hoe jouw conversie zich ontwikkelt, uitgesplitst per apparaat en verkeersbron. Zit je ruim onder de vuistregel, dan is er waarschijnlijk veel te winnen. Zit je erboven, dan zijn er vaak nog steeds kansen in een hogere orderwaarde of herhaalaankopen.",
+            "## Kijk naar omzet per bezoeker",
+            "Conversieratio vertelt maar de helft van het verhaal. Omzet per bezoeker combineert conversie met orderwaarde: conversieratio maal gemiddelde orderwaarde. Bij een van onze tests steeg de conversie aanzienlijk terwijl de gemiddelde orderwaarde daalde. Pas omzet per bezoeker liet zien dat de aanpassing per saldo winst opleverde.",
+            "## Hoe verhoog je de conversieratio?",
+            "Door te onderzoeken waar bezoekers afhaken en waarom, en daar gericht iets aan te doen: vertrouwen wekken, bezoekers helpen het juiste product te vinden en twijfel bij de bestelknop wegnemen. Bij Petite Zara steeg de conversie zo met ruim 50%, en bij Bidet.nl groeide de omzet in vier jaar tijd verwacht naar 10 keer zoveel. Lees hoe dat ging in de cases van <a href='/cases/petite-zara/'>Petite Zara</a> en <a href='/cases/bidet/'>Bidet.nl</a>.",
+        ],
+        "steps": [],
+        "tool": "uplift",
+        "faq": [
+            ("Wat is een goede conversieratio voor een webshop?", "Als vuistregel ongeveer 2%. Per branche, apparaat en verkeersbron verschilt dat sterk, dus vergelijk vooral met je eigen ontwikkeling."),
+            ("Hoe bereken je de conversieratio van een webshop?", "Deel het aantal bestellingen door het aantal bezoekers (sessies) in dezelfde periode en vermenigvuldig met 100. Bij 10.000 bezoekers en 200 bestellingen is de conversieratio 2%."),
+            ("Wat is omzet per bezoeker?", "De omzet gedeeld door het aantal bezoekers. Het combineert conversieratio en gemiddelde orderwaarde, en is daarom de betere meetwaarde om een aanpassing op te beoordelen."),
+            ("Waarom converteert mobiel verkeer vaak lager?", "Kleinere schermen maken zoeken, filteren, maat kiezen en afrekenen lastiger. Daarom levert het wegnemen van frictie op mobiel vaak het meeste op."),
+        ],
+    },
+    "loont-conversie-optimalisatie": {
+        "title": "Loont conversie-optimalisatie? Reken je break-even uit",
+        "date": "2026-10-23",
+        "dek": "Conversie-optimalisatie kost maandelijks geld en verdient zich terug als de extra omzet na aftrek van je marge hoger is dan de kosten. Reken uit hoeveel stijging je daarvoor nodig hebt.",
+        "body": [
+            "## De rekensom",
+            "Conversie-optimalisatie loont als de extra brutomarge die de aanpassingen opleveren hoger is dan wat het traject kost. Gaat het om een traject van \u20ac1.000 per maand en heeft je webshop een brutomarge van 30%, dan moet de optimalisatie je ongeveer \u20ac3.300 extra omzet per maand opleveren om break-even te draaien.",
+            "## Wanneer loont het niet?",
+            "Bij een kleine omzet is de benodigde stijging relatief groot. Moet je omzet bijvoorbeeld met meer dan 20% groeien om de kosten terug te verdienen, dan is een volledig testtraject meestal te zwaar. Dan is het slimmer om te starten met een nulmeting en gerichte verbeteringen op basis van best practices, zoals we deden bij Petite Zara en Bidet.nl.",
+            "## Wanneer loont het wel?",
+            "Als je al verkeer hebt maar de omzet daar achterblijft, bijvoorbeeld door afhakers op de productpagina of in de checkout. Dan levert elke procent extra conversie direct extra omzet op, zonder dat je meer hoeft uit te geven aan advertenties.",
+            "## Hoe lang duurt het voordat het terugverdiend is?",
+            "Dat hangt af van je verkeer. Met ongeveer 500 meetbare conversies per maand kun je snel testen en zie je een uitslag in twee tot drie weken. Heb je minder, dan werk je met onderzoek en best practices en meet je het effect over langere periodes. <a href='/insights/hoeveel-verkeer-om-te-testen/'>Lees hoeveel verkeer je nodig hebt om te testen</a>.",
+            "## Onze uplift-garantie",
+            "Bij het <a href='/diensten/'>Webshop Groei-Traject</a> nemen we een deel van het risico: halen we binnen zes maanden niet minimaal 10% uplift in omzet per bezoeker, dan vervallen de maandelijkse kosten totdat we dat wel hebben aangetoond.",
+        ],
+        "steps": [],
+        "tool": "breakeven",
+        "faq": [
+            ("Loont conversie-optimalisatie voor een kleine webshop?", "Dat hangt af van je omzet en marge. Met de rekentool zie je hoeveel extra omzet je nodig hebt om de kosten terug te verdienen. Is die stijging erg groot, dan past een lichter traject met nulmeting en best practices beter dan een volledig testprogramma."),
+            ("Hoeveel extra omzet heb ik nodig om break-even te draaien?", "Deel de maandelijkse kosten door je brutomarge. Bij \u20ac1.000 per maand en 30% marge is dat ongeveer \u20ac3.300 extra omzet per maand."),
+            ("Hoe snel zie ik resultaat van conversie-optimalisatie?", "Bij ongeveer 500 meetbare conversies per maand toont een A/B-test in twee tot drie weken een effect. Bij minder verkeer meet je het effect van aanpassingen over langere perioden."),
+            ("Wat is een uplift-garantie?", "Bij Boldframe vervallen de maandelijkse kosten als we binnen zes maanden niet minimaal 10% uplift in omzet per bezoeker halen, totdat we dat wel hebben aangetoond."),
+        ],
     },
     "ai-scan-landingspagina": {
         "title": "Pas op: een AI-scan van je landingspagina is niet genoeg",
@@ -637,6 +724,10 @@ INSIGHTS = {
         ],
         "steps": [],
         "tool": "prompt",
+        "faq": [
+            ("Is een AI-scan van mijn landingspagina genoeg?", "Nee. Het Baymard Institute meet 50 tot 75% nauwkeurigheid voor AI UX-evaluaties. Een AI-scan geeft snel nieuwe inzichten, maar een specialist moet de adviezen filteren en afwegen."),
+            ("Waarvoor is een AI-scan wel handig?", "Om binnen twee minuten patronen en technische hiaten te signaleren op een pagina die organisch is gegroeid en lang niet is heroverwogen."),
+        ],
     },
     "meertalige-ecommerce": {
         "title": "Meertalige e-commerce: kansen voor Nederlandse webshops",
@@ -649,9 +740,22 @@ INSIGHTS = {
         ],
         "steps": [],
         "tool": "reach",
+        "faq": [
+            ("Is Google Translate genoeg voor een meertalige webshop?", "Nee. Moderne vertaaltools maken professionele, consistente en schaalbare vertalingen mogelijk, aangevuld met menselijke review voor nuance."),
+            ("Hoe begin je met een meertalige webshop?", "Begin klein: richt je eerst op de landen met de grootste potentie, combineer geautomatiseerde vertaling met menselijke review en zorg dat marketing, content en logistiek aansluiten."),
+        ],
     },
 }
-INSIGHT_ORDER = ["hoeveel-verkeer-om-te-testen", "ai-verkeer-meten-in-ga4", "ai-scan-landingspagina", "meertalige-ecommerce"]
+AUDIT_QUESTIONS = [
+    ("Relevantie", ["Zie je binnen drie seconden op elke landingspagina wat je verkoopt en voor wie?", "Sluit de landingspagina aan op de advertentie of zoekopdracht waarmee bezoekers binnenkomen?"]),
+    ("Vertrouwen", ["Staan er beoordelingen of andere social proof op de homepage en de productpagina\u2019s?", "Is zichtbaar wie er achter de winkel zit, zoals een adres, winkel, team of contactmogelijkheid?"]),
+    ("Oriëntatie", ["Vinden bezoekers via menu, zoeken en filters binnen enkele klikken het juiste product?", "Zie je op overzichtspagina\u2019s al de belangrijkste informatie, zoals beschikbare maten of varianten?"]),
+    ("Stimulans", ["Is er een duidelijke reden om nu te kopen, zoals een aanbod, schaarste of een snelle levertijd?", "Spreekt de productomschrijving de klant aan met voordelen, en niet alleen met specificaties?"]),
+    ("Veiligheid", ["Staan verzendkosten, levertijd en retourbeleid direct bij de bestelknop?", "Zie je vóór het afrekenen welke betaalmethoden mogelijk zijn?"]),
+    ("Gemak", ["Kun je op mobiel zonder gedoe afrekenen, zonder verplicht account?", "Is de bestelknop op productpagina\u2019s altijd duidelijk zichtbaar?"]),
+    ("Bevestiging", ["Krijgt de klant direct na het bestellen een duidelijke bevestiging met levertijd en vervolgstappen?", "Weet de klant na de bestelling waar hij terechtkan met vragen?"]),
+]
+INSIGHT_ORDER = ["conversie-optimalisatie-audit", "goede-conversieratio-webshop", "loont-conversie-optimalisatie", "hoeveel-verkeer-om-te-testen", "ai-verkeer-meten-in-ga4", "ai-scan-landingspagina", "meertalige-ecommerce"]
 
 DIENSTEN_STEPS = [
     ("Audit", "search", "We brengen de customer journey van je webshop in kaart en sporen de knelpunten op met heatmaps, sessieopnames en je eigen data — geen aannames."),
@@ -979,13 +1083,51 @@ def build_insight(slug, x):
 <div class="tool-out" id="dur-out" aria-live="polite"></div></div>'''
     elif tool == "reach":
         tool_html = '''<div class="tool"><h4>Tool: schat je potentieel met meertaligheid</h4><p class="tdesc">Ruwe, indicatieve schatting op basis van sectorgemiddelden. Geen belofte, wel een startpunt voor het gesprek.</p><label for="rev-input">Huidige omzet per maand (€)</label><input type="number" id="rev-input" min="0" placeholder="10000"><div class="tool-out" id="rev-out">Vul je huidige omzet per maand in voor een indicatie.</div></div>'''
+    elif tool == "checklist":
+        qs = AUDIT_QUESTIONS
+        items = "".join(f'<fieldset class="chk"><legend>{lvl}</legend>' + "".join(f'<label class="chk-row"><input type="checkbox" data-lvl="{lvl}"> {q}</label>' for q in qq) + '</fieldset>' for lvl, qq in qs)
+        tool_html = f'''<div class="tool" id="audit-tool"><h4>Tool: score je webshop op zeven niveaus</h4><p class="tdesc">Vink aan waar je webshop nu aan voldoet. Wees kritisch: twijfel je, laat het dan leeg.</p>{items}<div class="tool-out" id="audit-out" aria-live="polite"></div></div>'''
+    elif tool == "uplift":
+        tool_html = '''<div class="tool" id="uplift-tool"><h4>Tool: wat is extra conversie waard?</h4><p class="tdesc">Indicatieve rekenhulp. Vul je eigen cijfers in.</p>
+<label for="up-visitors">Bezoekers per maand</label><input type="number" id="up-visitors" min="0" value="20000">
+<label for="up-rate">Conversieratio (%)</label><input type="number" id="up-rate" min="0.01" max="100" step="0.01" value="1.5">
+<label for="up-aov">Gemiddelde orderwaarde (\u20ac)</label><input type="number" id="up-aov" min="0" value="80">
+<label for="up-gain">Verwachte verbetering van de conversie (relatief, %)</label><input type="number" id="up-gain" min="0" max="500" value="20">
+<div class="tool-out" id="up-out" aria-live="polite"></div></div>'''
+    elif tool == "breakeven":
+        tool_html = '''<div class="tool" id="be-tool"><h4>Tool: wat heb je nodig om break-even te draaien?</h4><p class="tdesc">Indicatieve rekenhulp. Gebruik de brutomarge na inkoop- en verzendkosten.</p>
+<label for="be-rev">Huidige omzet per maand (\u20ac)</label><input type="number" id="be-rev" min="0" value="30000">
+<label for="be-margin">Brutomarge (%)</label><input type="number" id="be-margin" min="1" max="100" value="35">
+<label for="be-cost">Kosten van het traject per maand (\u20ac)</label><input type="number" id="be-cost" min="0" value="1000">
+<div class="tool-out" id="be-out" aria-live="polite"></div></div>'''
     else:
         tool_html = ""
+    faq_html = ""
+    schema = ""
+    base = SITE_URL.rstrip("/")
+    url = f"{base}/insights/{slug}/"
+    if x.get("faq"):
+        faq_html = '<section class="art"><h2>Veelgestelde vragen</h2><div class="faq">' + "".join(f"<details><summary>{q}</summary><p>{a}</p></details>" for q, a in x["faq"]) + "</div></section>"
+    plain = lambda t: re.sub(r"<[^>]+>", "", t)
+    graph = [
+        {"@type": "Article", "headline": x["title"], "description": plain(x["dek"]), "datePublished": x["date"], "dateModified": x.get("updated", x["date"]),
+         "inLanguage": "nl-NL", "mainEntityOfPage": url,
+         "author": {"@type": "Person", "name": "Roy van Hees", "url": f"{base}/over-ons/", "jobTitle": "Oprichter Boldframe"},
+         "publisher": {"@type": "Organization", "name": "Boldframe", "url": f"{base}/", "logo": {"@type": "ImageObject", "url": f"{base}/assets/img/logo-blue.png"}}},
+        {"@type": "BreadcrumbList", "itemListElement": [
+            {"@type": "ListItem", "position": 1, "name": "Boldframe", "item": f"{base}/"},
+            {"@type": "ListItem", "position": 2, "name": "Insights", "item": f"{base}/insights/"},
+            {"@type": "ListItem", "position": 3, "name": x["title"], "item": url}]},
+    ]
+    if x.get("faq"):
+        graph.append({"@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": q, "acceptedAnswer": {"@type": "Answer", "text": plain(a)}} for q, a in x["faq"]]})
+    schema = '<script type="application/ld+json">' + json.dumps({"@context": "https://schema.org", "@graph": graph}, ensure_ascii=False) + "</script>\n"
     body = f'''<a class="back" href="/insights/">← Alle insights</a>
-<header class="hero" style="padding-top:32px;padding-bottom:24px">{HERO_BG}<span class="meta">{fmt_date(x['date'])}</span><h1 class="case">{x['title']}</h1><p>{x['dek']}</p></header>
-<section class="art">{"".join((f"<h2>{p[3:]}</h2>" if p.startswith("## ") else f"<p>{p}</p>") for p in x['body'])}{steps_html}{tool_html}</section>'''
+<header class="hero" style="padding-top:32px;padding-bottom:24px">{HERO_BG}<span class="meta">{fmt_date(x['date'])} · Door Roy van Hees</span><h1 class="case">{x['title']}</h1><p>{x['dek']}</p></header>
+<section class="art">{"".join((f"<h2>{p[3:]}</h2>" if p.startswith("## ") else f"<p>{p}</p>") for p in x['body'])}{steps_html}{tool_html}</section>
+{faq_html}'''
     desc = x["dek"] if len(x["dek"]) <= 160 else x["dek"][:157].rsplit(" ", 1)[0] + "…"
-    return page(x["title"], desc, f"/insights/{slug}/", body)
+    return page(x["title"], desc, f"/insights/{slug}/", body, schema)
 
 
 def build_insights_index():
@@ -1024,6 +1166,26 @@ def build_stub(title, path):
     return page(title, f"{title} — Boldframe", path, body)
 
 
+def faq_schema(faq):
+    plain = lambda t: re.sub(r"<[^>]+>", "", t)
+    data = {"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [
+        {"@type": "Question", "name": q, "acceptedAnswer": {"@type": "Answer", "text": plain(a)}} for q, a in faq]}
+    return '<script type="application/ld+json">' + json.dumps(data, ensure_ascii=False) + "</script>\n"
+
+
+def build_llms():
+    base = SITE_URL.rstrip("/")
+    lines = ["# Boldframe", "", "> Boldframe doet data-gedreven conversie-optimalisatie (CRO) met A/B-tests voor webshops, gevestigd in Maassluis. Oprichter: Roy van Hees. Het Webshop Groei-Traject heeft een uplift-garantie.", "", "## Pagina's",
+             f"- [Diensten]({base}/diensten/): het Webshop Groei-Traject en veelgestelde vragen",
+             f"- [Werkwijze]({base}/werkwijze/): audit, hypothese, A/B-test en implementatie",
+             f"- [Cases]({base}/cases/): resultaten van Ecodor, Bidet.nl, Petite Zara en Schuurman, uitgedrukt in multipliers",
+             f"- [Over ons]({base}/over-ons/)", "", "## Insights"]
+    for slug in INSIGHT_ORDER:
+        lines.append(f"- [{INSIGHTS[slug]['title']}]({base}/insights/{slug}/): {re.sub(r'<[^>]+>', '', INSIGHTS[slug]['dek'])}")
+    lines += ["", "## Contact", "- E-mail: roy@boldframe.nl", "- Telefoon: +31 6 37617728"]
+    return "\n".join(lines) + "\n"
+
+
 def build_diensten():
     steps_html = "".join(
         f'<li data-reveal style="--d:{i}"><span class="num">{i+1}</span><div><h3>{icon(k)}{t}</h3><p>{d}</p></div></li>'
@@ -1050,6 +1212,7 @@ def build_diensten():
         "Data-gedreven conversie-optimalisatie voor MKB-webshops: het Webshop Groei-Traject met uplift-garantie van Boldframe.",
         "/diensten/",
         body,
+        faq_schema(DIENSTEN_FAQ),
     )
 
 
@@ -1153,7 +1316,7 @@ def main():
     write("/werkwijze/", build_werkwijze())
     write("/over-ons/", build_over_ons())
     write("/privacy/", build_privacy())
-    for name, content in (("sitemap.xml", build_sitemap()), ("robots.txt", build_robots())):
+    for name, content in (("sitemap.xml", build_sitemap()), ("robots.txt", build_robots()), ("llms.txt", build_llms())):
         with open(os.path.join(ROOT, name), "w", encoding="utf-8") as f:
             f.write(content)
         print("wrote", name)
