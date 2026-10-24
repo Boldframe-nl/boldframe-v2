@@ -870,7 +870,7 @@ def page(title, description, path, body, extra_head=""):
 <div><h3>Contact</h3><a href="mailto:roy@boldframe.nl">{icon("mail")}roy@boldframe.nl</a><br><a href="tel:+31637617728">{icon("phone")}06-37617728</a></div>
 <div><h3>Kantoor</h3>Zwarte Zee 98<br>Maassluis</div>
 <div><h3>Volg ons</h3><a href="https://www.linkedin.com/company/boldframenl/" target="_blank" rel="noopener">LinkedIn</a><br><a href="https://www.instagram.com/boldframe_nl" target="_blank" rel="noopener">Instagram</a><br><a href="https://www.facebook.com/people/Boldframe/61568444076737/" target="_blank" rel="noopener">Facebook</a></div>
-<div><h3>Bedrijfsgegevens</h3>BTW NL002393881B08</div>
+<div><h3>Bedrijfsgegevens</h3>BTW NL002393881B08<br>KvK 71173579</div>
 </div>
 <div class="fine"><span>© 2026 Boldframe. Alle rechten voorbehouden.</span><a href="/privacy/">Privacyverklaring</a>{cookie_link}</div>
 </div></footer>
