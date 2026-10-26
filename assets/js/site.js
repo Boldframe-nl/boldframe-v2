@@ -287,8 +287,8 @@ document.addEventListener("pointermove", (e) => {
       const weak = Object.keys(lv).filter((k) => lv[k][0] < lv[k][1]).sort((a, b) => lv[a][0] - lv[b][0]);
       let msg = "Score: <strong>" + total + " van " + boxes.length + "</strong>. ";
       if (total === 0) msg += "Vink aan waar je webshop aan voldoet.";
-      else if (!weak.length) msg += "Alles aangevinkt. Controleer het bij je bezoekers met heatmaps en sessieopnames, want eigen blindheid is groot.";
-      else msg += "Hier is de meeste winst te halen: <strong>" + weak.slice(0, 3).join(", ") + "</strong>. Begin bij het eerste niveau.";
+      else if (!weak.length) msg += audit.dataset.done || "Alles aangevinkt. Controleer het bij je bezoekers met heatmaps en sessieopnames, want eigen blindheid is groot.";
+      else msg += "Hier is de meeste winst te halen: <strong>" + weak.slice(0, 3).join(", ") + "</strong>. " + (audit.dataset.hint || "Begin bij het eerste niveau.");
       out.innerHTML = msg;
     };
     boxes.forEach((b) => b.addEventListener("change", update));

@@ -637,6 +637,49 @@ INSIGHTS = {
             ("Waarom is het handig om AI-verkeer apart te meten?", "Zo zie je hoeveel bezoekers via AI binnenkomen en welke pagina\u2019s populair zijn bij de LLM\u2019s."),
         ],
     },
+    "black-friday-checklist-webshop": {
+        "title": "Black Friday: 8 dingen om nu aan je webshop te controleren",
+        "date": "2026-10-26",
+        "dek": "Dit gaat niet over advertenties of e-mailcampagnes, maar over je webshop zelf: kunnen bezoekers de deals vinden, geloven ze de korting en kan je shop het verkeer aan? Acht controles, met een score-tool.",
+        "body": [
+            "Black Friday is dit jaar op vrijdag 27 november, Cyber Monday volgt op maandag 30 november. Over de marketing eromheen is al genoeg geschreven. Dit artikel gaat over iets anders: de <strong>onsite-optimalisatie</strong>. Is je webshop klaar voor al het verkeer dat je met je campagnes gaat creëren, kunnen bezoekers zich goed oriënteren en vinden ze de deal waarvoor ze kwamen? En worden ze er daarna ook van overtuigd om af te rekenen, in plaats van alleen wat rond te kijken?",
+            "Hieronder staan acht dingen die we belangrijk vinden. Ze zijn gebaseerd op onze ervaring en op onderzoek naar koopgedrag. Waar het een vuistregel is en geen bewezen feit, zeggen we dat erbij: test het liever dan dat je ons op ons woord gelooft.",
+            "## 1. Geef de deals een eigen plek",
+            "Zet alle producten met een Black Friday-deal in één aparte categorie, bijvoorbeeld ‘Black Friday’ of ‘Sale’. Daar komen de koopjesjagers terecht, en vanaf dat overzicht kunnen ze filteren op je gewone productcategorieën. Haal de producten daarbij niet uit hun vaste categorie: een jurk met korting moet ook gewoon bij de jurken staan.",
+            "Zorg dat de aparte categorie goed vindbaar is. Een link in het menu is het minimum. Zet je écht in op Black Friday, voeg dan ook een hero banner op de homepage toe.",
+            "## 2. Laat bezoekers filteren op deals binnen een categorie",
+            "Een bezoeker die in de categorie jurken zit, wil soms alleen de aanbiedingen zien. Geef hem daarvoor een filter, bijvoorbeeld een vinkje ‘Black Friday-deals’ in de filterkolom. Zo hoeft hij niet terug naar de dealpagina en gaat hij niet zonder aankoop weg.",
+            "Het kan zijn dat je daarmee gewone shoppers omzet in koopjesjagers. Maar als ze sneller afrekenen en je aftersales goed is, heb je er mogelijk een nieuwe vaste klant bij. Dat telt mee voor de levensduurwaarde van die klant.",
+            "## 3. Laat zien hoeveel iemand bespaart, niet alleen dat er korting is",
+            "Een label ‘Aanbieding’ boven een product zegt weinig. Laat de besparing zien in een getal, op de overzichtspagina met producten (PLP) en op de productpagina. Toon de oude prijs doorgestreept en een beetje vervaagd, en de nieuwe prijs in rood en iets groter.",
+            "Kies per product wat je laat zien: percentage of bedrag. Bij een goedkoop product voelt een percentage meer. Bij een product van €10 klinkt ‘30% korting’ als meer dan ‘€3 korting’, terwijl €3 voor veel mensen niet veel geld is. Bij een duur product werkt het omgekeerd: ‘€150 korting’ klinkt groter dan ‘15%’. In de prijspsychologie wordt hiervoor vaak een grens rond €100 gebruikt. Dat is een vuistregel, geen wet. Test welke weergave bij jouw assortiment het beste werkt.",
+            "## 4. Blijf de besparing laten zien tot en met de checkout",
+            "De korting hoort niet te verdwijnen zodra iemand een product in de winkelwagen legt. Laat de besparing terugkomen in de cart drawer en op de winkelwagenpagina, en eventueel nog een keer in de checkout. Zo houdt de klant tijdens het hele bestelproces het gevoel dat hij een goede deal pakt.",
+            "## 5. Houd het ontwerp van je shop subtiel",
+            "Gooi je shop niet om in zwart en rood als dat niet bij je merk past. Je vaste klanten kennen je website zoals hij is, en die herkenning is een kracht. Een subtiele banner, een duidelijke prijsweergave en een goede categorie zijn genoeg om de deal te laten opvallen.",
+            "## 6. Wees eerlijk over de levertijd",
+            "Rond Black Friday zijn pakketdiensten overbelast en kan jouw eigen magazijn het ook drukker hebben. Meld daarom eerlijk wat de klant kan verwachten. Heb je normaal een werkdag nodig, schrijf dan bijvoorbeeld ‘één tot twee werkdagen door de drukte rond Black Friday’. Dat voorkomt klachten achteraf en een negatieve associatie met je merk.",
+            "Zet de verwachte levertijd er vóór het afrekenen bij. Baymard Institute meldt dat <a href='https://baymard.com/lists/cart-abandonment-rate' rel='noopener'>bijna 70% van de winkelwagens wordt verlaten</a>, en dat onverwachte extra kosten de meest genoemde reden zijn. Een late levering die pas bij de bevestiging blijkt, werkt op dezelfde manier tegen je.",
+            "## 7. Zorg dat je shop snel blijft onder druk",
+            "Stuur je veel verkeer naar je shop, zorg dan dat hij niet trager wordt dan nodig en dat de servercapaciteit het aankan, ook op de piekmomenten. Niets is vervelender dan campagnes die goed lopen terwijl bezoekers op een trage shop terechtkomen. Dat kost conversie, en nieuwe klanten onthouden ook dat je site traag was. Ze komen dan minder snel terug.",
+            "Gebruik je Shopify of een vergelijkbaar platform, dan regelt het platform de servercapaciteit en hoef je je daar minder zorgen over te maken. Draai je een WooCommerce-shop of een andere site op een server die je zelf beheert, dan moet je dit vooraf controleren. Houd daarbij de grenzen van Google aan: de belangrijkste inhoud binnen 2,5 seconde zichtbaar, een tik beantwoord binnen 200 milliseconden en weinig verspringende elementen (layoutverschuiving van 0,1 of minder).",
+            "## 8. Loop de hele reis zelf door, op je telefoon",
+            "Bestel zelf, op mobiel, met een kortingscode en met de betaalmethoden die je klanten gebruiken. Begin bij de e-mail of advertentie waarmee ze binnenkomen en eindig bij de bevestigingsmail. Controleer onderweg of de besparing klopt, of de kortingscode werkt en of je bevestiging niet in de spam belandt. Eén rondje levert vaak al de problemen op die op de dag zelf het meeste kosten.",
+            "## Wijzig niet meer in de week zelf",
+            "Doe de aanpassingen hierboven bij voorkeur ruim voor 27 november. Een nieuw filter of een andere prijsweergave die je op donderdag live zet, kun je niet meer rustig controleren. Heb je genoeg verkeer, dan kun je een wijziging vooraf testen. Hoeveel verkeer je daarvoor nodig hebt lees je in <a href='/insights/hoeveel-verkeer-om-te-testen/'>dit artikel</a>.",
+            "## Controleer het zelf",
+            "Vink hieronder aan waar je webshop al aan voldoet. De volgorde van de lijst is de volgorde waarin we ze zouden aanpakken.",
+        ],
+        "steps": [],
+        "tool": "bfcheck",
+        "faq": [
+            ("Wanneer is Black Friday 2026?", "Black Friday valt in 2026 op vrijdag 27 november. Cyber Monday is maandag 30 november."),
+            ("Hoe laat je een Black Friday-korting op een webshop het beste zien?", "Toon de oude prijs doorgestreept en de nieuwe prijs in rood en iets groter, en vervang het label ‘aanbieding’ door de besparing in een getal. Bij goedkope producten werkt een percentage meestal beter, bij dure producten een bedrag in euro\u2019s. Test wat bij jouw assortiment past."),
+            ("Moet ik een aparte Black Friday-categorie maken?", "Ja, dat raden we aan. Zet de deals in een eigen categorie zodat koopjesjagers ze direct vinden, en laat de producten ook in hun gewone categorie staan. Voeg een filter ‘Black Friday-deals’ toe in je bestaande categorie\u00ebn."),
+            ("Hoe zorg ik dat mijn webshop Black Friday aankan?", "Controleer vooraf of je hosting het verwachte verkeer aankan, comprimeer zware afbeeldingen, verwijder scripts en apps die je niet nodig hebt en test je checkout op een telefoon. Bij Shopify regelt het platform de capaciteit, bij WooCommerce of een eigen server moet je dit zelf controleren."),
+            ("Moet ik mijn webshop in zwart en rood omzetten voor Black Friday?", "Nee, niet als dat niet bij je merk past. Houd het ontwerp subtiel en bouw voort op de herkenning bij je vaste klanten. Een duidelijke prijsweergave en een goede dealcategorie doen meer dan een andere kleurstelling."),
+        ],
+    },
     "conversie-optimalisatie-audit": {
         "title": "Wat zit er in een conversie-optimalisatie audit?",
         "date": "2026-10-23",
@@ -755,7 +798,17 @@ AUDIT_QUESTIONS = [
     ("Gemak", ["Kun je op mobiel zonder gedoe afrekenen, zonder verplicht account?", "Is de bestelknop op productpagina\u2019s altijd duidelijk zichtbaar?"]),
     ("Bevestiging", ["Krijgt de klant direct na het bestellen een duidelijke bevestiging met levertijd en vervolgstappen?", "Weet de klant na de bestelling waar hij terechtkan met vragen?"]),
 ]
-INSIGHT_ORDER = ["conversie-optimalisatie-audit", "goede-conversieratio-webshop", "loont-conversie-optimalisatie", "hoeveel-verkeer-om-te-testen", "ai-verkeer-meten-in-ga4", "ai-scan-landingspagina", "meertalige-ecommerce"]
+BF_QUESTIONS = [
+    ("1. Eigen dealcategorie", ["Staan alle Black Friday-deals in een aparte categorie die je via het menu (en eventueel een hero banner) vindt, en ook in hun gewone categorie?"]),
+    ("2. Filter op deals", ["Kunnen bezoekers binnen een categorie filteren op Black Friday-deals?"]),
+    ("3. Besparing zichtbaar", ["Toont elke deal de oude prijs doorgestreept, de nieuwe prijs opvallend en de besparing als getal in plaats van alleen ‘aanbieding’?"]),
+    ("4. Besparing tot de checkout", ["Zie je de besparing nog terug in de cart drawer, de winkelwagen en de checkout?"]),
+    ("5. Subtiel ontwerp", ["Past de uitstraling van de deals bij je merk, zonder dat je hele shop is omgegooid?"]),
+    ("6. Eerlijke levertijd", ["Staat de verwachte levertijd, inclusief de drukte rond Black Friday, vóór het afrekenen duidelijk vermeld?"]),
+    ("7. Snelheid onder druk", ["Weet je zeker dat je shop en hosting het verwachte verkeer aankunnen, ook op de piekmomenten?"]),
+    ("8. Reis getest op mobiel", ["Heb je zelf op je telefoon besteld met kortingscode en betaalmethode, inclusief de bevestigingsmail?"]),
+]
+INSIGHT_ORDER = ["black-friday-checklist-webshop", "conversie-optimalisatie-audit", "goede-conversieratio-webshop", "loont-conversie-optimalisatie", "hoeveel-verkeer-om-te-testen", "ai-verkeer-meten-in-ga4", "ai-scan-landingspagina", "meertalige-ecommerce"]
 
 DIENSTEN_STEPS = [
     ("Audit", "search", "We brengen de customer journey van je webshop in kaart en sporen de knelpunten op met heatmaps, sessieopnames en je eigen data — geen aannames."),
@@ -1087,6 +1140,9 @@ def build_insight(slug, x):
         qs = AUDIT_QUESTIONS
         items = "".join(f'<fieldset class="chk"><legend>{lvl}</legend>' + "".join(f'<label class="chk-row"><input type="checkbox" data-lvl="{lvl}"> {q}</label>' for q in qq) + '</fieldset>' for lvl, qq in qs)
         tool_html = f'''<div class="tool" id="audit-tool"><h4>Tool: score je webshop op zeven niveaus</h4><p class="tdesc">Vink aan waar je webshop nu aan voldoet. Wees kritisch: twijfel je, laat het dan leeg.</p>{items}<div class="tool-out" id="audit-out" aria-live="polite"></div></div>'''
+    elif tool == "bfcheck":
+        items = "".join(f'<fieldset class="chk"><legend>{lvl}</legend>' + "".join(f'<label class="chk-row"><input type="checkbox" data-lvl="{lvl}"> {q}</label>' for q in qq) + '</fieldset>' for lvl, qq in BF_QUESTIONS)
+        tool_html = f'''<div class="tool" id="audit-tool" data-done="Alles aangevinkt. Loop de reis nog een keer door op een andere telefoon, want eigen blindheid is groot." data-hint="Begin bij de eerste hieronder."><h4>Tool: is jouw webshop klaar voor Black Friday?</h4><p class="tdesc">Vink aan waar je webshop nu aan voldoet. Wees kritisch: twijfel je, laat het dan leeg.</p>{items}<div class="tool-out" id="audit-out" aria-live="polite"></div></div>'''
     elif tool == "uplift":
         tool_html = '''<div class="tool" id="uplift-tool"><h4>Tool: wat is extra conversie waard?</h4><p class="tdesc">Indicatieve rekenhulp. Vul je eigen cijfers in.</p>
 <label for="up-visitors">Bezoekers per maand</label><input type="number" id="up-visitors" min="0" value="20000">
