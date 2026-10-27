@@ -4,7 +4,7 @@
 
 ## Pagina's
 - [Diensten](https://boldframe.nl/diensten/): het Webshop Groei-Traject en veelgestelde vragen
-- [Werkwijze](https://boldframe.nl/werkwijze/): audit, hypothese, A/B-test en implementatie
+- [Werkwijze](https://boldframe.nl/werkwijze/): onderzoek, hypothese, A/B-test en implementatie
 - [Cases](https://boldframe.nl/cases/): resultaten van Ecodor, Bidet.nl, Petite Zara en Schuurman, uitgedrukt in multipliers
 - [Over ons](https://boldframe.nl/over-ons/)
 

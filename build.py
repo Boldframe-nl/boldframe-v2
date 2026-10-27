@@ -820,7 +820,7 @@ BF_QUESTIONS = [
 INSIGHT_ORDER = ["black-friday-checklist-webshop", "conversie-optimalisatie-audit", "goede-conversieratio-webshop", "loont-conversie-optimalisatie", "hoeveel-verkeer-om-te-testen", "ai-verkeer-meten-in-ga4", "ai-scan-landingspagina", "meertalige-ecommerce"]
 
 DIENSTEN_STEPS = [
-    ("Audit", "search", "We brengen de customer journey van je webshop in kaart en sporen de knelpunten op met heatmaps, sessieopnames en je eigen data — geen aannames."),
+    ("Onderzoek", "search", "We brengen de customer journey van je webshop in kaart, sporen knelpunten op met heatmaps, sessieopnames en je eigen data, en leren je klanten kennen met reviews, klantvragen en interviews — geen aannames."),
     ("Hypothese", "bulb", "Per knelpunt formuleren we een onderbouwde hypothese: welke aanpassing, waarom die het gedrag zou moeten veranderen, en wat we verwachten dat het oplevert."),
     ("A/B-test", "flask", "We testen de aanpassing tegen de huidige versie, met tools als Nelio A/B Testing, tot het resultaat statistisch betrouwbaar is."),
     ("Implementatie", "check", "Een bewezen winnaar voeren we definitief door. Een verliezer laten we vallen, ongeacht hoe logisch hij vooraf klonk — zoals je in onze testtijdlijnen kunt teruglezen."),
@@ -847,10 +847,18 @@ OVER_ONS_STATS = [
 
 # Uitgebreide versie van de 4 stappen, voor de aparte Werkwijze-pagina.
 WERKWIJZE_STEPS = [
-    ("Audit", "search", "We starten met een technische en gedragsmatige audit van je webshop: heatmaps en sessieopnames laten zien wáár bezoekers vastlopen, GA4 laat zien wáár ze afhaken in de funnel, en een handmatige UX-review legt frictie bloot die data alleen niet altijd laat zien.", "Output: een lijst knelpunten, elk onderbouwd met data — geen onderbuikgevoel."),
-    ("Hypothese & prioriteit", "bulb", "Elk knelpunt wordt een hypothese: welke aanpassing, welk mechanisme verklaart waarom die het gedrag zou veranderen, en wat verwachten we dat het oplevert. Hypotheses worden gewogen op verwachte impact, de zekerheid dat de aanpassing werkt, en de inspanning om 'm te bouwen — zodat we eerst testen wat het meeste oplevert tegen de minste moeite.", "Output: een geprioriteerde testbacklog, met de volgende test al vastgelegd voordat de huidige is afgerond."),
+    ("Onderzoek", "search", "We starten met twee soorten onderzoek naast elkaar. Het technische deel: heatmaps en sessieopnames laten zien wáár bezoekers vastlopen, GA4 laat zien wáár ze afhaken in de funnel, en een handmatige UX-review legt frictie bloot die data niet altijd laat zien. Het klantdeel: we leren de mensen kennen die bij je kopen, met reviews, vragen aan je klantenservice, interviews met je team en door zelf klant te worden. Welke methoden we inzetten hangt af van je shop en je verkeer.", "Output: een lijst pijnpunten, onderbouwd met data én met wat klanten zelf zeggen."),
+    ("Hypothese & prioriteit", "bulb", "Alle pijnpunten uit het onderzoek groeperen we tot thema’s. Een thema dat uit meerdere bronnen terugkomt is betrouwbaarder dan één losse observatie, en het wijst op een dieper liggende zwakte of sterkte van je webshop. Daaruit volgen ook de grotere hypotheses, bijvoorbeeld over je aanbod of het vertrouwen van klanten, naast de kleinere aanpassingen. Elke hypothese beschrijft welke aanpassing, welk mechanisme verklaart waarom die het gedrag zou veranderen, en wat verwachten we dat het oplevert. Hypotheses worden gewogen op verwachte impact, de zekerheid dat de aanpassing werkt, en de inspanning om 'm te bouwen — zodat we eerst testen wat het meeste oplevert tegen de minste moeite.", "Output: een geprioriteerde testbacklog, met de volgende test al vastgelegd voordat de huidige is afgerond."),
     ("A/B-test", "flask", "De aanpassing wordt tegen de huidige versie getest bij een representatief deel van je bezoekers, met tools als Nelio A/B Testing. We laten een test doorlopen tot het resultaat statistisch betrouwbaar is — niet tot het toevallig de goede kant op wijst.", "Output: een winnaar, verliezer, of 'geen significant verschil' — alle drie zijn een geldige uitkomst."),
     ("Implementatie & learning", "check", "Een bewezen winnaar voeren we structureel door, zelf of samen met je huidige webbouwer. Een verliezer laten we vallen, ongeacht hoe logisch hij vooraf klonk. Wat we leerden voeden we terug in de volgende hypothese — zo wordt elke test waardevol, ook de tests die niet 'wonnen'.", "Output: een doorgevoerde verandering en een testtijdlijn die groeit, zoals je die terugziet bij elke case."),
+]
+WERKWIJZE_KLANT = [
+    ("Zelf klant worden", "cart", "We bestellen zelf bij je webshop, en waar het past ook bij concurrenten. Zo ontdek je bestelongemakken die in je data niet zichtbaar zijn, en zie je hoe je aanbod en prijzen zich verhouden."),
+    ("Je team interviewen", "heart", "In een uitgebreid gesprek met de mensen die dagelijks met klanten werken horen we welke vragen, twijfels en klachten steeds terugkomen."),
+    ("Reviews analyseren", "search", "Wat waarderen klanten echt aan je producten en je service, en wat motiveert hen om te kopen? Dat gebruiken we in teksten, aanbod en tests."),
+    ("Chat- en servicevragen", "bolt", "Vragen die klanten steeds stellen zijn hiaten in de informatie op je site. We zetten ze op een rij en kijken wat de pagina had moeten beantwoorden."),
+    ("Formulieren en vragenlijsten", "target", "Korte vragenlijsten onder bestaande klanten, bijvoorbeeld over koopmotieven, geven ons de woorden en redenen van je klanten zelf."),
+    ("Thema\u2019s in een learningdocument", "bulb", "Alles komt samen in één document. We zoeken thema\u2019s in de pijnpunten en koppelen die aan hypotheses, en leggen na elke test vast wat we leerden."),
 ]
 WERKWIJZE_PRIORITY = [
     ("Impact", "target", "Hoeveel omzet-effect verwachten we als de hypothese klopt? Een test op je productpagina's weegt zwaarder dan een test op een pagina die bijna niemand bezoekt."),
@@ -1242,7 +1250,7 @@ def build_llms():
     base = SITE_URL.rstrip("/")
     lines = ["# Boldframe", "", "> Boldframe doet data-gedreven conversie-optimalisatie (CRO) met A/B-tests voor webshops, gevestigd in Maassluis. Oprichter: Roy van Hees. Het Webshop Groei-Traject heeft een uplift-garantie.", "", "## Pagina's",
              f"- [Diensten]({base}/diensten/): het Webshop Groei-Traject en veelgestelde vragen",
-             f"- [Werkwijze]({base}/werkwijze/): audit, hypothese, A/B-test en implementatie",
+             f"- [Werkwijze]({base}/werkwijze/): onderzoek, hypothese, A/B-test en implementatie",
              f"- [Cases]({base}/cases/): resultaten van Ecodor, Bidet.nl, Petite Zara en Schuurman, uitgedrukt in multipliers",
              f"- [Over ons]({base}/over-ons/)", "", "## Insights"]
     for slug in INSIGHT_ORDER:
@@ -1292,16 +1300,22 @@ def build_werkwijze():
         f'<div data-reveal style="--d:{i}">{icon(k)}<h3>{t}</h3><p>{d}</p></div>'
         for i, (t, k, d) in enumerate(WERKWIJZE_PRIORITY)
     )
-    body = f'''<header class="hero">{HERO_BG}<h1 class="case">Van vermoeden naar bewijs.</h1><p>Dit is hoe een traject bij Boldframe er in de praktijk uitziet — dezelfde vier fases bij elke webshop, van de eerste audit tot de doorgevoerde winnaar.</p></header>
+    klant_html = "".join(
+        f'<div data-reveal style="--d:{i}">{icon(k)}<h3>{t}</h3><p>{d}</p></div>'
+        for i, (t, k, d) in enumerate(WERKWIJZE_KLANT)
+    )
+    body = f'''<header class="hero">{HERO_BG}<h1 class="case">Van vermoeden naar bewijs.</h1><p>Dit is hoe een traject bij Boldframe er in de praktijk uitziet — dezelfde vier fases bij elke webshop, van het eerste onderzoek tot de doorgevoerde winnaar.</p></header>
 <section><h2 data-reveal>De vier fases</h2><p class="lead" data-reveal>Elke fase levert een concreet resultaat op voordat de volgende begint.</p>
 <ul class="steps-detail">{steps_html}</ul></section>
+<section><h2 data-reveal>Zo leren we jouw klanten kennen</h2><p class="lead" data-reveal style="max-width:66ch">Data laat zien wat bezoekers doen, maar niet waarom. Daarom onderzoeken we ook de mensen achter de cijfers. Dit is het begin van elke hypothese. Welke methoden we inzetten hangt af van je shop, je verkeer en wat er al bekend is.</p>
+<div class="facts">{klant_html}</div></section>
 <section><h2 data-reveal>Hoe we prioriteren</h2><p class="lead" data-reveal>Met meerdere knelpunten tegelijk is de vraag niet wát we testen, maar in welke volgorde. We wegen elke hypothese op drie punten.</p>
 <div class="facts">{priority_html}</div></section>
 <section><h2 data-reveal>Wat je kunt verwachten</h2><p class="lead" data-reveal>Korte lijnen, geen dikke rapporten. Na elke afgeronde test krijg je een update met de uitkomst, de learning, en wat we daarna gaan testen — terug te zien in de testtijdlijn van je eigen <a href="/cases/">case</a>. Blijft de afgesproken uplift uit? Dan werken we gratis door: lees de <a href="/diensten/">uplift-garantie</a>.</p>
 <p><a class="btn" href="#afspraak">Claim jouw gratis website scan</a></p></section>'''
     return page(
         "Werkwijze",
-        "Hoe een CRO-traject bij Boldframe werkt: audit, hypothese, A/B-test en implementatie, met prioritering op impact, zekerheid en inspanning.",
+        "Hoe een CRO-traject bij Boldframe werkt: onderzoek naar data én klanten, hypothese, A/B-test en implementatie, met prioritering op impact, zekerheid en inspanning.",
         "/werkwijze/",
         body,
     )
@@ -1321,7 +1335,7 @@ def build_over_ons():
 <p class="lead" data-reveal style="max-width:66ch">Roy is ervan overtuigd dat je met snel testen de concurrentie voorblijft. Zeker nu advertentiekosten stijgen en concurrenten zelf ook slimmer werken, is dat de enige manier.</p>
 <p class="lead" data-reveal style="max-width:66ch">Roy is 28 en woont met zijn vrouw en twee zoontjes in Maassluis. <a href="mailto:roy@boldframe.nl">roy@boldframe.nl</a></p></div></div></section>
 {build_testimonials()}
-<section><h2 data-reveal>Hoe we werken</h2><p class="lead" data-reveal style="max-width:66ch">Audit, hypothese, A/B-test, implementatie — dezelfde vier stappen bij elke shop. Lees meer over onze <a href="/diensten/">werkwijze</a> of bekijk direct wat het heeft opgeleverd in onze <a href="/cases/">cases</a>.</p>
+<section><h2 data-reveal>Hoe we werken</h2><p class="lead" data-reveal style="max-width:66ch">Onderzoek, hypothese, A/B-test, implementatie — dezelfde vier stappen bij elke shop. Lees meer over onze <a href="/diensten/">werkwijze</a> of bekijk direct wat het heeft opgeleverd in onze <a href="/cases/">cases</a>.</p>
 <p><a class="btn" href="#afspraak">Plan een kennismaking</a></p></section>'''
     return page(
         "Over ons",
