@@ -876,7 +876,7 @@ def fmt_date(d):
     return f"{int(day)} {months[int(m)-1]} {y}"
 
 
-def page(title, description, path, body, extra_head=""):
+def page(title, description, path, body, extra_head="", noindex=False):
     """path: root-relative canonical path, e.g. '/', '/cases/ecodor/'"""
     canonical = SITE_URL.rstrip("/") + path
     nav_links = []
@@ -885,6 +885,8 @@ def page(title, description, path, body, extra_head=""):
         nav_links.append(f'<li><a href="{href}"{current}>{label}</a></li>')
     nav_html = "".join(nav_links)
     robots_meta = "" if LIVE else '<meta name="robots" content="noindex,nofollow">\n'
+    if noindex:
+        robots_meta = '<meta name="robots" content="noindex,follow">\n'
     ga_attr = f' data-ga="{GA_ID}"' if GA_ID else ""
     cookie_link = '<a href="#" data-cookie-reset>Cookie-instellingen</a>' if GA_ID else ""
     jsonld = ""
@@ -1358,6 +1360,15 @@ def build_over_ons():
     )
 
 
+def build_bedankt():
+    picks = ["black-friday-checklist-webshop", "goede-conversieratio-webshop", "hoeveel-verkeer-om-te-testen"]
+    rows = "".join(f'<li><a class="row" href="/insights/{sl}/"><h3>{INSIGHTS[sl]["title"]}</h3><span>{fmt_date(INSIGHTS[sl]["date"])}</span></a></li>' for sl in picks)
+    body = f'''<header class="hero">{HERO_BG}<h1 class="case">Je inschrijving is bevestigd.</h1><p>Bedankt, je staat op de lijst. Je ontvangt ongeveer één keer per maand een korte mail met één test van een webshop en wat we ervan leerden.</p></header>
+<section class="art"><h2>Alvast lezen</h2><p>Drie artikelen waar we vaak op terugkomen:</p><ul class="insight-list">{rows}</ul>
+<p>Bekijk ook de <a href="/cases/">cases</a> of lees hoe we <a href="/werkwijze/">werken</a>. Uitschrijven kan altijd via de link onderaan elke mail. Een vraag of reactie? Mail gerust naar <a href="mailto:roy@boldframe.nl">roy@boldframe.nl</a>.</p></section>'''
+    return page("Inschrijving bevestigd", "Je inschrijving voor de nieuwsbrief van Boldframe is bevestigd.", "/nieuwsbrief/bedankt/", body, noindex=True)
+
+
 def build_privacy():
     ga = ""
     if GA_ID:
@@ -1412,6 +1423,7 @@ def main():
     write("/werkwijze/", build_werkwijze())
     write("/over-ons/", build_over_ons())
     write("/privacy/", build_privacy())
+    write("/nieuwsbrief/bedankt/", build_bedankt())
     for name, content in (("sitemap.xml", build_sitemap()), ("robots.txt", build_robots()), ("llms.txt", build_llms())):
         with open(os.path.join(ROOT, name), "w", encoding="utf-8") as f:
             f.write(content)

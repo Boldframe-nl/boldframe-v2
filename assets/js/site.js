@@ -339,7 +339,7 @@ document.addEventListener("pointermove", (e) => {
     fetch(su.action, { method: "POST", body: new FormData(su) })
       .then((r) => r.json())
       .then((d) => {
-        if (d && d.success) { ev("nieuwsbrief_inschrijving"); show("Bedankt voor je inschrijving. Check je mailbox (ook je spam) voor een mail waarmee je je inschrijving bevestigt."); }
+        if (d && d.success) { ev("nieuwsbrief_inschrijving"); show("<strong>Bijna klaar.</strong> We hebben je een e-mail gestuurd. Klik op de bevestigingslink in die mail om je inschrijving af te ronden. Zie je niets, kijk dan in je spam."); }
         else { if (btn) { btn.disabled = false; btn.textContent = "Schrijf me in"; } show("Het inschrijven is niet gelukt. Probeer het later opnieuw of mail naar <a href='mailto:roy@boldframe.nl'>roy@boldframe.nl</a>."); }
       })
       .catch(() => { ev("nieuwsbrief_inschrijving"); su.submit(); });
