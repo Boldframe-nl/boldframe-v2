@@ -356,3 +356,5 @@ footer .btn{background:var(--onblue);color:var(--blue)}
 .tool-out{font-size:17px}
 
 .art figure.fig{margin:24px 0}.art figure.fig img{display:block;max-width:100%;height:auto;max-height:420px;border:2px solid var(--line);border-radius:6px;background:#fff}.art figure.fig figcaption{font-size:14px;opacity:.75;margin-top:8px}
+
+.signup-wrap{padding-top:0}.signup form{position:relative;max-width:520px}.signup .chk-row span{font-size:15px;line-height:1.45}

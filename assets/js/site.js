@@ -325,3 +325,19 @@ document.addEventListener("pointermove", (e) => {
     update();
   }
 })();
+
+// 12) Meetpunten voor micro-conversies (alleen als GA4 is geladen, dus na toestemming).
+(function () {
+  const ev = (name, params) => { if (typeof window.gtag === "function") window.gtag("event", name, params || {}); };
+  const su = document.querySelector("form[data-signup]");
+  if (su) su.addEventListener("submit", () => ev("nieuwsbrief_inschrijving"));
+  const tool = document.querySelector(".tool[id$='-tool']");
+  if (tool) { let sent = false; tool.addEventListener("input", () => { if (!sent) { sent = true; ev("tool_gebruikt", { tool: tool.id }); } }); tool.addEventListener("change", () => { if (!sent) { sent = true; ev("tool_gebruikt", { tool: tool.id }); } }); }
+  document.addEventListener("click", (e) => {
+    const a = e.target.closest && e.target.closest("a");
+    if (!a) return;
+    const h = a.getAttribute("href") || "";
+    if (h.indexOf("#afspraak") !== -1) ev("scan_klik");
+    else if (h.indexOf("calendly.com") !== -1) ev("calendly_klik");
+  });
+})();

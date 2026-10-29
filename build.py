@@ -12,6 +12,7 @@ import os
 ROOT = os.path.dirname(os.path.abspath(__file__))
 SITE_URL = "https://boldframe.nl"
 LIVE = True  # bij livegang op True: haalt noindex weg en laat zoekmachines toe (robots.txt + meta)
+BREVO_FORM_URL = ""  # Brevo-formulier-URL (https://xxxx.sibforms.com/serve/...). Leeg = geen nieuwsbriefblok en geen privacytekst daarover.
 GA_ID = "G-8N1ZFCB0FW"  # Google Analytics 4 meet-ID (G-XXXXXXXXXX). Leeg = geen analytics en geen cookiebanner.
 
 PIN_SVG = '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M14 3l7 7-3 1-3.5 3.5.5 4.5-1.5 1.5-4-4-5 5-1-1 5-5-4-4L6.5 10.5 11 11l3.5-3.5z"/></svg>'
@@ -1134,6 +1135,16 @@ def build_cases_index():
     return page("Cases", "Cases van Boldframe: wat we testten, waarom, en wat het opleverde.", "/cases/", body)
 
 
+def build_signup():
+    if not BREVO_FORM_URL:
+        return ""
+    return f'''<section class="art signup-wrap"><div class="tool signup" id="signup"><h4>Nieuwsbrief</h4><p class="tdesc"><strong>Eén test, één les.</strong> Eén keer per maand een korte mail over een test bij een webshop en wat we ervan leerden. Geen verkooptraject, uitschrijven kan altijd.</p>
+<form method="post" action="{BREVO_FORM_URL}" data-signup><label for="su-email">E-mailadres</label><input type="email" id="su-email" name="EMAIL" required autocomplete="email" placeholder="jij@jouwwebshop.nl">
+<input type="text" name="email_address_check" value="" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;opacity:0;height:0;width:0"><input type="hidden" name="locale" value="nl"><input type="hidden" name="html_type" value="simple">
+<label class="chk-row"><input type="checkbox" id="su-ok" required> <span>Ik wil de nieuwsbrief van Boldframe ontvangen. Je e-mailadres gebruiken we alleen daarvoor, zie de <a href="/privacy/">privacyverklaring</a>.</span></label>
+<button type="submit" class="btn small">Schrijf me in</button></form></div></section>'''
+
+
 def build_insight(slug, x):
     steps_html = ""
     if x["steps"]:
@@ -1200,7 +1211,7 @@ def build_insight(slug, x):
     body = f'''<a class="back" href="/insights/">← Alle insights</a>
 <header class="hero" style="padding-top:32px;padding-bottom:24px">{HERO_BG}<span class="meta">{fmt_date(x['date'])} · Door Roy van Hees</span><h1 class="case">{x['title']}</h1><p>{x['dek']}</p></header>
 <section class="art">{"".join((f"<h2>{p[3:]}</h2>" if p.startswith("## ") else f"<p>{p}</p>") for p in x['body'])}{steps_html}{tool_html}</section>
-{faq_html}'''
+{faq_html}{build_signup()}'''
     desc = x["dek"] if len(x["dek"]) <= 160 else x["dek"][:157].rsplit(" ", 1)[0] + "…"
     return page(x["title"], desc, f"/insights/{slug}/", body, schema)
 
@@ -1211,7 +1222,7 @@ def build_insights_index():
         for i, slug in enumerate(INSIGHT_ORDER)
     )
     body = f'''<header class="hero">{HERO_BG}<h1 style="font-size:clamp(36px,7vw,64px)">Insights.</h1><p>Wat we zien gebeuren in de markt, met steeds een tool erbij die je direct kunt gebruiken.</p></header>
-<section class="art"><ul class="insight-list">{rows}</ul></section>'''
+<section class="art"><ul class="insight-list">{rows}</ul></section>{build_signup()}'''
     return page("Insights", "Wat Boldframe ziet gebeuren in de markt, met een tool om direct mee aan de slag te gaan.", "/insights/", body)
 
 
@@ -1232,7 +1243,7 @@ def build_home():
 <section><h2 data-reveal>Cases</h2><p class="lead" data-reveal>Open een case om te zien wat we testten, waarom, en wat het opleverde. <a href="/cases/">Alle cases →</a></p><ul class="list">{case_rows}</ul></section>
 {build_testimonials()}
 {build_branches_section()}
-<section><h2 data-reveal>Insights</h2><p class="lead" data-reveal>Wat we zien gebeuren in de markt, met een tool om direct mee aan de slag te gaan. <a href="/insights/">Alle insights →</a></p><ul class="insight-list">{insight_rows}</ul></section>'''
+<section><h2 data-reveal>Insights</h2><p class="lead" data-reveal>Wat we zien gebeuren in de markt, met een tool om direct mee aan de slag te gaan. <a href="/insights/">Alle insights →</a></p><ul class="insight-list">{insight_rows}</ul></section>{build_signup()}'''
     return page("Van kliks naar klanten", "Data-gedreven conversie-optimalisatie voor MKB-webshops. Boldframe dicht conversie-lekken op basis van A/B-tests, niet op onderbuikgevoel.", "/", body)
 
 
@@ -1351,12 +1362,16 @@ def build_privacy():
     ga = ""
     if GA_ID:
         ga = "<h2>Statistieken</h2><p>Met jouw toestemming gebruiken we Google Analytics 4 om te meten hoe de website wordt gebruikt, zodat we hem kunnen verbeteren. Daarvoor worden cookies geplaatst en gegevens zoals je pagina\u2019s, apparaat en ongeveer locatie verwerkt door Google. Zonder toestemming laden we Google Analytics niet. Je kunt je keuze altijd wijzigen via \u2018Cookie-instellingen\u2019 onderaan de pagina.</p>"
+    nl = ""
+    if BREVO_FORM_URL:
+        nl = "<h2>Nieuwsbrief (Brevo)</h2><p>Als je je inschrijft voor de nieuwsbrief, verwerken we je e-mailadres en het moment van inschrijven. Daarvoor vragen we je uitdrukkelijk toestemming, en je bevestigt je inschrijving via een e-mail (dubbele opt-in). We versturen de mails via Brevo, een e-maildienst met vestiging in Frankrijk, die je gegevens namens ons verwerkt. We sturen ongeveer één mail per maand. In elke mail staat een uitschrijflink. Na uitschrijving verwijderen we je e-mailadres uit de lijst. Je kunt je toestemming altijd intrekken.</p>"
     body = f'''<header class="hero">{HERO_BG}<h1 class="case">Privacyverklaring</h1><p>Hoe Boldframe omgaat met jouw gegevens. Laatst bijgewerkt: oktober 2026.</p></header>
 <section class="art"><h2>Wie zijn wij</h2><p>Boldframe, Zwarte Zee 98, Maassluis. BTW-nummer NL002393881B08. Contact: <a href="mailto:roy@boldframe.nl">roy@boldframe.nl</a> of 06-37617728. Boldframe is verantwoordelijk voor de verwerking van de gegevens die in deze verklaring staan.</p>
 <h2>Welke gegevens we verwerken</h2><p>Wij gebruiken op deze website geen contactformulieren. Je kunt ons mailen, bellen of een afspraak inplannen. Dan verwerken we alleen de gegevens die je zelf met ons deelt, zoals je naam, e-mailadres, telefoonnummer en de inhoud van je bericht. We gebruiken die om contact met je op te nemen en om een eventuele samenwerking voor te bereiden.</p>
 <h2>Afspraak inplannen (Calendly)</h2><p>Voor het plannen van een gesprek gebruiken we Calendly. Als je een afspraak boekt, verwerkt Calendly je naam, e-mailadres en het gekozen tijdstip, volgens het eigen privacybeleid van Calendly.</p>
 <h2>Lettertypen</h2><p>De website laadt het lettertype Archivo via Google Fonts. Daarbij ontvangt Google je IP-adres.</p>
 {ga}
+{nl}
 <h2>Bewaartermijn</h2><p>We bewaren gegevens niet langer dan nodig is voor het doel waarvoor je ze hebt gegeven, of zolang de wet dat vraagt.</p>
 <h2>Je rechten</h2><p>Je kunt ons vragen om inzage in, correctie of verwijdering van je gegevens, of bezwaar maken tegen de verwerking. Stuur daarvoor een e-mail naar <a href="mailto:roy@boldframe.nl">roy@boldframe.nl</a>. Heb je een klacht? Dan kun je die indienen bij de Autoriteit Persoonsgegevens.</p></section>'''
     return page("Privacyverklaring", "Privacyverklaring van Boldframe: welke gegevens we verwerken en waarom.", "/privacy/", body)
