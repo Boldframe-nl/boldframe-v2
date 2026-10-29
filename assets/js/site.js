@@ -330,20 +330,24 @@ document.addEventListener("pointermove", (e) => {
 (function () {
   const ev = (name, params) => { if (typeof window.gtag === "function") window.gtag("event", name, params || {}); };
   const su = document.querySelector("form[data-signup]");
-  if (su) su.addEventListener("submit", (e) => {
-    if (!window.fetch || !window.FormData) { ev("nieuwsbrief_inschrijving"); return; }
-    e.preventDefault();
-    const btn = su.querySelector("button[type=submit]");
-    if (btn) { btn.disabled = true; btn.textContent = "Bezig\u2026"; }
-    const show = (html) => { const box = document.createElement("div"); box.className = "tool-out"; box.setAttribute("aria-live", "polite"); box.innerHTML = html; su.replaceWith(box); };
-    fetch(su.action, { method: "POST", body: new FormData(su) })
-      .then((r) => r.json())
-      .then((d) => {
-        if (d && d.success) { ev("nieuwsbrief_inschrijving"); show("<strong>Bijna klaar.</strong> We hebben je een e-mail gestuurd. Klik op de bevestigingslink in die mail om je inschrijving af te ronden. Zie je niets, kijk dan in je spam."); }
-        else { if (btn) { btn.disabled = false; btn.textContent = "Schrijf me in"; } show("Het inschrijven is niet gelukt. Probeer het later opnieuw of mail naar <a href='mailto:roy@boldframe.nl'>roy@boldframe.nl</a>."); }
-      })
-      .catch(() => { ev("nieuwsbrief_inschrijving"); su.submit(); });
-  });
+  if (su) {
+    // Verstuur via een verborgen iframe: werkt zonder CORS en toont geen JSON-pagina.
+    let sent = false;
+    const frame = document.getElementById("su-frame");
+    su.addEventListener("submit", () => {
+      sent = true;
+      const btn = su.querySelector("button[type=submit]");
+      if (btn) { btn.disabled = true; btn.textContent = "Bezig\u2026"; }
+    });
+    if (frame) frame.addEventListener("load", () => {
+      if (!sent) return;
+      ev("nieuwsbrief_inschrijving");
+      const box = document.createElement("div");
+      box.className = "tool-out"; box.setAttribute("aria-live", "polite");
+      box.innerHTML = "<strong>Bijna klaar.</strong> We hebben je een e-mail gestuurd. Klik op de bevestigingslink in die mail om je inschrijving af te ronden. Zie je niets, kijk dan in je spam.";
+      su.replaceWith(box);
+    });
+  }
   const tool = document.querySelector(".tool[id$='-tool']");
   if (tool) { let sent = false; tool.addEventListener("input", () => { if (!sent) { sent = true; ev("tool_gebruikt", { tool: tool.id }); } }); tool.addEventListener("change", () => { if (!sent) { sent = true; ev("tool_gebruikt", { tool: tool.id }); } }); }
   document.addEventListener("click", (e) => {

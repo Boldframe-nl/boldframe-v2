@@ -12,6 +12,8 @@ import os
 ROOT = os.path.dirname(os.path.abspath(__file__))
 SITE_URL = "https://boldframe.nl"
 LIVE = True  # bij livegang op True: haalt noindex weg en laat zoekmachines toe (robots.txt + meta)
+import hashlib
+ASSET_V = hashlib.md5(open(os.path.join(os.path.dirname(os.path.abspath(__file__)), "assets/js/site.js"), "rb").read() + open(os.path.join(os.path.dirname(os.path.abspath(__file__)), "assets/css/style.css"), "rb").read()).hexdigest()[:8]
 BREVO_FORM_URL = "https://62636020.sibforms.com/serve/MUIFAND5kebCcCFMwPGUrRuOQoeHZxOMYMuFCvA9w7VzZllygMRxI6q03nfeMr-PIefqmZT708VfeHTtNy_ydbZNtcUi5UsarY-N5V_lewwzSAuK75y3Y_y9bbxAfBIyxyT3v3bw580PJRRI4EWcOc7EVHYI294rDA5_7L90pHDmTWDzun9V51wypGF2Ot9kvvWSYLn5agppaMTaBw=="  # Brevo-formulier-URL (https://xxxx.sibforms.com/serve/...). Leeg = geen nieuwsbriefblok en geen privacytekst daarover.
 GA_ID = "G-8N1ZFCB0FW"  # Google Analytics 4 meet-ID (G-XXXXXXXXXX). Leeg = geen analytics en geen cookiebanner.
 
@@ -922,7 +924,7 @@ def page(title, description, path, body, extra_head="", noindex=False):
 <link rel="icon" type="image/png" sizes="512x512" href="/assets/img/favicon-512.png">
 <link rel="apple-touch-icon" href="/assets/img/apple-touch-icon.png">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&display=swap">
-<link rel="stylesheet" href="/assets/css/style.css">
+<link rel="stylesheet" href="/assets/css/style.css?v={ASSET_V}">
 {jsonld}{extra_head}</head>
 <body{ga_attr}>
 <nav aria-label="Hoofdmenu">
@@ -949,7 +951,7 @@ def page(title, description, path, body, extra_head="", noindex=False):
 </div>
 <div class="fine"><span>© 2026 Boldframe. Alle rechten voorbehouden.</span><a href="/privacy/">Privacyverklaring</a>{cookie_link}</div>
 </div></footer>
-<script src="/assets/js/site.js"></script>
+<script src="/assets/js/site.js?v={ASSET_V}"></script>
 </body>
 </html>
 """
@@ -1141,10 +1143,10 @@ def build_signup():
     if not BREVO_FORM_URL:
         return ""
     return f'''<section class="art signup-wrap"><div class="tool signup" id="signup"><h4>Nieuwsbrief</h4><p class="tdesc"><strong>Eén test, één les.</strong> Eén keer per maand een korte mail over een test bij een webshop en wat we ervan leerden. Geen verkooptraject, uitschrijven kan altijd.</p>
-<form method="post" action="{BREVO_FORM_URL}" data-signup><label for="su-email">E-mailadres</label><input type="email" id="su-email" name="EMAIL" required autocomplete="email" placeholder="jij@jouwwebshop.nl">
+<form method="post" action="{BREVO_FORM_URL}" target="su-frame" data-signup><label for="su-email">E-mailadres</label><input type="email" id="su-email" name="EMAIL" required autocomplete="email" placeholder="jij@jouwwebshop.nl">
 <input type="text" name="email_address_check" value="" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;opacity:0;height:0;width:0"><input type="hidden" name="locale" value="nl"><input type="hidden" name="html_type" value="simple">
 <label class="chk-row"><input type="checkbox" id="su-ok" required> <span>Ik wil de nieuwsbrief van Boldframe ontvangen. Je e-mailadres gebruiken we alleen daarvoor, zie de <a href="/privacy/">privacyverklaring</a>.</span></label>
-<button type="submit" class="btn small">Schrijf me in</button></form></div></section>'''
+<button type="submit" class="btn small">Schrijf me in</button></form><iframe name="su-frame" id="su-frame" title="Inschrijfbevestiging" hidden></iframe></div></section>'''
 
 
 def build_insight(slug, x):
