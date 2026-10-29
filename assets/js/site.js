@@ -330,7 +330,20 @@ document.addEventListener("pointermove", (e) => {
 (function () {
   const ev = (name, params) => { if (typeof window.gtag === "function") window.gtag("event", name, params || {}); };
   const su = document.querySelector("form[data-signup]");
-  if (su) su.addEventListener("submit", () => ev("nieuwsbrief_inschrijving"));
+  if (su) su.addEventListener("submit", (e) => {
+    if (!window.fetch || !window.FormData) { ev("nieuwsbrief_inschrijving"); return; }
+    e.preventDefault();
+    const btn = su.querySelector("button[type=submit]");
+    if (btn) { btn.disabled = true; btn.textContent = "Bezig\u2026"; }
+    const show = (html) => { const box = document.createElement("div"); box.className = "tool-out"; box.setAttribute("aria-live", "polite"); box.innerHTML = html; su.replaceWith(box); };
+    fetch(su.action, { method: "POST", body: new FormData(su) })
+      .then((r) => r.json())
+      .then((d) => {
+        if (d && d.success) { ev("nieuwsbrief_inschrijving"); show("Bedankt voor je inschrijving. Check je mailbox (ook je spam) voor een mail waarmee je je inschrijving bevestigt."); }
+        else { if (btn) { btn.disabled = false; btn.textContent = "Schrijf me in"; } show("Het inschrijven is niet gelukt. Probeer het later opnieuw of mail naar <a href='mailto:roy@boldframe.nl'>roy@boldframe.nl</a>."); }
+      })
+      .catch(() => { ev("nieuwsbrief_inschrijving"); su.submit(); });
+  });
   const tool = document.querySelector(".tool[id$='-tool']");
   if (tool) { let sent = false; tool.addEventListener("input", () => { if (!sent) { sent = true; ev("tool_gebruikt", { tool: tool.id }); } }); tool.addEventListener("change", () => { if (!sent) { sent = true; ev("tool_gebruikt", { tool: tool.id }); } }); }
   document.addEventListener("click", (e) => {
