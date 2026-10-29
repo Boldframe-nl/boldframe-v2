@@ -286,6 +286,15 @@ document.addEventListener("pointermove", (e) => {
       const total = boxes.filter((b) => b.checked).length;
       const weak = Object.keys(lv).filter((k) => lv[k][0] < lv[k][1]).sort((a, b) => lv[a][0] - lv[b][0]);
       let msg = "Score: <strong>" + total + " van " + boxes.length + "</strong>. ";
+      if (audit.dataset.mode === "fit") {
+        let t = "Score: <strong>" + total + " van " + boxes.length + "</strong>. ";
+        if (total === 0) t += "Vink aan wat voor jouw webshop geldt.";
+        else if (total >= 4) t += "Dit past waarschijnlijk goed bij een sticky add-to-cart. Test hem op een deel van je verkeer in plaats van overal tegelijk.";
+        else if (total >= 2) t += "Twijfelgeval. Test eerst, en let vooral op wat bezoekers al weten van je product.";
+        else t += "Waarschijnlijk niet de eerste test die je moet doen. Begin met een wijziging waar meer bezoekers last van hebben.";
+        out.innerHTML = t;
+        return;
+      }
       if (total === 0) msg += "Vink aan waar je webshop aan voldoet.";
       else if (!weak.length) msg += audit.dataset.done || "Alles aangevinkt. Controleer het bij je bezoekers met heatmaps en sessieopnames, want eigen blindheid is groot.";
       else msg += "Hier is de meeste winst te halen: <strong>" + weak.slice(0, 3).join(", ") + "</strong>. " + (audit.dataset.hint || "Begin bij het eerste niveau.");

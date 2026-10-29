@@ -640,6 +640,46 @@ INSIGHTS = {
             ("Waarom is het handig om AI-verkeer apart te meten?", "Zo zie je hoeveel bezoekers via AI binnenkomen en welke pagina\u2019s populair zijn bij de LLM\u2019s."),
         ],
     },
+    "sticky-add-to-cart-test": {
+        "title": "Sticky add-to-cart: dezelfde test, twee webshops, tegengestelde uitkomst",
+        "date": "2026-10-29",
+        "dek": "Een sticky add-to-cart-balk lijkt een zekere winnaar. Bij Schuurman steeg de omzet per bezoeker met ruim 10%, bij Ecodor daalde hij met bijna 11%. Wat we zagen, wat we niet weten, en een check voor jouw shop.",
+        "body": [
+            "Een sticky add-to-cart-balk is een knop die op mobiel onderaan in beeld blijft terwijl bezoekers door de productpagina scrollen. Het idee is logisch: wie overtuigd is, hoeft niet terug naar boven. Het wordt vaak genoemd als vaste best practice. Wij testten hem bij twee webshops, en de uitkomsten waren tegengesteld.",
+            "Het gaat om webshops in een vergelijkbare hoek: producten die klanten echt nodig hebben, veel terugkerende klanten en een hoge conversie. Als het daar al zo verschilt, kun je er niet zomaar van uitgaan dat het bij jouw shop werkt.",
+            "## Wat we testten",
+            "De hypothese: als de ‘in winkelwagen’-knop op mobiel altijd onderaan in beeld blijft, voegen meer bezoekers het product toe, omdat ze direct kunnen bestellen zodra ze overtuigd zijn, zonder terug te scrollen. We lieten de helft van het verkeer de huidige pagina zien en de andere helft de pagina met de sticky balk, en keken naar omzet per bezoeker.",
+            "## Schuurman: een duidelijke winnaar",
+            "Bij <a href='/cases/schuurman/'>Schuurman</a> steeg de conversie met 29,5% en de omzet per bezoeker met 10,5%. Op mobiel, waar ongeveer driekwart van het verkeer vandaan komt, steeg de conversie zelfs met 41%, met meer dan 99% kans dat dit geen toeval was. De gemiddelde orderwaarde daalde, maar het extra aantal bestellingen woog daar ruim tegenop.",
+            "Op desktop zagen we een daling, maar die is gebaseerd op heel weinig bestellingen en dus niet significant. We voerden de balk daarom overal door en nemen daarmee een berekend risico voor desktop.",
+            "## Ecodor: een verliezer",
+            "Bij <a href='/cases/ecodor/'>Ecodor</a> was de uitkomst andersom. De omzet per bezoeker daalde met bijna 11% en de conversie met ruim 15%, met ongeveer 94% kans dat de oorspronkelijke pagina beter was. Dat is geen keihard bewijs (het interval loopt van ruim −29% tot een klein plusje), maar met een kans van ongeveer 6% dat de variant wint, zagen we geen reden om door te gaan. De test liep twee volle weken, met ongeveer 84% van het verkeer op mobiel.",
+            "Het opvallende zit in de funnel. Het aantal bezoekers dat iets in de winkelwagen deed daalde maar met een paar procent, maar een kleiner deel van die winkelwagens werd een bestelling. Het verlies zat dus vooral na de klik.",
+            "## Was het een technische fout?",
+            "Dat was onze eerste vraag. Een klant meldde midden in de test dat de winkelwagenknop eerst niet werkte, en kort voor de start was de vertrouwensbox in de balk aangepast. We hebben het daarom uitgebreid onderzocht, ook in meerdere browsers, en vonden geen fout. Helemaal uitsluiten kunnen we het niet.",
+            "Daar zit ook een les in. Omdat we dit als test deden, zag maar de helft van het verkeer de mogelijke fout. Hadden we de balk meteen overal doorgevoerd, dan had een technisch probleem alle bezoekers geraakt.",
+            "## Waarom werkt het bij de een en niet bij de ander?",
+            "Eerlijk: dat weten we niet zeker. We hebben een hypothese. Bij Schuurman kennen bezoekers het product vaak al en willen ze snel bestellen, dus een knop die altijd bereikbaar is helpt. Bij Ecodor zijn bezoekers minder snel overtuigd en lezen ze eerst de uitgebreide productinformatie. Een balk die voortdurend om een aankoop vraagt, kan dan als pushy voelen en in de weg zitten.",
+            "Dat is een verklaring die bij de uitkomst past, geen bewezen oorzaak. De funnel (het verlies zit na de klik) past er maar gedeeltelijk bij. Daarom willen we het toetsen met een vervolgtest.",
+            "## Wat we hierna proberen",
+            "Is de balk te vroeg zichtbaar voor bezoekers die nog aan het lezen zijn? Twee dingen die we kunnen testen: de balk pas laten verschijnen als de bezoeker voorbij de productinformatie is gescrold, en een rustigere balk zonder extra elementen. Weten we de uitkomst, dan schrijven we dat hier op.",
+            "## Wat je hieruit kunt halen",
+            "<strong>Een best practice is geen winnaar.</strong> Zelfs bij twee shops die op elkaar lijken, kan dezelfde wijziging verschillend uitpakken. Test hem daarom op een deel van je verkeer in plaats van overal tegelijk.",
+            "<strong>Verwacht minder dan de test laat zien.</strong> Beide uitkomsten zijn indicatief. We zeggen niet dat de omzet bij Schuurman met 10% omhoog is gegaan, alleen dat hij is gestegen. Bij meer verkeer verwachten we dat het werkelijke effect dichter bij 1 tot 3% ligt. Dat is onze inschatting, geen meting.",
+            "<strong>Wat we met uitkomsten doen.</strong> Een winnaar voeren we door, een verliezer niet. Is de uitkomst onduidelijk, dan stemmen we met de klant af wat we ermee doen. Een grote technische oplossing laten we vaak varen, omdat we een webshop niet onnodig groot en complex willen maken. Een kleine wijziging voeren we meestal door als de klant akkoord is. Hoeveel verkeer je nodig hebt om zo te testen lees je in <a href='/insights/hoeveel-verkeer-om-te-testen/'>dit artikel</a>.",
+            "## Past een sticky add-to-cart bij jouw shop?",
+            "Vink hieronder aan wat voor jouw webshop geldt. Het is geen voorspelling, maar een indicatie of het de moeite waard is om te testen.",
+        ],
+        "steps": [],
+        "tool": "stickycheck",
+        "faq": [
+            ("Wat is een sticky add-to-cart-knop?", "Een bestelknop die op de productpagina in beeld blijft terwijl de bezoeker scrolt, meestal onderaan het scherm op mobiel. Zo hoeft hij niet terug naar boven om een product toe te voegen."),
+            ("Werkt een sticky add-to-cart altijd?", "Nee. Bij onze test bij Schuurman steeg de omzet per bezoeker met ruim 10%, terwijl hij bij Ecodor met bijna 11% daalde. Of het werkt, hangt onder meer af van hoe goed bezoekers het product al kennen."),
+            ("Waarom kan een sticky add-to-cart de conversie verlagen?", "Dat weten we niet zeker. Een verklaring is dat bezoekers die nog informatie lezen de balk als pushy ervaren, of dat een technisch probleem meespeelt. Daarom is testen belangrijk."),
+            ("Moet ik een sticky add-to-cart testen voordat ik hem invoer?", "Dat raden we aan. Door hem op een deel van het verkeer te testen, beperk je het risico dat een wijziging je omzet of een technische fout je hele shop raakt."),
+            ("Hoeveel verkeer heb je nodig om dit te testen?", "Als vuistregel ongeveer 500 meetbare conversies per maand. Hoe je dit berekent en wat je doet bij weinig verkeer, lees je in ons artikel over hoeveel verkeer je nodig hebt om te testen."),
+        ],
+    },
     "black-friday-checklist-webshop": {
         "title": "Black Friday: 8 dingen om nu aan je webshop te controleren",
         "date": "2026-10-26",
@@ -820,7 +860,14 @@ BF_QUESTIONS = [
     ("7. Snelheid onder druk", ["Weet je zeker dat je shop en hosting het verwachte verkeer aankunnen, ook op de piekmomenten?"]),
     ("8. Reis getest op mobiel", ["Heb je zelf op je telefoon besteld met kortingscode en betaalmethode, inclusief de bevestigingsmail?"]),
 ]
-INSIGHT_ORDER = ["black-friday-checklist-webshop", "conversie-optimalisatie-audit", "goede-conversieratio-webshop", "loont-conversie-optimalisatie", "hoeveel-verkeer-om-te-testen", "ai-verkeer-meten-in-ga4", "ai-scan-landingspagina", "meertalige-ecommerce"]
+STICKY_QUESTIONS = [
+    ("Veel mobiel verkeer", ["Komt het merendeel (ongeveer 60% of meer) van je bezoekers via mobiel?"]),
+    ("Knop verdwijnt uit beeld", ["Verdwijnt je bestelknop op mobiel uit beeld zodra bezoekers scrollen?"]),
+    ("Producten bekend", ["Kennen veel van je bezoekers het product al, bijvoorbeeld omdat het vaste klanten zijn?"]),
+    ("Weinig uitleg nodig", ["Is er weinig uitleg nodig voordat iemand het product koopt?"]),
+    ("Testen mogelijk", ["Heb je genoeg bestellingen per maand (ongeveer 500) om dit op een deel van het verkeer te testen?"]),
+]
+INSIGHT_ORDER = ["sticky-add-to-cart-test", "black-friday-checklist-webshop", "conversie-optimalisatie-audit", "goede-conversieratio-webshop", "loont-conversie-optimalisatie", "hoeveel-verkeer-om-te-testen", "ai-verkeer-meten-in-ga4", "ai-scan-landingspagina", "meertalige-ecommerce"]
 
 DIENSTEN_STEPS = [
     ("Onderzoek", "search", "We brengen de customer journey van je webshop in kaart, sporen knelpunten op met heatmaps, sessieopnames en je eigen data, en leren je klanten kennen met reviews, klantvragen en interviews — geen aannames."),
@@ -1177,6 +1224,9 @@ def build_insight(slug, x):
     elif tool == "bfcheck":
         items = "".join(f'<fieldset class="chk"><legend>{lvl}</legend>' + "".join(f'<label class="chk-row"><input type="checkbox" data-lvl="{lvl}"> {q}</label>' for q in qq) + '</fieldset>' for lvl, qq in BF_QUESTIONS)
         tool_html = f'''<div class="tool" id="audit-tool" data-done="Alles aangevinkt. Loop de reis nog een keer door op een andere telefoon, want eigen blindheid is groot." data-hint="Begin bij de eerste hieronder."><h4>Tool: is jouw webshop klaar voor Black Friday?</h4><p class="tdesc">Vink aan waar je webshop nu aan voldoet. Wees kritisch: twijfel je, laat het dan leeg.</p>{items}<div class="tool-out" id="audit-out" aria-live="polite"></div></div>'''
+    elif tool == "stickycheck":
+        items = "".join(f'<fieldset class="chk"><legend>{lvl}</legend>' + "".join(f'<label class="chk-row"><input type="checkbox" data-lvl="{lvl}"> {q}</label>' for q in qq) + '</fieldset>' for lvl, qq in STICKY_QUESTIONS)
+        tool_html = f'''<div class="tool" id="audit-tool" data-mode="fit"><h4>Check: past een sticky add-to-cart bij jouw shop?</h4><p class="tdesc">Vink aan wat voor jouw webshop geldt.</p>{items}<div class="tool-out" id="audit-out" aria-live="polite"></div></div>'''
     elif tool == "uplift":
         tool_html = '''<div class="tool" id="uplift-tool"><h4>Tool: wat is extra conversie waard?</h4><p class="tdesc">Indicatieve rekenhulp. Vul je eigen cijfers in.</p>
 <label for="up-visitors">Bezoekers per maand</label><input type="number" id="up-visitors" min="0" value="20000">
