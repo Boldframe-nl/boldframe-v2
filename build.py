@@ -12,7 +12,7 @@ import os
 ROOT = os.path.dirname(os.path.abspath(__file__))
 SITE_URL = "https://boldframe.nl"
 LIVE = True  # bij livegang op True: haalt noindex weg en laat zoekmachines toe (robots.txt + meta)
-BREVO_FORM_URL = ""  # Brevo-formulier-URL (https://xxxx.sibforms.com/serve/...). Leeg = geen nieuwsbriefblok en geen privacytekst daarover.
+BREVO_FORM_URL = "https://62636020.sibforms.com/serve/MUIFAND5kebCcCFMwPGUrRuOQoeHZxOMYMuFCvA9w7VzZllygMRxI6q03nfeMr-PIefqmZT708VfeHTtNy_ydbZNtcUi5UsarY-N5V_lewwzSAuK75y3Y_y9bbxAfBIyxyT3v3bw580PJRRI4EWcOc7EVHYI294rDA5_7L90pHDmTWDzun9V51wypGF2Ot9kvvWSYLn5agppaMTaBw=="  # Brevo-formulier-URL (https://xxxx.sibforms.com/serve/...). Leeg = geen nieuwsbriefblok en geen privacytekst daarover.
 GA_ID = "G-8N1ZFCB0FW"  # Google Analytics 4 meet-ID (G-XXXXXXXXXX). Leeg = geen analytics en geen cookiebanner.
 
 PIN_SVG = '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M14 3l7 7-3 1-3.5 3.5.5 4.5-1.5 1.5-4-4-5 5-1-1 5-5-4-4L6.5 10.5 11 11l3.5-3.5z"/></svg>'
