@@ -9,6 +9,8 @@
 - [Over ons](https://boldframe.nl/over-ons/)
 
 ## Insights
+- [Confirmation bias bij A/B-testen: probeer je eigen idee te ontkrachten](https://boldframe.nl/insights/confirmation-bias-ab-testen/): We willen graag dat onze ideeën werken, en lezen data het liefst zo dat ze dat bevestigen. Een eerlijk verhaal over de Ecodor-test, en hoe je jezelf tegen je eigen vooroordeel beschermt.
+- [Best practice bestaat niet: waarom een checklist afvinken je webshop niet beter maakt](https://boldframe.nl/insights/geen-best-practices-webshop/): Een lijstje best practices afvinken voelt als vooruitgang. Maar wat bij de ene webshop werkt, kan bij de andere omzet kosten. Waarom je beter van goede praktijk kunt spreken, en wat je dan wél doet.
 - [Sticky add-to-cart: dezelfde test, twee webshops, tegengestelde uitkomst](https://boldframe.nl/insights/sticky-add-to-cart-test/): Een sticky add-to-cart-balk lijkt een zekere winnaar. Bij Schuurman steeg de omzet per bezoeker met ruim 10%, bij Ecodor daalde hij met bijna 11%. Wat we zagen, wat we niet weten, en een check voor jouw shop.
 - [Black Friday: 8 dingen om nu aan je webshop te controleren](https://boldframe.nl/insights/black-friday-checklist-webshop/): Dit gaat niet over advertenties of e-mailcampagnes, maar over je webshop zelf: kunnen bezoekers de deals vinden, geloven ze de korting en kan je shop het verkeer aan? Acht controles, met een score-tool.
 - [Wat zit er in een conversie-optimalisatie audit?](https://boldframe.nl/insights/conversie-optimalisatie-audit/): Een goede audit begint met een nulmeting en eindigt met een geprioriteerde lijst, niet met een rapport vol losse tips. Zo ziet dat eruit, en met de checklist scoor je zelf alvast de zeven niveaus van je webshop.

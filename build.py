@@ -640,6 +640,70 @@ INSIGHTS = {
             ("Waarom is het handig om AI-verkeer apart te meten?", "Zo zie je hoeveel bezoekers via AI binnenkomen en welke pagina\u2019s populair zijn bij de LLM\u2019s."),
         ],
     },
+    "geen-best-practices-webshop": {
+        "title": "Best practice bestaat niet: waarom een checklist afvinken je webshop niet beter maakt",
+        "date": "2026-11-02",
+        "dek": "Een lijstje best practices afvinken voelt als vooruitgang. Maar wat bij de ene webshop werkt, kan bij de andere omzet kosten. Waarom je beter van goede praktijk kunt spreken, en wat je dan wél doet.",
+        "body": [
+            "‘Dit is een best practice’ is een van de meest gebruikte zinnen in conversie-optimalisatie. Een sticky bestelknop, social proof bij de productfoto, een gratis-verzending-balk. Vink de lijst af, en je kunt zeggen dat je er alles aan hebt gedaan. Dat klinkt geruststellend, maar zo werkt het niet.",
+            "## Eén wijziging, twee uitkomsten",
+            "Het duidelijkste voorbeeld uit ons eigen werk is de <a href='/insights/sticky-add-to-cart-test/'>sticky add-to-cart-balk</a>. Bij <a href='/cases/schuurman/'>Schuurman</a> was het een duidelijke winnaar: de omzet per bezoeker steeg met ruim 10%. Bij Ecodor, een webshop die er op het eerste gezicht op lijkt, daalde dezelfde omzet per bezoeker met bijna 11%. Dezelfde wijziging, op dezelfde manier getest, en tegengestelde uitkomsten.",
+            "Hadden we de balk bij Ecodor uit gewoonte als best practice doorgevoerd, dan hadden we er omzet mee verloren, en waarschijnlijk niet eens geweten waardoor.",
+            "## Waarom een best practice niets zegt over jouw shop",
+            "Een best practice is een gemiddelde van wat bij andere webshops werkte, bij andere bezoekers, met andere producten en een andere situatie. Het zegt niets over de bezoekers van jouw shop. En juist dat verschilt enorm.",
+            "Dat bleek ook in een aflevering van de podcast From A to B van Shiva Manjunath, getiteld <a href='https://chartable.com/podcasts/from-a-to-b-1689246474/episodes/161726720-youre-doing-personalization-wrong-ft-david-mannheim' rel='noopener' target='_blank'>You’re doing personalization wrong</a>, met David Mannheim. Mijn lezing van dat gesprek, in mijn eigen woorden: als je een gepersonaliseerde ervaring wilt bieden, kun je niet afgaan op één algemene best practice. Je moet weten wie je bezoekers zijn en waarom ze op dat moment op je site zijn.",
+            "Dat laatste is lastiger dan het lijkt. Bezoekers komen met heel verschillende bedoelingen:",
+            "<ul><li>Ze kijken rond voor later, zonder nu te willen kopen.</li><li>Ze willen zo snel mogelijk bestellen.</li><li>Ze vergelijken en kopen het uiteindelijk ergens anders.</li><li>Ze zoeken alleen aanbiedingen.</li><li>Ze wachten tot hun salaris binnen is.</li></ul>",
+            "Een sticky bestelknop helpt bij de tweede groep en kan de eerste groep storen. Wat de balans is, hangt af van hoeveel bezoekers in welke groep zitten. Dat is een eigenschap van jouw webshop, niet van de wijziging.",
+            "## Goede praktijk, geen best practice",
+            "Dat betekent niet dat kennis van andere webshops nutteloos is. Onderzoeken en ervaringen van anderen zijn een goede bron voor hypotheses. Het zijn goede praktijken: ideeën met een redelijke kans van slagen, die je nog moet toetsen. Het verschil zit in wat je ermee doet. Een best practice voer je door. Een goede praktijk behandel je als hypothese.",
+            "## Wat je dan wél doet",
+            "<strong>1. Onderzoek je eigen klanten.</strong> Wie zijn ze, wat willen ze, en wat houdt ze tegen? Dat vraagt om meerdere methoden: gedrag meten, klanten vragen naar hun motieven en zelf als klant meekijken. Meer daarover lees je op onze pagina over de <a href='/werkwijze/'>werkwijze</a>.",
+            "<strong>2. Maak er een hypothese van.</strong> Schrijf op wat je verwacht dat er verandert, en waarom dat bij jouw bezoekers zou werken.",
+            "<strong>3. Test het.</strong> Laat een deel van het verkeer de oude pagina zien en een deel de nieuwe, en kijk welke het beter doet. Met te weinig verkeer is een test niet betrouwbaar; lees dan hoe je dat <a href='/insights/hoeveel-verkeer-om-te-testen/'>kunt aanpakken</a>.",
+            "Begin daarbij altijd vanuit dezelfde zin: ik weet niet of dit werkt, laten we het testen. Dat klinkt als twijfel, maar het is het enige eerlijke uitgangspunt. Waarom dat zo moeilijk is, lees je in het volgende artikel over <a href='/insights/confirmation-bias-ab-testen/'>confirmation bias bij A/B-testen</a>.",
+        ],
+        "steps": [],
+        "tool": None,
+        "faq": [
+            ("Bestaan er geen best practices in conversie-optimalisatie?", "Niet in de zin dat iets voor elke webshop werkt. Wat bij de ene shop werkt, kan bij een andere omzet kosten, zoals onze sticky add-to-cart-test bij Schuurman en Ecodor liet zien. Je kunt beter spreken van goede praktijken: ideeën met een redelijke kans van slagen die je zelf toetst."),
+            ("Wat is het verschil tussen een best practice en een goede praktijk?", "Een best practice voer je zonder meer door. Een goede praktijk is een hypothese die je eerst test bij je eigen bezoekers."),
+            ("Moet ik dan alles testen?", "Waar je genoeg verkeer voor hebt wel. Heb je te weinig bezoekers voor een betrouwbare test, dan kun je goede praktijken met onderzoek en analyse toepassen, maar blijft de uitkomst een inschatting."),
+            ("Waar begin ik met onderzoek naar mijn klanten?", "Met wat je al hebt: analytics, reviews en klantvragen. Vul dat aan met een korte vragenlijst over koopmotieven en gesprekken met klanten."),
+        ],
+    },
+    "confirmation-bias-ab-testen": {
+        "title": "Confirmation bias bij A/B-testen: probeer je eigen idee te ontkrachten",
+        "date": "2026-11-02",
+        "dek": "We willen graag dat onze ideeën werken, en lezen data het liefst zo dat ze dat bevestigen. Een eerlijk verhaal over de Ecodor-test, en hoe je jezelf tegen je eigen vooroordeel beschermt.",
+        "body": [
+            "Een A/B-test geeft een uitkomst, maar jij geeft er betekenis aan. En daar gaat het vaak mis. We willen dat onze ideeën werken, en lezen de data het liefst zo dat dit blijkt. Dat heet confirmation bias: het zoeken naar, lezen en onthouden van informatie die bevestigt wat je al dacht.",
+            "## Wat er bij ons gebeurde",
+            "Bij <a href='/cases/schuurman/'>Schuurman</a> was een sticky add-to-cart-balk een duidelijke winnaar. Dus toen we dezelfde test bij Ecodor draaiden, verwachtte ik eigenlijk hetzelfde. Het resultaat was het tegenovergestelde: de omzet per bezoeker daalde met bijna 11%.",
+            "Mijn eerste reactie, niet woord voor woord: dit kan toch eigenlijk niet waar zijn? Zeker niet met zo’n groot effect. Net in die periode had een bezoeker gemeld dat de bestelknop niet direct werkte. Dus ging ik de oorzaak daar zoeken. Waarom? Omdat ik mijn eigen aanname wilde bevestigen. De sticky add-to-cart moet wel werken voor deze shop, dacht ik.",
+            "Ik heb het uitgebreid onderzocht, op meerdere apparaten en in meerdere browsers. Ik vond geen fout. Dus moest ik accepteren dat de test, in die vorm, geen succes was, en dat een volledige invoering geld zou hebben gekost.",
+            "Controleren op technische fouten is zinvol, want een fout kan een uitkomst echt vertekenen. Maar let op wat er gebeurde: ik ging pas zo grondig zoeken omdat de uitkomst me niet beviel. Wie alleen kritisch kijkt als een resultaat tegenvalt, en een winnaar zonder vragen accepteert, schuift de uitkomst al richting het gewenste resultaat.",
+            "## Wat wetenschappers adviseren",
+            "In de wetenschap geldt het omgekeerde als norm. Wetenschapsfilosoof Karl Popper betoogde dat een theorie pas serieus te nemen is als je hem kunt weerleggen, en dat je dus steeds moet proberen hem onderuit te halen. Vertaald naar testen: doe je uiterste best om je eigen hypothese te ontkrachten, in plaats van data te zoeken die je gelijk bewijst.",
+            "Dat voelt tegennatuurlijk, en dat is het ook. Maar het is de reden dat een test zin heeft. Een test die je alleen ‘wint’ omdat je de uitkomst naar je hand zet, levert niets op.",
+            "## Hoe je jezelf beschermt",
+            "<strong>Leg vooraf je primaire metric vast, en blijf erbij.</strong> Beslis voor de start waar de test op wordt beoordeeld, bijvoorbeeld omzet per bezoeker. Is die metric negatief, dan is de test niet geslaagd.",
+            "<strong>Zoek achteraf niet naar een secundaire meting die het toch goed maakt.</strong> Je kunt wel extra data bekijken om te begrijpen waarom een test wel of niet werkte en hoe de volgende beter aansluit op het probleem. Maar gebruik dat nooit om een negatieve primaire metric alsnog goed te keuren.",
+            "<strong>Schrijf op wat je zou overtuigen dat je ongelijk hebt.</strong> Doe dat vooraf. Zo kun je achteraf niet meer schuiven.",
+            "<strong>Leg de testduur vooraf vast.</strong> Stop niet zodra de uitkomst je bevalt, en rek niet op omdat je het resultaat niet vertrouwt. Wij moesten bij Ecodor wel iets langer doorlopen om zeker te zijn van dit verrassende resultaat, en hebben dat eerlijk benoemd.",
+            "<strong>Begin met: ik weet niet of dit werkt.</strong> Dat is ook de kern van het artikel over <a href='/insights/geen-best-practices-webshop/'>waarom best practices niet bestaan</a>.",
+            "## Hoe sta jij ervoor?",
+            "Vink aan wat bij jou al gebeurt. Het is geen examen, maar een snelle spiegel.",
+        ],
+        "steps": [],
+        "tool": "hypocheck",
+        "faq": [
+            ("Wat is confirmation bias bij A/B-testen?", "De neiging om testresultaten zo te lezen dat ze je eigen verwachting bevestigen: je zoekt naar data die je gelijk geeft en wantrouwt data die dat niet doet."),
+            ("Wat is een primaire metric?", "De ene meting waarop je vooraf bepaalt of een test succesvol is, bijvoorbeeld omzet per bezoeker. Je legt die vast voordat de test start."),
+            ("Mag ik secundaire metrics bekijken?", "Ja, om te begrijpen waarom een test werkte of niet en om de volgende test beter te maken. Niet om een test goed te keuren waarvan de primaire metric negatief was."),
+            ("Hoe voorkom ik confirmation bias bij mijn testresultaten?", "Schrijf vooraf op wat je zou overtuigen dat je ongelijk hebt, leg de primaire metric en de testduur vast en controleer fouten bij winst net zo zorgvuldig als bij verlies."),
+        ],
+    },
     "sticky-add-to-cart-test": {
         "title": "Sticky add-to-cart: dezelfde test, twee webshops, tegengestelde uitkomst",
         "date": "2026-10-29",
@@ -867,7 +931,14 @@ STICKY_QUESTIONS = [
     ("Weinig uitleg nodig", ["Is er weinig uitleg nodig voordat iemand het product koopt?"]),
     ("Testen mogelijk", ["Heb je genoeg bestellingen per maand (ongeveer 500) om dit op een deel van het verkeer te testen?"]),
 ]
-INSIGHT_ORDER = ["sticky-add-to-cart-test", "black-friday-checklist-webshop", "conversie-optimalisatie-audit", "goede-conversieratio-webshop", "loont-conversie-optimalisatie", "hoeveel-verkeer-om-te-testen", "ai-verkeer-meten-in-ga4", "ai-scan-landingspagina", "meertalige-ecommerce"]
+HYPO_QUESTIONS = [
+    ("Onderzoek", ["Heb ik met echte klanten gesproken of ze iets gevraagd over waarom ze wel of niet kopen?"]),
+    ("Hypothese", ["Kan ik in één zin opschrijven wat ik verwacht dat er verandert, en waarom?"]),
+    ("Primaire metric", ["Heb ik vooraf één primaire metric vastgelegd?"]),
+    ("Ontkrachting", ["Heb ik vooraf opgeschreven wat mij zou overtuigen dat ik ongelijk heb?"]),
+    ("Testduur", ["Heb ik vooraf vastgelegd hoe lang de test loopt en wanneer ik stop?"]),
+]
+INSIGHT_ORDER = ["confirmation-bias-ab-testen", "geen-best-practices-webshop", "sticky-add-to-cart-test", "black-friday-checklist-webshop", "conversie-optimalisatie-audit", "goede-conversieratio-webshop", "loont-conversie-optimalisatie", "hoeveel-verkeer-om-te-testen", "ai-verkeer-meten-in-ga4", "ai-scan-landingspagina", "meertalige-ecommerce"]
 
 DIENSTEN_STEPS = [
     ("Onderzoek", "search", "We brengen de customer journey van je webshop in kaart, sporen knelpunten op met heatmaps, sessieopnames en je eigen data, en leren je klanten kennen met reviews, klantvragen en interviews — geen aannames."),
@@ -1227,6 +1298,9 @@ def build_insight(slug, x):
     elif tool == "stickycheck":
         items = "".join(f'<fieldset class="chk"><legend>{lvl}</legend>' + "".join(f'<label class="chk-row"><input type="checkbox" data-lvl="{lvl}"> {q}</label>' for q in qq) + '</fieldset>' for lvl, qq in STICKY_QUESTIONS)
         tool_html = f'''<div class="tool" id="audit-tool" data-mode="fit"><h4>Check: past een sticky add-to-cart bij jouw shop?</h4><p class="tdesc">Vink aan wat voor jouw webshop geldt.</p>{items}<div class="tool-out" id="audit-out" aria-live="polite"></div></div>'''
+    elif tool == "hypocheck":
+        items = "".join(f'<fieldset class="chk"><legend>{lvl}</legend>' + "".join(f'<label class="chk-row"><input type="checkbox" data-lvl="{lvl}"> {q}</label>' for q in qq) + '</fieldset>' for lvl, qq in HYPO_QUESTIONS)
+        tool_html = f'''<div class="tool" id="audit-tool" data-mode="fit" data-zero="Vink aan wat bij jou al gebeurt." data-hi="Je beschermt jezelf al goed tegen je eigen vooroordeel. Blijf vooral eerlijk kijken naar uitkomsten die tegenvallen." data-mid="Een goed begin. Leg de ontbrekende punten vast voordat je de volgende test start." data-low="Begin met één ding: leg voor de volgende test je primaire metric vast en schrijf op wat je zou overtuigen dat je ongelijk hebt."><h4>Check: hoe goed bescherm je jezelf tegen confirmation bias?</h4><p class="tdesc">Vink aan wat bij jou al gebeurt.</p>{items}<div class="tool-out" id="audit-out" aria-live="polite"></div></div>'''
     elif tool == "uplift":
         tool_html = '''<div class="tool" id="uplift-tool"><h4>Tool: wat is extra conversie waard?</h4><p class="tdesc">Indicatieve rekenhulp. Vul je eigen cijfers in.</p>
 <label for="up-visitors">Bezoekers per maand</label><input type="number" id="up-visitors" min="0" value="20000">
@@ -1264,7 +1338,7 @@ def build_insight(slug, x):
     schema = '<script type="application/ld+json">' + json.dumps({"@context": "https://schema.org", "@graph": graph}, ensure_ascii=False) + "</script>\n"
     body = f'''<a class="back" href="/insights/">← Alle insights</a>
 <header class="hero" style="padding-top:32px;padding-bottom:24px">{HERO_BG}<span class="meta">{fmt_date(x['date'])} · Door Roy van Hees</span><h1 class="case">{x['title']}</h1><p>{x['dek']}</p></header>
-<section class="art">{"".join((f"<h2>{p[3:]}</h2>" if p.startswith("## ") else f"<p>{p}</p>") for p in x['body'])}{steps_html}{tool_html}</section>
+<section class="art">{"".join((f"<h2>{p[3:]}</h2>" if p.startswith("## ") else (p if p.startswith("<ul") else f"<p>{p}</p>")) for p in x['body'])}{steps_html}{tool_html}</section>
 {faq_html}<section class="art"><div class="byline"><img src="/assets/img/roy.jpg" alt="Roy van Hees" width="72" height="72" loading="lazy"><p><strong>Geschreven door <a href="/over-ons/">Roy van Hees</a></strong>, oprichter van Boldframe. Hij werkt al elf jaar in de e-commerce en doet tegenwoordig vooral onderzoek en A/B-tests voor webshops.</p></div></section>{build_signup()}'''
     desc = x["dek"] if len(x["dek"]) <= 160 else x["dek"][:157].rsplit(" ", 1)[0] + "…"
     return page(x["title"], desc, f"/insights/{slug}/", body, schema)

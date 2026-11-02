@@ -288,10 +288,11 @@ document.addEventListener("pointermove", (e) => {
       let msg = "Score: <strong>" + total + " van " + boxes.length + "</strong>. ";
       if (audit.dataset.mode === "fit") {
         let t = "Score: <strong>" + total + " van " + boxes.length + "</strong>. ";
-        if (total === 0) t += "Vink aan wat voor jouw webshop geldt.";
-        else if (total >= 4) t += "Dit past waarschijnlijk goed bij een sticky add-to-cart. Test hem op een deel van je verkeer in plaats van overal tegelijk.";
-        else if (total >= 2) t += "Twijfelgeval. Test eerst, en let vooral op wat bezoekers al weten van je product.";
-        else t += "Waarschijnlijk niet de eerste test die je moet doen. Begin met een wijziging waar meer bezoekers last van hebben.";
+        const d = audit.dataset;
+        if (total === 0) t += d.zero || "Vink aan wat voor jouw webshop geldt.";
+        else if (total >= 4) t += d.hi || "Dit past waarschijnlijk goed bij een sticky add-to-cart. Test hem op een deel van je verkeer in plaats van overal tegelijk.";
+        else if (total >= 2) t += d.mid || "Twijfelgeval. Test eerst, en let vooral op wat bezoekers al weten van je product.";
+        else t += d.low || "Waarschijnlijk niet de eerste test die je moet doen. Begin met een wijziging waar meer bezoekers last van hebben.";
         out.innerHTML = t;
         return;
       }
