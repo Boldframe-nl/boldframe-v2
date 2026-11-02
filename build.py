@@ -647,7 +647,7 @@ INSIGHTS = {
         "body": [
             "‘Dit is een best practice’ is een van de meest gebruikte zinnen in conversie-optimalisatie. Een sticky bestelknop, social proof bij de productfoto, een gratis-verzending-balk. Vink de lijst af, en je kunt zeggen dat je er alles aan hebt gedaan. Dat klinkt geruststellend, maar zo werkt het niet.",
             "## Eén wijziging, twee uitkomsten",
-            "Het duidelijkste voorbeeld uit ons eigen werk is de <a href='/insights/sticky-add-to-cart-test/'>sticky add-to-cart-balk</a>. Bij <a href='/cases/schuurman/'>Schuurman</a> was het een duidelijke winnaar: de omzet per bezoeker steeg met ruim 10%. Bij Ecodor, een webshop die er op het eerste gezicht op lijkt, daalde dezelfde omzet per bezoeker met bijna 11%. Dezelfde wijziging, op dezelfde manier getest, en tegengestelde uitkomsten.",
+            "Het duidelijkste voorbeeld uit ons eigen werk is de <a href='/insights/sticky-add-to-cart-test/'>sticky add-to-cart-balk</a>. Bij <a href='/cases/schuurman/'>Schuurman</a> was het een duidelijke winnaar: de omzet per bezoeker steeg met ruim 10%. Bij Ecodor daalde dezelfde omzet per bezoeker met bijna 11%, terwijl de twee shops op elkaar lijken: het zijn allebei relatief goedkope artikelen met een hoge koopintentie. Dezelfde wijziging, op dezelfde manier getest, en tegengestelde uitkomsten.",
             "Hadden we de balk bij Ecodor uit gewoonte als best practice doorgevoerd, dan hadden we er omzet mee verloren, en waarschijnlijk niet eens geweten waardoor.",
             "## Waarom een best practice niets zegt over jouw shop",
             "Een best practice is een gemiddelde van wat bij andere webshops werkte, bij andere bezoekers, met andere producten en een andere situatie. Het zegt niets over de bezoekers van jouw shop. En juist dat verschilt enorm.",
@@ -710,7 +710,7 @@ INSIGHTS = {
         "dek": "Een sticky add-to-cart-balk lijkt een zekere winnaar. Bij Schuurman steeg de omzet per bezoeker met ruim 10%, bij Ecodor daalde hij met bijna 11%. Wat we zagen, wat we niet weten, en een check voor jouw shop.",
         "body": [
             "Een sticky add-to-cart-balk is een knop die op mobiel onderaan in beeld blijft terwijl bezoekers door de productpagina scrollen. Het idee is logisch: wie overtuigd is, hoeft niet terug naar boven. Het wordt vaak genoemd als vaste best practice. Wij testten hem bij twee webshops, en de uitkomsten waren tegengesteld.",
-            "Het gaat om webshops in een vergelijkbare hoek: producten die klanten echt nodig hebben, veel terugkerende klanten en een hoge conversie. Als het daar al zo verschilt, kun je er niet zomaar van uitgaan dat het bij jouw shop werkt.",
+            "Het gaat om webshops in een vergelijkbare hoek: relatief goedkope artikelen met een hoge koopintentie, producten die klanten echt nodig hebben, veel terugkerende klanten en een hoge conversie. Als het daar al zo verschilt, kun je er niet zomaar van uitgaan dat het bij jouw shop werkt.",
             "## Wat we testten",
             "De hypothese: als de ‘in winkelwagen’-knop op mobiel altijd onderaan in beeld blijft, voegen meer bezoekers het product toe, omdat ze direct kunnen bestellen zodra ze overtuigd zijn, zonder terug te scrollen. We lieten de helft van het verkeer de huidige pagina zien en de andere helft de pagina met de sticky balk, en keken naar omzet per bezoeker.",
             "## Schuurman: een duidelijke winnaar",
