@@ -360,3 +360,7 @@ footer .btn{background:var(--onblue);color:var(--blue)}
 .signup-wrap{padding-top:0}.signup form{position:relative;max-width:520px}.signup .chk-row span{font-size:15px;line-height:1.45}
 
 .byline{display:flex;gap:16px;align-items:center;border-top:1px solid rgba(24,0,173,.15);padding-top:20px;margin-top:8px}.byline img{width:72px;height:72px;border-radius:50%;object-fit:cover;border:2px solid var(--blue);flex:none}.byline p{margin:0;font-size:.95rem}
+
+/* Insights: lange titels mogen afbreken, de datum blijft altijd zichtbaar */
+.insight-list .row h3{white-space:normal}
+.insight-list .row span{flex:none;overflow:visible;text-overflow:clip;white-space:nowrap;text-align:right}
