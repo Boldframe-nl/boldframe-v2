@@ -1265,7 +1265,7 @@ def build_insight(slug, x):
     body = f'''<a class="back" href="/insights/">← Alle insights</a>
 <header class="hero" style="padding-top:32px;padding-bottom:24px">{HERO_BG}<span class="meta">{fmt_date(x['date'])} · Door Roy van Hees</span><h1 class="case">{x['title']}</h1><p>{x['dek']}</p></header>
 <section class="art">{"".join((f"<h2>{p[3:]}</h2>" if p.startswith("## ") else f"<p>{p}</p>") for p in x['body'])}{steps_html}{tool_html}</section>
-{faq_html}{build_signup()}'''
+{faq_html}<section class="art"><div class="byline"><img src="/assets/img/roy.jpg" alt="Roy van Hees" width="72" height="72" loading="lazy"><p><strong>Geschreven door <a href="/over-ons/">Roy van Hees</a></strong>, oprichter van Boldframe. Hij werkt al elf jaar in de e-commerce en doet tegenwoordig vooral onderzoek en A/B-tests voor webshops.</p></div></section>{build_signup()}'''
     desc = x["dek"] if len(x["dek"]) <= 160 else x["dek"][:157].rsplit(" ", 1)[0] + "…"
     return page(x["title"], desc, f"/insights/{slug}/", body, schema)
 
